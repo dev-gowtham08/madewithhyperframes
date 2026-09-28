@@ -19,11 +19,7 @@ try{
  assert.match(await page.locator('video').getAttribute('src'),/static\.heygen\.ai\/.*\.mp4$/);
  assert.equal(await page.getByRole('link',{name:'Explore the source'}).getAttribute('href'),'https://github.com/heygen-com/hyperframes-launches/tree/main/website-to-hyperframes');
  await page.goto(base+'/showcase/poultry-path');
- await page.locator('video').waitFor();
- assert.equal(await page.locator('video').getAttribute('src'),'/media/poultry-path-en.mp4');
- assert.equal(await page.getByRole('link',{name:'View HyperFrames session'}).getAttribute('href'),'https://www.hyperframes.dev/session/ea136626-42d0-4614-836f-c65ed60f4390');
- const range=await page.request.get(base+'/media/poultry-path-en.mp4',{headers:{Range:'bytes=0-99'}});
- assert.equal(range.status(),206);assert.equal((await range.body()).length,100);
+ await page.getByText('Film not found.').waitFor();
  await page.goto(base+'/submit');
  await page.getByLabel('Video title').fill('Browser test submission');
  await page.getByLabel('Your name').fill('Test Creator');
@@ -39,11 +35,11 @@ try{
  const published=await (await page.request.get(base+'/api/entries')).json();
  assert.ok(!published.some(e=>e.id===submitted.id));assert.ok(published.every(e=>!('email'in e)));
  await page.setViewportSize({width:375,height:812});
- for(const route of ['/','/submit','/about','/showcase/website-to-video','/showcase/poultry-path']){
+ for(const route of ['/','/submit','/about','/showcase/website-to-video']){
   await page.goto(base+route);await page.locator('h1').waitFor();
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route+' overflow');
  }
  await page.goto(base);await page.locator('.card').first().waitFor();
  await page.screenshot({path:'/tmp/hyperframes-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('PASS: filters, search, both videos, session link, submission privacy, and five mobile routes.');
+ assert.deepEqual(errors,[]);console.log('PASS: filters, search, official video, removed project, submission privacy, and four mobile routes.');
 }finally{await browser.close();}
