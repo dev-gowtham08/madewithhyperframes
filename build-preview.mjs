@@ -1,9 +1,10 @@
 import { cp, mkdir, writeFile } from 'node:fs/promises';
 import { openStore } from './store.mjs';
+import { publicEntries } from './curated.mjs';
 
 // Only approved public fields are exported. No emails or pending submissions.
 const db = openStore();
-const entries = db.prepare("SELECT id,title,creator,description,video,product,category,tools,created FROM entries WHERE status='approved' ORDER BY created DESC").all();
+const entries = publicEntries(db);
 db.close();
 await mkdir('dist', { recursive: true });
 await cp('public', 'dist', { recursive: true });

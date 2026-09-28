@@ -12,12 +12,12 @@ try{
  await page.getByRole('button',{name:/All videos/}).click();
  await page.getByRole('searchbox').fill('not-a-real-title');
  await page.getByText('No videos here yet.').waitFor();
- await page.getByRole('searchbox').fill('Poultry');
+ await page.getByRole('searchbox').fill('HyperFrames Launch');
  assert.equal(await page.locator('.card').count(),1);
- await page.goto(base+'/showcase/poultry-path');
+ await page.goto(base+'/showcase/hyperframes-launch');
  await page.locator('video').waitFor();
- const range=await page.request.get(base+'/media/poultry-path-en.mp4',{headers:{Range:'bytes=0-99'}});
- assert.equal(range.status(),206);assert.equal((await range.body()).length,100);
+ assert.match(await page.locator('video').getAttribute('src'),/static\.heygen\.ai\/.*\.mp4$/);
+ assert.equal(await page.getByRole('link',{name:'Explore the source'}).getAttribute('href'),'https://github.com/heygen-com/hyperframes-launches/tree/main/hyperframes-launch');
  await page.goto(base+'/submit');
  await page.getByLabel('Video title').fill('Browser test submission');
  await page.getByLabel('Your name').fill('Test Creator');
@@ -33,11 +33,11 @@ try{
  const published=await (await page.request.get(base+'/api/entries')).json();
  assert.ok(!published.some(e=>e.id===submitted.id));assert.ok(published.every(e=>!('email'in e)));
  await page.setViewportSize({width:375,height:812});
- for(const route of ['/','/submit','/about','/showcase/poultry-path']){
+ for(const route of ['/','/submit','/about','/showcase/hyperframes-launch']){
   await page.goto(base+route);await page.locator('h1').waitFor();
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route+' overflow');
  }
  await page.goto(base);await page.locator('.card').waitFor();
  await page.screenshot({path:'/tmp/hyperframes-mobile.png',fullPage:true});
- assert.deepEqual(errors,[]);console.log('PASS: filters, search, playback ranges, submission persistence/privacy, and four mobile routes.');
+ assert.deepEqual(errors,[]);console.log('PASS: filters, search, official playback and source link, submission persistence/privacy, and four mobile routes.');
 }finally{await browser.close();}

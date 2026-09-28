@@ -5,6 +5,7 @@ import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
 import { openStore, validate } from './store.mjs';
+import { publicEntries } from './curated.mjs';
 
 const root = fileURLToPath(new URL('./public/', import.meta.url));
 const db = openStore();
@@ -14,13 +15,13 @@ const send = (res, status, data) => { res.writeHead(status, {'Content-Type':'app
 const server = http.createServer(async (req,res) => {
   res.setHeader('X-Content-Type-Options','nosniff');
   res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' https:; frame-src https://www.youtube-nocookie.com https://player.vimeo.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'");
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://static.heygen.ai; media-src 'self' https:; frame-src https://www.youtube-nocookie.com https://player.vimeo.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'");
   try {
     const url = new URL(req.url, 'http://localhost');
     if (req.method === 'GET' && url.pathname === '/api/config') return send(res,200,{submissionsEnabled:true});
     if (req.method === 'GET' && url.pathname === '/api/entries') {
       res.setHeader('Cache-Control','no-store');
-      return send(res,200,db.prepare("SELECT id,title,creator,description,video,product,category,tools,created FROM entries WHERE status='approved' ORDER BY created DESC").all());
+      return send(res,200,publicEntries(db));
     }
     if (req.method === 'POST' && url.pathname === '/api/submissions') {
       if (req.headers.origin) {

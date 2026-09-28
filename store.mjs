@@ -11,10 +11,6 @@ export function openStore(directory = process.env.DATA_DIR || './data') {
     category TEXT NOT NULL, tools TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending',
     created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
   )`);
-  db.prepare(`INSERT OR IGNORE INTO entries (id,title,creator,email,description,video,product,category,tools,status)
-    VALUES (?,?,?,?,?,?,?,?,?,?)`).run('poultry-path', 'Poultry Path', 'Gowtham', '',
-    'A product walkthrough for Poultry Path, an application helping poultry farmers keep track of batches, egg production, feed stock, and orders.',
-    '/media/poultry-path-en.mp4', 'https://www.hyperframes.dev/session/ea136626-42d0-4614-836f-c65ed60f4390', 'Product demo', 'HyperFrames', 'approved');
   return db;
 }
 export const categories = ['Product demo', 'Launch video', 'Motion design', 'Explainer', 'Experiment'];
