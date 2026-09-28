@@ -1,1 +1,22 @@
-{"name":"madewithhyperframes","private":true,"type":"module","scripts":{"build":"node build-client.mjs","start":"npm run build && node server.mjs","dev":"node build-client.mjs --watch","build:preview":"npm run build && node build-preview.mjs","test":"node --test tests/*.test.mjs","submissions":"node moderate.mjs list"},"engines":{"node":"24.x"},"dependencies":{"esbuild":"^0.28.2","react":"^19.3.0","react-dom":"^19.3.0"}}
+{
+  "name": "madewithhyperframes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -H 127.0.0.1",
+    "build": "next build",
+    "start": "next start -H 127.0.0.1"
+  },
+  "engines": { "node": "24.x" },
+  "dependencies": {
+    "next": "^16.3.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

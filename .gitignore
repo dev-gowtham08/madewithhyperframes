@@ -1,6 +1,11 @@
-data/
+/data/*.sqlite
+/data/*.sqlite-*
+/data/admin-password.txt
 node_modules/
-.env
+.env*
+!.env.example
 test-results/
 dist/
 .vercel/
+.next/
+*.tsbuildinfo
