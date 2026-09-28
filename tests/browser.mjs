@@ -12,12 +12,12 @@ try{
  await page.getByRole('button',{name:/All videos/}).click();
  await page.getByRole('searchbox').fill('not-a-real-title');
  await page.getByText('No videos here yet.').waitFor();
- await page.getByRole('searchbox').fill('HyperFrames Launch');
+ await page.getByRole('searchbox').fill('Website');
  assert.equal(await page.locator('.card').count(),1);
- await page.goto(base+'/showcase/hyperframes-launch');
+ await page.goto(base+'/showcase/website-to-video');
  await page.locator('video').waitFor();
  assert.match(await page.locator('video').getAttribute('src'),/static\.heygen\.ai\/.*\.mp4$/);
- assert.equal(await page.getByRole('link',{name:'Explore the source'}).getAttribute('href'),'https://github.com/heygen-com/hyperframes-launches/tree/main/hyperframes-launch');
+ assert.equal(await page.getByRole('link',{name:'Explore the source'}).getAttribute('href'),'https://github.com/heygen-com/hyperframes-launches/tree/main/website-to-hyperframes');
  await page.goto(base+'/submit');
  await page.getByLabel('Video title').fill('Browser test submission');
  await page.getByLabel('Your name').fill('Test Creator');
@@ -33,7 +33,7 @@ try{
  const published=await (await page.request.get(base+'/api/entries')).json();
  assert.ok(!published.some(e=>e.id===submitted.id));assert.ok(published.every(e=>!('email'in e)));
  await page.setViewportSize({width:375,height:812});
- for(const route of ['/','/submit','/about','/showcase/hyperframes-launch']){
+ for(const route of ['/','/submit','/about','/showcase/website-to-video']){
   await page.goto(base+route);await page.locator('h1').waitFor();
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route+' overflow');
  }

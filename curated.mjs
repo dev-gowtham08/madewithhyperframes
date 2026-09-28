@@ -1,14 +1,14 @@
 // Public example and media published in the official HyperFrames documentation.
 // Source: https://github.com/heygen-com/hyperframes/blob/main/docs/examples.mdx
 export const featuredExample = {
-  id: 'hyperframes-launch',
-  title: 'HyperFrames Launch',
+  id: 'website-to-video',
+  title: 'Website → Video',
   creator: 'HeyGen',
-  description: 'The official HyperFrames launch film shows how code, motion, footage, and sound come together in a finished video. Its composition source is available to explore.',
-  video: 'https://static.heygen.ai/hyperframes-oss/docs/images/showcase/launch-hyperframes-launch-v1-s.mp4',
-  poster: 'https://static.heygen.ai/hyperframes-oss/docs/images/showcase/launch-hyperframes-launch-v1.jpg',
-  product: 'https://github.com/heygen-com/hyperframes-launches/tree/main/hyperframes-launch',
-  category: 'Launch video',
+  description: 'An official HyperFrames example that turns a live website into a short promotional film. Explore the finished video and its public composition source.',
+  video: 'https://static.heygen.ai/hyperframes-oss/docs/images/showcase/launch-website-to-hyperframes-v1-s.mp4',
+  poster: 'https://static.heygen.ai/hyperframes-oss/docs/images/showcase/launch-website-to-hyperframes-v1.jpg',
+  product: 'https://github.com/heygen-com/hyperframes-launches/tree/main/website-to-hyperframes',
+  category: 'Product demo',
   tools: 'HyperFrames',
   credit: 'Official example'
 };
