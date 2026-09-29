@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   icons: { icon: '/icon.svg' }
 };
 
-export const viewport: Viewport = { themeColor: '#f6f7f2' };
+export const viewport: Viewport = { themeColor: '#f4f4f0' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <html lang="en" suppressHydrationWarning><body><Script src="/theme-init.js" strategy="beforeInteractive" /><SiteHeader /><main>{children}</main><SiteFooter /></body></html>;
