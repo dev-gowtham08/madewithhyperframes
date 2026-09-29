@@ -20,6 +20,11 @@ export type Project = {
 };
 
 const projectsFile = join(process.cwd(), 'data', 'projects.json');
+const hiddenTitles = new Set(['animate with code: a practical guide to hyperframes']);
+
+function visibleProjects(projectList: Project[]): Project[] {
+  return projectList.filter((project) => !hiddenTitles.has(project.title.trim().toLowerCase()));
+}
 
 async function getJsonProjects(): Promise<Project[]> {
   try {
@@ -165,10 +170,10 @@ async function getTallyProjects(): Promise<Project[]> {
 
 export async function getProjects(): Promise<Project[]> {
   const jsonProjects = await getJsonProjects();
-  if (process.env.NODE_ENV !== 'production') return jsonProjects;
+  if (process.env.NODE_ENV !== 'production') return visibleProjects(jsonProjects);
 
   const tallyProjects = await getTallyProjects();
-  return [...tallyProjects, ...jsonProjects];
+  return visibleProjects([...tallyProjects, ...jsonProjects]);
 }
 
 export async function getProject(slug: string): Promise<Project | undefined> {

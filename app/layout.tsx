@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: '#f3f1eb' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en" suppressHydrationWarning><body><Script src="/theme-init.js" strategy="beforeInteractive" /><SiteHeader /><main>{children}</main><SiteFooter /></body></html>;
+  return <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning><body><Script src="/theme-init.js" strategy="beforeInteractive" /><SiteHeader /><main>{children}</main><SiteFooter /></body></html>;
 }

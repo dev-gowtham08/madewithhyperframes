@@ -24,9 +24,7 @@ function playbackFor(value: string): Playback | null {
       return id && /^\d+$/.test(id) ? { kind: 'embed', src: `https://player.vimeo.com/video/${id}?autoplay=1&muted=1&loop=1` } : null;
     }
     if ((url.hostname === 'hyperframes.dev' || url.hostname === 'www.hyperframes.dev') && url.pathname.startsWith('/session/')) {
-      url.searchParams.set('autoplay', '1');
-      url.searchParams.set('muted', '1');
-      return { kind: 'embed', src: url.toString() };
+      return { kind: 'video', src: `/api/video-source?url=${encodeURIComponent(url.toString())}` };
     }
   } catch {
     return null;
@@ -48,9 +46,9 @@ export function VideoPlayer({ project, variant, index, priority = false }: { pro
     return (
       <div className={`${className} is-playing`}>
         {playback.kind === 'video'
-          ? <video className="video-element" src={playback.src} controls autoPlay muted loop playsInline preload={variant === 'card' ? 'metadata' : 'auto'} aria-label={`Playing ${project.title}`} />
+          ? <video className="video-element" src={playback.src} controls={variant === 'detail'} autoPlay muted loop playsInline preload={variant === 'card' ? 'metadata' : 'auto'} aria-label={`Playing ${project.title}`} />
           : <iframe className="video-frame" src={playback.src} title={`Playing ${project.title}`} loading={variant === 'card' ? 'lazy' : 'eager'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />}
-        {variant === 'card' && <><span className="card-number">{String(index ?? 1).padStart(2, '0')}</span><Link className="video-detail-link" href={`/projects/${project.slug}`}>Details <span aria-hidden="true">↗</span></Link></>}
+        {variant === 'card' && <><span className="card-number">{String(index ?? 1).padStart(2, '0')}</span><Link className="video-card-link" href={`/projects/${project.slug}`} aria-label={`Open ${project.title} details`} /></>}
       </div>
     );
   }
