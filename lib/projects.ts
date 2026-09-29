@@ -2,6 +2,7 @@ import 'server-only';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { DEFAULT_TALLY_FORM_ID } from '@/lib/tally';
+import { VIDEO_CATEGORIES } from '@/lib/video-categories';
 
 export type Project = {
   slug: string;
@@ -181,5 +182,9 @@ export async function getProject(slug: string): Promise<Project | undefined> {
 }
 
 export function getCategories(projectList: Project[]): string[] {
-  return [...new Set(projectList.map((project) => project.category))].sort();
+  return [...new Set(projectList.map((project) => project.category))].sort((a, b) => {
+    const first = VIDEO_CATEGORIES.findIndex((category) => category === a);
+    const second = VIDEO_CATEGORIES.findIndex((category) => category === b);
+    return (first < 0 ? VIDEO_CATEGORIES.length : first) - (second < 0 ? VIDEO_CATEGORIES.length : second) || a.localeCompare(b);
+  });
 }

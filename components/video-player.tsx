@@ -46,7 +46,7 @@ function Poster({ project, priority = false }: { project: Project; priority?: bo
     : <span className="thumbnail-fallback"><span className="fallback-top">VIDEO / MADE WITH {project.tool.toUpperCase()}</span><span className="fallback-symbol">✳</span><span className="fallback-title">{project.title}</span></span>;
 }
 
-export function VideoPlayer({ project, variant, index, priority = false }: { project: Project; variant: 'card' | 'detail'; index?: number; priority?: boolean }) {
+export function VideoPlayer({ project, variant, priority = false }: { project: Project; variant: 'card' | 'detail'; priority?: boolean }) {
   const playback = playbackFor(project.videoUrl);
   const [duration, setDuration] = useState(project.duration ?? '');
   const className = `${variant === 'card' ? 'card-image' : 'detail-media'} video-surface`;
@@ -55,19 +55,19 @@ export function VideoPlayer({ project, variant, index, priority = false }: { pro
     return (
       <div className={`${className} is-playing`}>
         {playback.kind === 'video'
-          ? <video className="video-element" src={playback.src} controls={variant === 'detail'} autoPlay muted loop playsInline preload={variant === 'card' ? 'metadata' : 'auto'} aria-label={`Playing ${project.title}`} onLoadedMetadata={(event) => {
+          ? <video className="video-element" src={playback.src} poster={project.thumbnailUrl} controls={variant === 'detail'} autoPlay muted loop playsInline preload={variant === 'card' ? 'metadata' : 'auto'} aria-label={`Playing ${project.title}`} onLoadedMetadata={(event) => {
             if (!project.duration && Number.isFinite(event.currentTarget.duration)) {
               setDuration(formatDuration(event.currentTarget.duration));
             }
           }} />
           : <iframe className="video-frame" src={playback.src} title={`Playing ${project.title}`} loading={variant === 'card' ? 'lazy' : 'eager'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />}
         {variant === 'card' && duration && <span className="video-duration" aria-label={`Duration ${duration}`}>{duration}</span>}
-        {variant === 'card' && <><span className="card-number">{String(index ?? 1).padStart(2, '0')}</span><Link className="video-card-link" href={`/projects/${project.slug}`} aria-label={`Open ${project.title} details`} /></>}
+        {variant === 'card' && <><span className="card-media-mark" aria-hidden="true">▶</span><Link className="video-card-link" href={`/projects/${project.slug}`} aria-label={`Open ${project.title} details`} /></>}
       </div>
     );
   }
 
-  const content = <><Poster project={project} priority={priority} />{variant === 'card' ? <><span className="card-number">{String(index ?? 1).padStart(2, '0')}</span><span className="card-hover-link" aria-hidden="true"><i /><b>{playback ? 'Play video' : 'View project'}</b></span></> : <><span className="media-play" aria-hidden="true"><i /></span><span className="media-caption">{playback ? 'PLAY VIDEO' : 'OPEN ORIGINAL PROJECT'} <span aria-hidden="true">↗</span></span></>}</>;
+  const content = <><Poster project={project} priority={priority} />{variant === 'card' ? <><span className="card-media-mark" aria-hidden="true">▶</span><span className="card-hover-link" aria-hidden="true"><i /><b>View project</b></span></> : <><span className="media-play" aria-hidden="true"><i /></span><span className="media-caption">OPEN ORIGINAL PROJECT <span aria-hidden="true">↗</span></span></>}</>;
 
   return variant === 'card'
     ? <div className={className}><Link className="video-poster" href={`/projects/${project.slug}`} aria-label={`View ${project.title}`}>{content}</Link></div>

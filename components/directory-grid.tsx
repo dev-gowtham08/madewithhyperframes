@@ -11,6 +11,7 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
   const [tool, setTool] = useState('All');
   const [sort, setSort] = useState<'Latest' | 'Oldest' | 'Featured'>('Latest');
   const categoryOptions = ['All', ...categories];
+  const categoryCounts = useMemo(() => new Map(categories.map((value) => [value, projects.filter((project) => project.category === value).length])), [categories, projects]);
   const hasFeatured = projects.some((project) => project.featured);
   const hasActiveFilters = category !== 'All' || tool !== 'All';
   const filtered = useMemo(() => {
@@ -31,19 +32,19 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
 
   return (
     <section id="explore" className="explore-section shell" aria-labelledby="explore-title">
-      <div className="section-top"><h2 className="sr-only" id="explore-title">Video directory</h2><p>{projects.length} {projects.length === 1 ? 'video' : 'videos'} in the directory</p></div>
+      <h2 className="sr-only" id="explore-title">Video directory</h2>
       <div className="toolbar">
         <label className="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></svg><span className="sr-only">Search videos, creators, prompts, and categories</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search videos, creators, prompts..." /></label>
         <div className="tool-tabs" role="group" aria-label="Filter videos by tool">{['All', 'Hyperframes', 'Opus'].map((value) => <button key={value} type="button" className={tool === value ? 'active' : ''} onClick={() => setTool(value)} aria-pressed={tool === value}>{value}</button>)}</div>
+        <label className="sort-control"><span>Sort</span><select value={sort} onChange={(event) => setSort(event.target.value as typeof sort)} aria-label="Sort videos"><option>Latest</option><option>Oldest</option>{hasFeatured && <option>Featured</option>}</select><span aria-hidden="true">⌄</span></label>
       </div>
       <div className="filter-bottom">
         <div className="category-list" role="group" aria-label="Filter by category">
-          {categoryOptions.map((value) => <button key={value} type="button" className={`category-pill${category === value ? ' active' : ''}`} onClick={() => setCategory(value)} aria-pressed={category === value}>{value}</button>)}
+          {categoryOptions.map((value) => <button key={value} type="button" className={`category-pill${category === value ? ' active' : ''}`} onClick={() => setCategory(value)} aria-pressed={category === value}><span>{value}</span><small>{value === 'All' ? projects.length : categoryCounts.get(value)}</small></button>)}
         </div>
-        <label className="sort-control"><span>Sort by</span><select value={sort} onChange={(event) => setSort(event.target.value as typeof sort)} aria-label="Sort videos"><option>Latest</option><option>Oldest</option>{hasFeatured && <option>Featured</option>}</select><span aria-hidden="true">⌄</span></label>
       </div>
       {filtered.length > 0 ? (
-        <div className="project-grid">{filtered.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + 1} />)}</div>
+        <div className="project-grid">{filtered.map((project) => <ProjectCard key={project.slug} project={project} />)}</div>
       ) : (
         projects.length === 0 ? <div className="empty-state"><span className="empty-icon" aria-hidden="true">▶</span><span className="eyebrow">The collection starts here</span><h3>The first video could be yours.</h3><p>Share a video made with Hyperframes or Opus and start the directory.</p><Link className="button button-dark" href="/submit">Submit your video <span aria-hidden="true">↗</span></Link></div> :
         <div className="empty-state"><span className="empty-icon" aria-hidden="true">⌕</span><h3>{hasActiveFilters ? 'No videos match these filters.' : 'No videos match your search.'}</h3><p>{hasActiveFilters ? 'Choose another filter or clear everything to see all videos.' : 'Try another search or clear it to see everything.'}</p><button type="button" onClick={() => { setQuery(''); setCategory('All'); setTool('All'); setSort('Latest'); }}>Clear filters <span aria-hidden="true">↗</span></button></div>

@@ -12,7 +12,6 @@ export default async function HomePage() {
     <>
       <section className="directory-hero shell">
         <div className="hero-copy">
-          <span className="eyebrow"><span className="eyebrow-dot" /> Made With Hyperframes</span>
           <h1>Hyperframes &amp; Opus videos</h1>
           <p>Discover videos and creative work made by the community. Browse by tool or category, then open any entry to watch and learn more.</p>
         </div>
