@@ -121,12 +121,15 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
 .category-pill { min-height: 34px; padding: 7px 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 700; }
 .category-pill:hover { border-color: var(--accent); color: var(--text); }
 .category-pill.active { border-color: var(--text); background: var(--text); color: var(--bg); }
-.sort-label { color: var(--muted); font-size: 10px; font-weight: 650; white-space: nowrap; }
-.sort-label span { margin-left: 8px; color: var(--accent); font-size: 14px; }
+.sort-control { position: relative; display: inline-flex; align-items: center; gap: 8px; flex: none; color: var(--muted); font-size: 10px; font-weight: 750; white-space: nowrap; }
+.sort-control select { min-height: 34px; padding: 0 27px 0 11px; border: 1px solid var(--line-strong); border-radius: 999px; appearance: none; background: var(--paper); color: var(--text); font: inherit; cursor: pointer; }
+.sort-control > span:last-child { position: absolute; right: 10px; pointer-events: none; color: var(--accent); font-size: 13px; }
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .project-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); transition: transform .25s, box-shadow .25s, border-color .25s; }
 .project-card:hover { transform: translateY(-5px); border-color: var(--line-strong); box-shadow: var(--shadow); }
-.card-image { position: relative; display: block; overflow: hidden; aspect-ratio: 16 / 10; background: #403467; }
+.card-image { position: relative; display: block; overflow: hidden; aspect-ratio: 16 / 9; background: #403467; }
+.card-image::after { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,20,20,.02) 45%, rgba(20,20,20,.28)); content: ''; pointer-events: none; transition: background .25s; }
+.card-image:hover::after, .card-image:focus-visible::after { background: linear-gradient(180deg, rgba(20,20,20,.04) 35%, rgba(20,20,20,.42)); }
 .card-image img, .detail-media img { object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 .card-image:hover img, .detail-media:hover img { transform: scale(1.04); }
 .card-number { position: absolute; z-index: 2; top: 14px; left: 15px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.25); border-radius: 5px; background: rgba(24,25,26,.48); color: #fff; font-size: 9px; font-weight: 800; backdrop-filter: blur(10px); }
@@ -143,9 +146,9 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
 .fallback-symbol { position: relative; z-index: 1; align-self: center; color: var(--lime); font-size: 105px; line-height: .8; transform: rotate(-15deg); }
 .fallback-title { position: relative; z-index: 1; max-width: 240px; font-size: 22px; font-weight: 750; line-height: 1.05; letter-spacing: -.05em; }
 .card-content { padding: 21px 22px 20px; }
-.card-kicker { display: flex; justify-content: space-between; gap: 12px; color: var(--accent); font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.card-kicker span:last-child { color: var(--muted); }
-.card-title-row { display: flex; align-items: center; gap: 13px; margin-top: 14px; }
+.card-kicker { display: flex; align-items: center; gap: 7px; margin-top: 11px; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.card-kicker span:first-child { color: var(--accent); }
+.card-title-row { display: flex; align-items: center; gap: 13px; }
 .card-content h3 { min-width: 0; flex: 1; margin: 0; font-size: 24px; font-weight: 650; line-height: 1.1; letter-spacing: -.055em; }
 .card-image-arrow { display: grid; place-items: center; width: 34px; height: 34px; flex: none; border: 1px solid var(--line-strong); border-radius: 50%; color: var(--text); font-size: 15px; transition: background .2s, color .2s; }
 .card-image-arrow:hover { background: var(--accent); color: #fff; }
@@ -300,7 +303,9 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
   .tool-tabs { width: 100%; }
   .tool-tabs button { flex: 1; padding: 0 8px; }
   .filter-bottom { align-items: start; flex-direction: column; gap: 14px; }
-  .sort-label { margin-left: 2px; }
+  .sort-control { margin-left: 2px; }
+  .category-list { width: 100%; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+  .category-pill { flex: none; }
   .project-grid { grid-template-columns: 1fr; gap: 18px; }
   .card-content { padding: 19px; }
   .bottom-cta { display: block; margin-bottom: 60px; padding: 35px 28px; }

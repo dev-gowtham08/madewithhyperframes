@@ -11,10 +11,10 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <span className="card-hover-link">View project <span aria-hidden="true">↗</span></span>
       </Link>
       <div className="card-content">
-        <div className="card-kicker"><span>{project.category}</span><span>{project.tool}</span></div>
         <div className="card-title-row"><h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3><Link className="card-image-arrow" href={`/projects/${project.slug}`} aria-label={`Open ${project.title}`}><span aria-hidden="true">↗</span></Link></div>
+        <div className="card-kicker"><span>{project.category}</span><span aria-hidden="true">·</span><span>{project.tool}</span></div>
         <p>{project.description}</p>
-        <div className="card-bottom"><span className="creator-avatar">{project.creator.charAt(0)}</span><span>By <strong>{project.creator}</strong></span><span className="card-bottom-label">PROJECT {String(index).padStart(2, '0')}</span></div>
+        <div className="card-bottom"><span className="creator-avatar">{project.creator.charAt(0)}</span><span>By <strong>{project.creator}</strong></span></div>
       </div>
     </article>
   );

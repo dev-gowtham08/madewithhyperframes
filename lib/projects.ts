@@ -12,6 +12,7 @@ export type Project = {
   thumbnailUrl?: string;
   creatorUrl?: string;
   submittedAt?: string;
+  featured?: boolean;
 };
 
 export const projects = projectsData as Project[];
