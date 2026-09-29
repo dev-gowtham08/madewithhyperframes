@@ -73,7 +73,7 @@ export default function SubmitPage() {
           <div className="sidebar-card sidebar-note">
             <span className="sidebar-note-symbol" aria-hidden="true">✳</span>
             <h3>What happens next?</h3>
-            <p>Once you submit, your project joins the directory. Earlier submissions appear first.</p>
+            <p>Once you submit, your project joins the directory. Newest submissions appear first.</p>
             <Link href="/#explore">Explore the directory <span aria-hidden="true">↗</span></Link>
           </div>
         </aside>
