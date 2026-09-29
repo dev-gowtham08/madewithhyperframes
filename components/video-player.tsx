@@ -49,18 +49,22 @@ function Poster({ project, priority = false }: { project: Project; priority?: bo
 export function VideoPlayer({ project, variant, priority = false }: { project: Project; variant: 'card' | 'detail'; priority?: boolean }) {
   const playback = playbackFor(project.videoUrl);
   const [duration, setDuration] = useState(project.duration ?? '');
-  const className = `${variant === 'card' ? 'card-image' : 'detail-media'} video-surface`;
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const [isPortrait, setIsPortrait] = useState(false);
+  const activePlayback = playback && playback.src !== failedSrc ? playback : null;
+  const className = `${variant === 'card' ? 'card-image' : 'detail-media'} video-surface${variant === 'detail' && isPortrait ? ' is-portrait' : ''}`;
 
-  if (playback) {
+  if (activePlayback) {
     return (
       <div className={`${className} is-playing`}>
-        {playback.kind === 'video'
-          ? <video className="video-element" src={playback.src} poster={project.thumbnailUrl} controls={variant === 'detail'} autoPlay muted loop playsInline preload={variant === 'card' ? 'metadata' : 'auto'} aria-label={`Playing ${project.title}`} onLoadedMetadata={(event) => {
+        {activePlayback.kind === 'video'
+          ? <video className="video-element" src={activePlayback.src} poster={project.thumbnailUrl} controls={variant === 'detail'} autoPlay muted loop={variant === 'card'} playsInline preload={variant === 'card' ? 'metadata' : 'auto'} aria-label={`Playing ${project.title}`} onLoadedMetadata={(event) => {
+            if (variant === 'detail') setIsPortrait(event.currentTarget.videoHeight > event.currentTarget.videoWidth);
             if (!project.duration && Number.isFinite(event.currentTarget.duration)) {
               setDuration(formatDuration(event.currentTarget.duration));
             }
-          }} />
-          : <iframe className="video-frame" src={playback.src} title={`Playing ${project.title}`} loading={variant === 'card' ? 'lazy' : 'eager'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />}
+          }} onError={() => setFailedSrc(activePlayback.src)} />
+          : <iframe className="video-frame" src={activePlayback.src} title={`Playing ${project.title}`} loading={variant === 'card' ? 'lazy' : 'eager'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />}
         {variant === 'card' && duration && <span className="video-duration" aria-label={`Duration ${duration}`}>{duration}</span>}
         {variant === 'card' && <><span className="card-media-mark" aria-hidden="true">▶</span><Link className="video-card-link" href={`/projects/${project.slug}`} aria-label={`Open ${project.title} details`} /></>}
       </div>

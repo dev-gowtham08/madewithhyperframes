@@ -27,20 +27,30 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <div className="detail-page shell">
-      <Link className="back-link" href="/#explore"><span aria-hidden="true">←</span> Back to directory</Link>
+      <div className="detail-topline">
+        <Link className="back-link" href="/#explore"><span aria-hidden="true">←</span> Back to directory</Link>
+        <span>MADE WITH HYPERFRAMES / VIDEO DIRECTORY</span>
+      </div>
+      <VideoPlayer project={project} variant="detail" priority />
       <header className="detail-header">
         <div className="detail-heading-copy">
           <div className="detail-kicker"><span>{project.category}</span><span aria-hidden="true">/</span><span>{project.tool}</span>{project.duration && <><span aria-hidden="true">/</span><span>{project.duration}</span></>}</div>
-          <h1>{project.title}<span>.</span></h1>
+          <h1>{project.title}</h1>
+          <p className="detail-byline">By {project.creatorUrl ? <a href={project.creatorUrl} target="_blank" rel="noopener noreferrer">{project.creator} <span aria-hidden="true">↗</span></a> : <strong>{project.creator}</strong>}</p>
         </div>
-        <div className="detail-creator"><small>CREATED BY</small>{project.creatorUrl ? <a href={project.creatorUrl} target="_blank" rel="noopener noreferrer">{project.creator} <span aria-hidden="true">↗</span></a> : <strong>{project.creator}</strong>}</div>
+        <a className="button button-dark detail-original" href={project.videoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open the original video for ${project.title} in a new tab`}>Open original <span aria-hidden="true">↗</span></a>
       </header>
-      <VideoPlayer project={project} variant="detail" priority />
-      <div className="detail-body">
-        <section className="detail-about" aria-labelledby="about-video"><span className="eyebrow">About this video</span><h2 id="about-video">The work, in context.</h2><p>{project.description}</p>{project.prompt && <div className="detail-prompt"><small>PROMPT</small><p>{project.prompt}</p></div>}<a className="inline-link" href={project.videoUrl} target="_blank" rel="noopener noreferrer">Open original video <span aria-hidden="true">↗</span></a></section>
-        <aside className="detail-facts" aria-label="Video details"><div className="detail-facts-heading"><span className="eyebrow">Project details</span><span aria-hidden="true">↘</span></div><div><small>CREATOR</small>{project.creatorUrl ? <a href={project.creatorUrl} target="_blank" rel="noopener noreferrer">{project.creator} ↗</a> : <strong>{project.creator}</strong>}</div><div><small>MADE WITH</small><strong>{project.tool}</strong></div><div><small>CATEGORY</small><strong>{project.category}</strong></div>{project.duration && <div><small>DURATION</small><strong>{project.duration}</strong></div>}<div><small>ORIGINAL</small><a href={project.videoUrl} target="_blank" rel="noopener noreferrer">Open video ↗</a></div></aside>
-      </div>
-      {related.length > 0 && <section className="related-section" aria-labelledby="related-title"><div className="related-heading"><div><span className="eyebrow">Keep discovering</span><h2 id="related-title">More videos<span>.</span></h2></div><Link href="/#explore">View the directory <span aria-hidden="true">↗</span></Link></div><div className="project-grid related-grid">{related.map((entry) => <ProjectCard key={entry.slug} project={entry} />)}</div></section>}
+      <dl className="detail-facts" aria-label="Video information">
+        <div><dt>Creator</dt><dd>{project.creator}</dd></div>
+        <div><dt>Made with</dt><dd>{project.tool}</dd></div>
+        <div><dt>Category</dt><dd>{project.category}</dd></div>
+        {project.duration && <div><dt>Duration</dt><dd>{project.duration}</dd></div>}
+      </dl>
+      <section className="detail-about" aria-labelledby="about-video">
+        <h2 id="about-video">About this video</h2>
+        <div className="detail-about-copy"><p>{project.description}</p>{project.prompt && <div className="detail-prompt"><small>PROMPT</small><p>{project.prompt}</p></div>}</div>
+      </section>
+      {related.length > 0 && <section className="related-section" aria-labelledby="related-title"><div className="related-heading"><div><span className="eyebrow">Keep discovering</span><h2 id="related-title">Watch next<span>.</span></h2></div><Link href="/#explore">Browse all videos <span aria-hidden="true">↗</span></Link></div><div className="project-grid related-grid">{related.map((entry) => <ProjectCard key={entry.slug} project={entry} />)}</div></section>}
       <div className="detail-end"><Link href="/#explore">← Back to all videos</Link><Link href="/submit">Submit your video ↗</Link></div>
     </div>
   );
