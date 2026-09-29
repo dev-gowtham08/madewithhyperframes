@@ -1,16 +1,83 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
+import { TallyPreconnect } from '@/components/tally-preconnect';
 import { DEFAULT_TALLY_FORM_URL, getTallyForm } from '@/lib/tally';
 
-export const metadata: Metadata = { title: 'Submit your video', description: 'Share your Hyperframes or Opus project with the Made With Hyperframes directory.' };
-
-const fields = ['Creator name', 'Project or video title', 'Description', 'Video URL', 'Thumbnail URL (optional)', 'Tool used: Hyperframes, Opus, or Both', 'Category', 'Creator or project URL (optional)'];
+export const metadata: Metadata = {
+  title: 'Submit your project',
+  description: 'Share a project made with Hyperframes or Opus with the Made With Hyperframes directory.'
+};
 
 export default function SubmitPage() {
   const form = getTallyForm(process.env.TALLY_FORM_URL || DEFAULT_TALLY_FORM_URL);
 
   return (
-    <div className="submit-page shell"><Link className="back-link" href="/">← Back to directory</Link><div className="submit-layout"><div className="submit-intro"><span className="eyebrow"><span className="eyebrow-dot" />Open for submissions</span><h1>Share what<br />you <em>made.</em></h1><p>Have a video or project made with Hyperframes or Opus? Share the details and a public link, and the project will appear in the directory.</p><div className="submit-steps"><div><span>01</span><p>Tell us about your project</p></div><div><span>02</span><p>Share the public video link</p></div><div><span>03</span><p>Your project appears in the directory</p></div></div></div><div className="form-panel"><div className="form-panel-top"><span className="eyebrow">Project submission</span><h2>Submit your video</h2><p>Complete the form below. Only public project information appears in the directory.</p></div>{form ? <><iframe className="tally-frame" data-tally-src={form.embedUrl} title="Submit your project to Made With Hyperframes" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" /><Script src="https://tally.so/widgets/embed.js" strategy="afterInteractive" /><div className="form-panel-bottom">Form not loading? <a href={form.formUrl} target="_blank" rel="noopener noreferrer">Open it in a new tab ↗</a></div></> : null}</div></div><div className="submit-guide"><span className="eyebrow">What to prepare</span><h2>A few details about your work</h2><div className="field-list">{fields.map((field, index) => <div key={field}><span>{String(index + 1).padStart(2, '0')}</span><p>{field}</p></div>)}</div></div></div>
+    <div className="submit-page shell">
+      {form && <TallyPreconnect />}
+      <div className="submit-topline">
+        <Link className="back-link" href="/#explore"><span aria-hidden="true">←</span> Back to directory</Link>
+        <span>THE CREATOR DIRECTORY / SUBMISSIONS</span>
+      </div>
+
+      <header className="submit-hero">
+        <div className="submit-hero-copy">
+          <span className="hero-badge"><span aria-hidden="true" /> Open for submissions</span>
+          <h1>There&apos;s room<br />for <em>your work.</em></h1>
+          <p>Made something with Hyperframes or Opus? Share your public project link and let the community discover it.</p>
+          <a className="button button-white" href="#submission-form">Start your submission <span aria-hidden="true">↘</span></a>
+        </div>
+        <div className="submit-hero-art" aria-hidden="true">
+          <div className="submit-art-orbit" />
+          <div className="submit-art-card"><span>THE NEXT GREAT PROJECT</span><strong>✳</strong><span>COULD BE YOURS ↗</span></div>
+        </div>
+      </header>
+
+      <div className="submit-main">
+        <section className="form-panel" id="submission-form" aria-labelledby="form-title">
+          <div className="form-panel-top">
+            <span className="form-index">01 <span>/</span> PROJECT DETAILS</span>
+            <h2 id="form-title">Submit your project<span>.</span></h2>
+            <p>Complete the form below. Your public project details will appear in the directory.</p>
+          </div>
+          {form ? (
+            <>
+              <div className="tally-wrap">
+                <iframe
+                  className="tally-frame"
+                  data-tally-src={form.embedUrl}
+                  title="Submit your project to Made With Hyperframes"
+                  loading="eager"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+              <Script src="https://tally.so/widgets/embed.js" strategy="afterInteractive" />
+              <div className="form-panel-bottom">Having trouble with the form? <a href={form.formUrl} target="_blank" rel="noopener noreferrer">Open it in a new tab <span aria-hidden="true">↗</span></a></div>
+            </>
+          ) : (
+            <div className="form-unavailable">The submission form is temporarily unavailable.</div>
+          )}
+        </section>
+
+        <aside className="submit-sidebar" aria-label="Submission guide">
+          <div className="sidebar-card sidebar-intro">
+            <span className="eyebrow"><span className="eyebrow-dot" /> A quick guide</span>
+            <h2>Make your project easy to discover.</h2>
+            <p>A few thoughtful details help people understand what you made before they open it.</p>
+            <div className="sidebar-steps">
+              <div><span>01</span><p><strong>Name your project</strong><small>Use the title people will recognise.</small></p></div>
+              <div><span>02</span><p><strong>Share a public link</strong><small>Check that anyone can open your video or project.</small></p></div>
+              <div><span>03</span><p><strong>Add a thumbnail</strong><small>Optional, but it helps your card stand out.</small></p></div>
+            </div>
+          </div>
+          <div className="sidebar-card sidebar-note">
+            <span className="sidebar-note-symbol" aria-hidden="true">✳</span>
+            <h3>What happens next?</h3>
+            <p>Once you submit, your project joins the directory. Earlier submissions appear first.</p>
+            <Link href="/#explore">Explore the directory <span aria-hidden="true">↗</span></Link>
+          </div>
+        </aside>
+      </div>
+    </div>
   );
 }
