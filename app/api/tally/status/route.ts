@@ -26,7 +26,13 @@ export async function GET() {
       });
     }
 
-    return Response.json({ connected: true, formId }, {
+    const payload = await response.json() as { submissions?: unknown[] };
+
+    return Response.json({
+      connected: true,
+      formId,
+      completedSubmissions: payload.submissions?.length ?? 0
+    }, {
       headers: { 'Cache-Control': 'no-store' }
     });
   } catch {
