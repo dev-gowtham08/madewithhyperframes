@@ -10,7 +10,7 @@ export function getTallyForm(url: string | undefined): { formUrl: string; embedU
     const id = match[1];
     return {
       formUrl: `https://tally.so/r/${id}`,
-      embedUrl: `https://tally.so/embed/${id}?alignLeft=1&hideTitle=1&transparentBackground=1`
+      embedUrl: `https://tally.so/embed/${id}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`
     };
   } catch {
     return null;
