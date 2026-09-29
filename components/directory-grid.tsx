@@ -12,6 +12,7 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
   const [sort, setSort] = useState<'Latest' | 'Oldest' | 'Featured'>('Latest');
   const categoryOptions = ['All', ...categories];
   const hasFeatured = projects.some((project) => project.featured);
+  const hasActiveFilters = category !== 'All' || tool !== 'All';
   const filtered = useMemo(() => {
     const search = query.trim().toLowerCase();
     const ordered = [...projects].sort((a, b) => {
@@ -39,15 +40,15 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
         <div className="category-list" role="group" aria-label="Filter by category">
           {categoryOptions.map((value) => <button key={value} type="button" className={`category-pill${category === value ? ' active' : ''}`} onClick={() => setCategory(value)} aria-pressed={category === value}>{value}</button>)}
         </div>
-        <label className="sort-control"><span>Sort</span><select value={sort} onChange={(event) => setSort(event.target.value as typeof sort)} aria-label="Sort projects"><option>Latest</option><option>Oldest</option><option>Featured</option></select><span aria-hidden="true">⌄</span></label>
+        <label className="sort-control"><span>Sort</span><select value={sort} onChange={(event) => setSort(event.target.value as typeof sort)} aria-label="Sort projects"><option>Latest</option><option>Oldest</option>{hasFeatured && <option>Featured</option>}</select><span aria-hidden="true">⌄</span></label>
       </div>
       {filtered.length > 0 ? (
         <div className="project-grid">{filtered.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + 1} />)}</div>
       ) : (
         projects.length === 0 ? <div className="empty-state"><span className="empty-icon" aria-hidden="true">✳</span><span className="eyebrow">A blank canvas</span><h3>The first project could be yours.</h3><p>Share a project made with Hyperframes or Opus and start the directory.</p><Link className="button button-dark" href="/submit">Submit your project <span aria-hidden="true">↗</span></Link></div> :
-        <div className="empty-state"><span className="empty-icon" aria-hidden="true">⌕</span><h3>No projects match your search.</h3><p>Try another search or clear the filters to see everything.</p><button type="button" onClick={() => { setQuery(''); setCategory('All'); setTool('All'); setSort('Latest'); }}>Clear filters <span aria-hidden="true">↗</span></button></div>
+        <div className="empty-state"><span className="empty-icon" aria-hidden="true">⌕</span><h3>{hasActiveFilters ? 'No projects match these filters.' : 'No projects match your search.'}</h3><p>{hasActiveFilters ? 'Choose another filter or clear everything to see all projects.' : 'Try another search or clear it to see everything.'}</p><button type="button" onClick={() => { setQuery(''); setCategory('All'); setTool('All'); setSort('Latest'); }}>Clear filters <span aria-hidden="true">↗</span></button></div>
       )}
-      {filtered.length > 0 && <p className="result-count" role="status">{sort === 'Featured' && !hasFeatured ? 'No featured projects selected yet. Showing latest projects. ' : ''}Showing {filtered.length} of {projects.length} {projects.length === 1 ? 'project' : 'projects'}.</p>}
+      {filtered.length > 0 && <p className="result-count" role="status">Showing {filtered.length} of {projects.length} {projects.length === 1 ? 'project' : 'projects'}.</p>}
     </section>
   );
 }
