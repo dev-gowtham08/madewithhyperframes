@@ -22,6 +22,13 @@ export type Project = {
 
 const projectsFile = join(process.cwd(), 'data', 'projects.json');
 const hiddenTitles = new Set(['animate with code: a practical guide to hyperframes']);
+const sessionPosters = new Map([['ea136626-42d0-4614-836f-c65ed60f4390', '/posters/poultry-path.jpg']]);
+
+function posterForVideo(videoUrl: string): string | undefined {
+  const url = new URL(videoUrl);
+  if ((url.hostname !== 'hyperframes.dev' && url.hostname !== 'www.hyperframes.dev') || !url.pathname.startsWith('/session/')) return undefined;
+  return sessionPosters.get(url.pathname.split('/')[2]);
+}
 
 function visibleProjects(projectList: Project[]): Project[] {
   return projectList.filter((project) => !hiddenTitles.has(project.title.trim().toLowerCase()));
@@ -140,7 +147,7 @@ async function getTallyProjects(): Promise<Project[]> {
       const toolAnswer = answerFor(responses, ['Tool used'], questionLabels).toLowerCase();
       const tool: Project['tool'] = toolAnswer.includes('both') ? 'Both' : toolAnswer.includes('opus') ? 'Opus' : 'Hyperframes';
       const category = answerFor(responses, ['Category'], questionLabels) || 'Other';
-      const thumbnailUrl = safeUrl(answerFor(responses, ['Thumbnail URL', 'Thumbnail URL (optional)'], questionLabels));
+      const thumbnailUrl = safeUrl(answerFor(responses, ['Thumbnail URL', 'Thumbnail URL (optional)'], questionLabels)) ?? posterForVideo(videoUrl);
       const submittedCreatorUrl = safeUrl(answerFor(responses, ['Creator or project website', 'Creator or project website (optional)', 'Creator or project URL'], questionLabels));
       // This submitted Gumroad product page is gone; the creator's profile remains available.
       const creatorUrl = submittedCreatorUrl === 'https://sidheart.gumroad.com/l/yudd'
