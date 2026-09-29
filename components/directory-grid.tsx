@@ -31,7 +31,7 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
 
   return (
     <section id="explore" className="explore-section shell" aria-labelledby="explore-title">
-      <div className="section-top"><div><span className="eyebrow"><span className="eyebrow-dot" /> Video collection</span><h2 id="explore-title">Discover the latest<span>.</span></h2><p>Browse videos made by the Hyperframes and Opus community.</p></div><div className="section-count"><strong>{String(projects.length).padStart(2, '0')}</strong><span>{projects.length === 1 ? 'VIDEO' : 'VIDEOS'}<br />IN THE DIRECTORY</span></div></div>
+      <div className="section-top"><h2 className="sr-only" id="explore-title">Video directory</h2><p>{projects.length} {projects.length === 1 ? 'video' : 'videos'} in the directory</p></div>
       <div className="toolbar">
         <label className="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></svg><span className="sr-only">Search videos, creators, prompts, and categories</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search videos, creators, prompts..." /></label>
         <div className="tool-tabs" role="group" aria-label="Filter videos by tool">{['All', 'Hyperframes', 'Opus'].map((value) => <button key={value} type="button" className={tool === value ? 'active' : ''} onClick={() => setTool(value)} aria-pressed={tool === value}>{value}</button>)}</div>
