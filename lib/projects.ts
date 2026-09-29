@@ -11,7 +11,7 @@ export type Project = {
   videoUrl: string;
   thumbnailUrl?: string;
   creatorUrl?: string;
-  featured?: boolean;
+  submittedAt?: string;
 };
 
 export const projects = projectsData as Project[];
@@ -30,6 +30,7 @@ type TallyResponse = {
 type TallySubmission = {
   id?: string;
   submissionId?: string;
+  submittedAt?: string;
   responses?: TallyResponse[];
   fields?: TallyResponse[];
 };
@@ -77,37 +78,49 @@ async function getTallyProjects(): Promise<Project[]> {
   if (!apiKey) return [];
 
   try {
-    const response = await fetch(`https://api.tally.so/forms/${encodeURIComponent(formId)}/submissions?filter=completed&limit=100`, {
-      headers: { Authorization: `Bearer ${apiKey}`, 'tally-version': '2025-02-01' },
-      cache: 'no-store'
-    });
-    if (!response.ok) return [];
+    const submissions: TallySubmission[] = [];
+    let questions: TallyQuestion[] = [];
+    let page = 1;
 
-    const payload = await response.json() as {
-      questions?: TallyQuestion[];
-      submissions?: TallySubmission[];
-      data?: TallySubmission[];
-    };
-    const questions = new Map((payload.questions ?? []).flatMap((question) => {
+    while (true) {
+      const response = await fetch(`https://api.tally.so/forms/${encodeURIComponent(formId)}/submissions?filter=completed&limit=500&page=${page}`, {
+        headers: { Authorization: `Bearer ${apiKey}`, 'tally-version': '2025-02-01' },
+        cache: 'no-store'
+      });
+      if (!response.ok) return [];
+
+      const payload = await response.json() as {
+        questions?: TallyQuestion[];
+        submissions?: TallySubmission[];
+        hasMore?: boolean;
+      };
+      questions = payload.questions ?? questions;
+      const batch = payload.submissions ?? [];
+      submissions.push(...batch);
+      if (!payload.hasMore || batch.length === 0) break;
+      page += 1;
+    }
+
+    const questionLabels = new Map(questions.flatMap((question) => {
       const id = question.id ?? question.uuid ?? question.key;
       const label = question.label ?? question.title;
       return id && label ? [[id, label] as const] : [];
     }));
 
-    return (payload.submissions ?? payload.data ?? []).flatMap((submission) => {
+    return submissions.flatMap((submission) => {
       const responses = submission.responses ?? submission.fields ?? [];
       const id = submission.id ?? submission.submissionId ?? '';
-      const title = answerFor(responses, ['Project or video title', 'Project title', 'Video title'], questions);
-      const creator = answerFor(responses, ['Creator name'], questions);
-      const description = answerFor(responses, ['Description'], questions);
-      const videoUrl = safeUrl(answerFor(responses, ['Video or project URL', 'Video URL', 'Project URL'], questions));
+      const title = answerFor(responses, ['Project or video title', 'Project title', 'Video title'], questionLabels);
+      const creator = answerFor(responses, ['Creator name'], questionLabels);
+      const description = answerFor(responses, ['Description'], questionLabels);
+      const videoUrl = safeUrl(answerFor(responses, ['Video or project URL', 'Video URL', 'Project URL'], questionLabels));
       if (!id || !title || !creator || !description || !videoUrl) return [];
 
-      const toolAnswer = answerFor(responses, ['Tool used'], questions).toLowerCase();
+      const toolAnswer = answerFor(responses, ['Tool used'], questionLabels).toLowerCase();
       const tool: Project['tool'] = toolAnswer.includes('both') ? 'Both' : toolAnswer.includes('opus') ? 'Opus' : 'Hyperframes';
-      const category = answerFor(responses, ['Category'], questions) || 'Other';
-      const thumbnailUrl = safeUrl(answerFor(responses, ['Thumbnail URL', 'Thumbnail URL (optional)'], questions));
-      const creatorUrl = safeUrl(answerFor(responses, ['Creator or project website', 'Creator or project website (optional)', 'Creator or project URL'], questions));
+      const category = answerFor(responses, ['Category'], questionLabels) || 'Other';
+      const thumbnailUrl = safeUrl(answerFor(responses, ['Thumbnail URL', 'Thumbnail URL (optional)'], questionLabels));
+      const creatorUrl = safeUrl(answerFor(responses, ['Creator or project website', 'Creator or project website (optional)', 'Creator or project URL'], questionLabels));
 
       return [{
         slug: `${slugify(title)}-${id.slice(-6).toLowerCase()}`,
@@ -117,9 +130,14 @@ async function getTallyProjects(): Promise<Project[]> {
         category,
         description,
         videoUrl,
+        ...(submission.submittedAt ? { submittedAt: submission.submittedAt } : {}),
         ...(thumbnailUrl ? { thumbnailUrl } : {}),
         ...(creatorUrl ? { creatorUrl } : {})
       } satisfies Project];
+    }).sort((a, b) => {
+      const first = Date.parse(a.submittedAt ?? '') || Number.MAX_SAFE_INTEGER;
+      const second = Date.parse(b.submittedAt ?? '') || Number.MAX_SAFE_INTEGER;
+      return first - second;
     });
   } catch {
     return [];
@@ -128,8 +146,7 @@ async function getTallyProjects(): Promise<Project[]> {
 
 export async function getProjects(): Promise<Project[]> {
   const tallyProjects = await getTallyProjects();
-  const existingUrls = new Set(projects.map((project) => project.videoUrl));
-  return [...projects, ...tallyProjects.filter((project) => !existingUrls.has(project.videoUrl))];
+  return [...tallyProjects, ...projects];
 }
 
 export async function getProject(slug: string): Promise<Project | undefined> {

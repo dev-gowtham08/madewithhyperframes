@@ -6,15 +6,15 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   return (
     <article className="project-card">
       <Link className="card-image" href={`/projects/${project.slug}`} aria-label={`View ${project.title}`}>
-        {project.thumbnailUrl ? <Image src={project.thumbnailUrl} alt={`${project.title} project cover`} fill unoptimized={project.thumbnailUrl.startsWith("http")} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" /> : <span className="thumbnail-fallback">{project.title}</span>}
-        <span className="card-number">{String(index).padStart(2, '0')}</span>
-        <span className="card-tool">{project.tool}</span>
+        {project.thumbnailUrl ? <Image src={project.thumbnailUrl} alt={`${project.title} project cover`} fill unoptimized={project.thumbnailUrl.startsWith('http')} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" /> : <span className="thumbnail-fallback"><span className="fallback-top">MADE WITH {project.tool.toUpperCase()}</span><span className="fallback-symbol">✳</span><span className="fallback-title">{project.title}</span></span>}
+        <span className="card-number">#{String(index).padStart(2, '0')}</span>
+        <span className="card-hover-link">View project <span aria-hidden="true">↗</span></span>
       </Link>
       <div className="card-content">
-        <div className="card-kicker"><span>{project.category}</span></div>
+        <div className="card-kicker"><span>{project.category}</span><span>{project.tool}</span></div>
         <div className="card-title-row"><h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3><Link className="card-image-arrow" href={`/projects/${project.slug}`} aria-label={`Open ${project.title}`}><span aria-hidden="true">↗</span></Link></div>
         <p>{project.description}</p>
-        <div className="card-bottom"><span className="creator-avatar">{project.creator.charAt(0)}</span><span>Created by <strong>{project.creator}</strong></span></div>
+        <div className="card-bottom"><span className="creator-avatar">{project.creator.charAt(0)}</span><span>By <strong>{project.creator}</strong></span><span className="card-bottom-label">PROJECT {String(index).padStart(2, '0')}</span></div>
       </div>
     </article>
   );
