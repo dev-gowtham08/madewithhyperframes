@@ -1,4 +1,6 @@
-import projectsData from '@/data/projects.json';
+import 'server-only';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { DEFAULT_TALLY_FORM_ID } from '@/lib/tally';
 
 export type Project = {
@@ -15,7 +17,17 @@ export type Project = {
   featured?: boolean;
 };
 
-export const projects = projectsData as Project[];
+const projectsFile = join(process.cwd(), 'data', 'projects.json');
+
+async function getJsonProjects(): Promise<Project[]> {
+  try {
+    const contents = await readFile(projectsFile, 'utf8');
+    const value: unknown = JSON.parse(contents);
+    return Array.isArray(value) ? value as Project[] : [];
+  } catch {
+    return [];
+  }
+}
 
 type TallyQuestion = { id?: string; uuid?: string; key?: string; title?: string; label?: string };
 type TallyResponse = {
@@ -150,14 +162,17 @@ async function getTallyProjects(): Promise<Project[]> {
 }
 
 export async function getProjects(): Promise<Project[]> {
+  const jsonProjects = await getJsonProjects();
+  if (process.env.NODE_ENV !== 'production') return jsonProjects;
+
   const tallyProjects = await getTallyProjects();
-  return [...tallyProjects, ...projects];
+  return [...tallyProjects, ...jsonProjects];
 }
 
 export async function getProject(slug: string): Promise<Project | undefined> {
   return (await getProjects()).find((project) => project.slug === slug);
 }
 
-export function getCategories(projectList: Project[] = projects): string[] {
+export function getCategories(projectList: Project[]): string[] {
   return [...new Set(projectList.map((project) => project.category))].sort();
 }

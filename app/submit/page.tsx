@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
+import { LocalSubmissionForm } from '@/components/local-submission-form';
 import { TallyPreconnect } from '@/components/tally-preconnect';
 import { DEFAULT_TALLY_FORM_URL, getTallyForm } from '@/lib/tally';
 
@@ -10,11 +11,12 @@ export const metadata: Metadata = {
 };
 
 export default function SubmitPage() {
+  const isLocalJsonMode = process.env.NODE_ENV !== 'production';
   const form = getTallyForm(process.env.TALLY_FORM_URL || DEFAULT_TALLY_FORM_URL);
 
   return (
     <div className="submit-page shell">
-      {form && <TallyPreconnect />}
+      {!isLocalJsonMode && form && <TallyPreconnect />}
       <div className="submit-topline">
         <Link className="back-link" href="/#explore"><span aria-hidden="true">←</span> Back to directory</Link>
         <span>THE CREATOR DIRECTORY / SUBMISSIONS</span>
@@ -40,7 +42,9 @@ export default function SubmitPage() {
             <h2 id="form-title">Submit your project<span>.</span></h2>
             <p>Complete the form below. Your public project details will appear in the directory.</p>
           </div>
-          {form ? (
+          {isLocalJsonMode ? (
+            <LocalSubmissionForm />
+          ) : form ? (
             <>
               <div className="tally-wrap">
                 <iframe
@@ -73,7 +77,7 @@ export default function SubmitPage() {
           <div className="sidebar-card sidebar-note">
             <span className="sidebar-note-symbol" aria-hidden="true">✳</span>
             <h3>What happens next?</h3>
-            <p>Once you submit, your project joins the directory. Newest submissions appear first.</p>
+            <p>{isLocalJsonMode ? 'Local submissions are saved to data/projects.json and appear in the directory immediately.' : 'Once you submit, your project joins the directory. Newest submissions appear first.'}</p>
             <Link href="/#explore">Explore the directory <span aria-hidden="true">↗</span></Link>
           </div>
         </aside>
