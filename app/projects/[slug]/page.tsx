@@ -2,21 +2,20 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProject, projects } from '@/lib/projects';
+import { connection } from 'next/server';
+import { getProject } from '@/lib/projects';
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = getProject((await params).slug);
+  await connection();
+  const project = await getProject((await params).slug);
   return project ? { title: project.title, description: project.description } : { title: 'Project not found' };
 }
 
 export default async function ProjectPage({ params }: Props) {
-  const project = getProject((await params).slug);
+  await connection();
+  const project = await getProject((await params).slug);
   if (!project) notFound();
 
   return (
