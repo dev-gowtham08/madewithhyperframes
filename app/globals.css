@@ -141,7 +141,7 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .back-link:hover { color: var(--text); }
 .detail-page { padding-top: 38px; padding-bottom: 90px; }
 .detail-header { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 45px; margin: 58px 0 30px; }
-.detail-header h1 { max-width: 1050px; margin: 16px 0 0; font-size: clamp(52px,6.4vw,94px); font-weight: 600; line-height: .93; letter-spacing: -.08em; }
+.detail-header h1 { max-width: 1050px; margin: 16px 0 0; font-size: clamp(42px,4.7vw,70px); font-weight: 600; line-height: .96; letter-spacing: -.075em; }
 .detail-header h1 span { color: var(--accent); }
 .detail-creator { display: grid; gap: 8px; min-width: 150px; padding-bottom: 8px; }
 .detail-creator small { color: var(--muted); font-size: 8px; font-weight: 800; letter-spacing: .13em; }
@@ -295,7 +295,7 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
   .footer-inner { flex-direction: column; padding-block: 27px 35px; }
   .detail-page, .submit-page { padding-top: 26px; padding-bottom: 65px; }
   .detail-header { grid-template-columns: 1fr; gap: 22px; margin: 35px 0 22px; }
-  .detail-header h1 { font-size: clamp(43px,12vw,61px); }
+  .detail-header h1 { font-size: clamp(38px,9.5vw,52px); }
   .detail-creator { display: flex; align-items: baseline; gap: 12px; padding-bottom: 0; }
   .detail-media { aspect-ratio: 16 / 10; }
   .detail-media .thumbnail-fallback { padding: 18px; }
