@@ -26,12 +26,15 @@ export async function GET() {
       });
     }
 
-    const payload = await response.json() as { submissions?: unknown[] };
+    const payload = await response.json() as {
+      submissions?: unknown[];
+      totalNumberOfSubmissionsPerFilter?: { completed?: number };
+    };
 
     return Response.json({
       connected: true,
       formId,
-      completedSubmissions: payload.submissions?.length ?? 0
+      completedSubmissions: payload.totalNumberOfSubmissionsPerFilter?.completed ?? payload.submissions?.length ?? 0
     }, {
       headers: { 'Cache-Control': 'no-store' }
     });
