@@ -28,8 +28,8 @@ export default async function HomePage() {
             <span className="hero-visual-label">HYPERFRAMES / OPUS</span>
           </div>
           <div className="hero-meta">
-            <span><strong>{String(projects.length).padStart(2, '0')}</strong> projects shared</span>
-            <span><strong>{String(categories.length).padStart(2, '0')}</strong> categories to explore</span>
+            <span><strong>{String(projects.length).padStart(2, '0')}</strong> {projects.length === 1 ? 'project' : 'projects'} shared</span>
+            <span><strong>{String(categories.length).padStart(2, '0')}</strong> {categories.length === 1 ? 'category' : 'categories'} to explore</span>
             <span>Independent work, all in one place.</span>
           </div>
         </div>
