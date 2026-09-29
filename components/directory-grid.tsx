@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Link from 'next/link';
 import type { Project } from '@/lib/projects';
 import { ProjectCard } from './project-card';
 
@@ -46,7 +45,7 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
       {filtered.length > 0 ? (
         <div className="project-grid">{filtered.map((project) => <ProjectCard key={project.slug} project={project} />)}</div>
       ) : (
-        projects.length === 0 ? <div className="empty-state"><span className="empty-icon" aria-hidden="true">▶</span><span className="eyebrow">The collection starts here</span><h3>The first video could be yours.</h3><p>Share a video made with Hyperframes or Opus and start the directory.</p><Link className="button button-dark" href="/submit">Submit your video <span aria-hidden="true">↗</span></Link></div> :
+        projects.length === 0 ? <div className="empty-state"><span className="empty-icon" aria-hidden="true">▶</span><span className="eyebrow">The collection starts here</span><h3>No videos in the directory yet.</h3><p>The collection is being curated.</p></div> :
         <div className="empty-state"><span className="empty-icon" aria-hidden="true">⌕</span><h3>{hasActiveFilters ? 'No videos match these filters.' : 'No videos match your search.'}</h3><p>{hasActiveFilters ? 'Choose another filter or clear everything to see all videos.' : 'Try another search or clear it to see everything.'}</p><button type="button" onClick={() => { setQuery(''); setCategory('All'); setTool('All'); setSort('Latest'); }}>Clear filters <span aria-hidden="true">↗</span></button></div>
       )}
       {filtered.length > 0 && <p className="result-count" role="status">Showing {filtered.length} of {projects.length} {projects.length === 1 ? 'video' : 'videos'}.</p>}

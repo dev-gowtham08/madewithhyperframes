@@ -1,5 +1,28 @@
 [
   {
+    "slug": "poultry-path-demo-video-d1gv55",
+    "title": "Poultry path demo video",
+    "creator": "Gowtham",
+    "tool": "Hyperframes",
+    "category": "Product Demo",
+    "description": "A bilingual poultry farm management platform that helps farmers manage daily operations, records, and farm activity.",
+    "videoUrl": "https://www.hyperframes.dev/session/ea136626-42d0-4614-836f-c65ed60f4390",
+    "submittedAt": "2026-09-29T05:30:11.000Z",
+    "thumbnailUrl": "/posters/poultry-path.jpg",
+    "creatorUrl": "https://madewithhyperframes.vercel.app/"
+  },
+  {
+    "slug": "frameflow-product-showcase-eo2jxa",
+    "title": "FrameFlow Product Showcase",
+    "creator": "Arjun Kumar",
+    "tool": "Hyperframes",
+    "category": "Product Demo",
+    "description": "A modern product showcase video demonstrating an AI-powered workspace for organizing creative projects and collaborating with teams.",
+    "videoUrl": "https://www.hyperframes.dev/session/ea136626-42d0-4614-836f-c65ed60f4390?demo=frameflow",
+    "submittedAt": "2026-09-29T05:36:04.000Z",
+    "thumbnailUrl": "/posters/poultry-path.jpg"
+  },
+  {
     "slug": "motion-field-study-demo",
     "title": "Motion Field Study",
     "creator": "Directory demo",

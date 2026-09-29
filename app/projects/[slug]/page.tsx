@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className="detail-about-copy"><p>{project.description}</p>{project.prompt && <div className="detail-prompt"><small>PROMPT</small><p>{project.prompt}</p></div>}</div>
       </section>
       {related.length > 0 && <section className="related-section" aria-labelledby="related-title"><div className="related-heading"><div><span className="eyebrow">Keep discovering</span><h2 id="related-title">Watch next<span>.</span></h2></div><Link href="/#explore">Browse all videos <span aria-hidden="true">↗</span></Link></div><div className="project-grid related-grid">{related.map((entry) => <ProjectCard key={entry.slug} project={entry} />)}</div></section>}
-      <div className="detail-end"><Link href="/#explore">← Back to all videos</Link><Link href="/submit">Submit your video ↗</Link></div>
+      <div className="detail-end"><Link href="/#explore">← Back to all videos</Link></div>
     </div>
   );
 }

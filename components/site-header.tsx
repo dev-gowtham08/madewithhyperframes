@@ -11,11 +11,9 @@ export function SiteHeader() {
         </Link>
         <nav className="top-nav" aria-label="Main navigation">
           <Link href="/#explore">Directory</Link>
-          <Link href="/submit">For creators</Link>
         </nav>
         <div className="header-actions">
           <ThemeToggle />
-          <Link className="button button-dark header-submit" href="/submit">Submit a video <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
     </header>
