@@ -11,33 +11,20 @@ export default async function HomePage() {
   return (
     <>
       <section className="directory-hero shell">
-        <div className="hero-panel">
-          <div className="hero-content">
-            <span className="hero-badge"><span aria-hidden="true" /> The creator directory</span>
-            <h1>Made with<br /><em>imagination.</em><br />Shared with everyone.</h1>
-            <p>Explore videos and projects created with Hyperframes and Opus. Every piece has a story. Find one worth watching.</p>
-            <div className="hero-links">
-              <Link className="button button-white" href="/#explore">Explore projects <span aria-hidden="true">↘</span></Link>
-              <Link className="hero-text-link" href="/submit">Submit your work <span aria-hidden="true">↗</span></Link>
-            </div>
-          </div>
-          <div className="hero-visual" aria-hidden="true">
-            <div className="hero-orbit hero-orbit-one" />
-            <div className="hero-orbit hero-orbit-two" />
-            <div className="hero-display"><span className="display-top">A SPACE FOR CREATIVE WORK <span>↗</span></span><span className="display-symbol">✳</span><span className="display-bottom">MAKE IT. SHARE IT.<br />LET IT TRAVEL.</span></div>
-            <span className="hero-visual-label">HYPERFRAMES / OPUS</span>
-          </div>
-          <div className="hero-meta">
-            <span><strong>{String(projects.length).padStart(2, '0')}</strong> {projects.length === 1 ? 'project' : 'projects'} shared</span>
-            <span><strong>{String(categories.length).padStart(2, '0')}</strong> {categories.length === 1 ? 'category' : 'categories'} to explore</span>
-            <span>Independent work, all in one place.</span>
-          </div>
+        <div className="hero-copy">
+          <span className="eyebrow"><span className="eyebrow-dot" /> The video directory</span>
+          <h1>Videos made with<br /><em>Hyperframes &amp; Opus.</em></h1>
+        </div>
+        <div className="hero-side">
+          <p>Discover motion, product stories, tutorials, and creative experiments from the community.</p>
+          <div className="hero-links"><Link href="/#explore">Browse the collection <span aria-hidden="true">↓</span></Link><Link href="/submit">Submit your video <span aria-hidden="true">↗</span></Link></div>
+          <div className="hero-tally" aria-label="Directory summary"><span><strong>{String(projects.length).padStart(2, '0')}</strong> {projects.length === 1 ? 'video' : 'videos'}</span><span><strong>{String(categories.length).padStart(2, '0')}</strong> {categories.length === 1 ? 'category' : 'categories'}</span></div>
         </div>
       </section>
 
       <DirectoryGrid projects={projects} categories={categories} />
 
-      <section className="bottom-cta shell"><div><span className="eyebrow">The gallery is growing</span><h2>Your work belongs<br />in the mix<span>.</span></h2><p>Made a video or project with Hyperframes or Opus? Add it to the directory.</p></div><Link className="button button-dark" href="/submit">Submit your project <span aria-hidden="true">↗</span></Link></section>
+      <section className="bottom-cta shell"><div><span className="eyebrow">Made something worth watching?</span><h2>Put your video<br />in the directory<span>.</span></h2><p>Share work created with Hyperframes or Opus and help the collection grow.</p></div><Link className="button button-dark" href="/submit">Submit your video <span aria-hidden="true">↗</span></Link></section>
     </>
   );
 }

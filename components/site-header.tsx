@@ -7,7 +7,7 @@ export function SiteHeader() {
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label="Made With Hyperframes home">
           <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
-          <span className="brand-words">Made With <strong>Hyperframes</strong></span>
+          <span className="brand-words"><strong>Made With</strong><span>Hyperframes</span></span>
         </Link>
         <nav className="top-nav" aria-label="Main navigation">
           <Link href="/#explore">Directory</Link>
@@ -15,7 +15,7 @@ export function SiteHeader() {
         </nav>
         <div className="header-actions">
           <ThemeToggle />
-          <Link className="button button-dark header-submit" href="/submit">Submit a project <span aria-hidden="true">↗</span></Link>
+          <Link className="button button-dark header-submit" href="/submit">Submit a video <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
     </header>

@@ -13,6 +13,8 @@ export type Project = {
   videoUrl: string;
   thumbnailUrl?: string;
   creatorUrl?: string;
+  duration?: string;
+  prompt?: string;
   submittedAt?: string;
   featured?: boolean;
 };
