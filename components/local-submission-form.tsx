@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { VIDEO_CATEGORIES } from '@/lib/video-categories';
 
 type SavedProject = { slug: string; title: string };
 
@@ -55,7 +56,7 @@ export function LocalSubmissionForm() {
         <label className="local-field-wide"><span>Video or project URL <b>*</b></span><input name="videoUrl" type="url" required placeholder="https://..." /></label>
         <label className="local-field-wide"><span>Thumbnail URL <small>Optional</small></span><input name="thumbnailUrl" type="url" placeholder="https://.../thumbnail.jpg" /><small>Leave this empty to use the directory&apos;s generated artwork.</small></label>
         <label><span>Tool used <b>*</b></span><select name="tool" required defaultValue=""><option value="" disabled>Select a tool</option><option>Hyperframes</option><option>Opus</option><option>Both</option></select></label>
-        <label><span>Category <b>*</b></span><select name="category" required defaultValue=""><option value="" disabled>Select a category</option><option>Product Demo</option><option>Tutorial</option><option>SaaS</option><option>AI</option><option>Creative</option><option>Marketing</option><option>Education</option><option>Other</option></select></label>
+        <label><span>Category <b>*</b></span><select name="category" required defaultValue=""><option value="" disabled>Select a category</option>{VIDEO_CATEGORIES.map((category) => <option key={category}>{category}</option>)}</select></label>
         <label className="local-field-wide"><span>Creator or project website <small>Optional</small></span><input name="creatorUrl" type="url" placeholder="https://..." /></label>
       </div>
       <label className="local-permission"><input name="permission" type="checkbox" required /><span>I confirm this project can be published in the directory.</span></label>
