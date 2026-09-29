@@ -337,6 +337,6 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
-  .project-card:hover, .project-card:focus-within, .card-image:hover img, .card-image:focus-visible img, .card-image:hover .thumbnail-fallback, .card-image:focus-visible .thumbnail-fallback, .card-image:hover .card-hover-link, .card-image:focus-visible .card-hover-link { transform: none; }
+  .button:hover, .project-card:hover, .project-card:focus-within, .card-image:hover img, .card-image:focus-visible img, .card-image:hover .thumbnail-fallback, .card-image:focus-visible .thumbnail-fallback, .card-image:hover .card-hover-link, .card-image:focus-visible .card-hover-link, .detail-media:hover img { transform: none; }
   .detail-media:hover .media-play, .detail-media:focus-visible .media-play { transform: translate(-50%, -50%); }
 }

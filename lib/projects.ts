@@ -121,7 +121,11 @@ async function getTallyProjects(): Promise<Project[]> {
       const tool: Project['tool'] = toolAnswer.includes('both') ? 'Both' : toolAnswer.includes('opus') ? 'Opus' : 'Hyperframes';
       const category = answerFor(responses, ['Category'], questionLabels) || 'Other';
       const thumbnailUrl = safeUrl(answerFor(responses, ['Thumbnail URL', 'Thumbnail URL (optional)'], questionLabels));
-      const creatorUrl = safeUrl(answerFor(responses, ['Creator or project website', 'Creator or project website (optional)', 'Creator or project URL'], questionLabels));
+      const submittedCreatorUrl = safeUrl(answerFor(responses, ['Creator or project website', 'Creator or project website (optional)', 'Creator or project URL'], questionLabels));
+      // This submitted Gumroad product page is gone; the creator's profile remains available.
+      const creatorUrl = submittedCreatorUrl === 'https://sidheart.gumroad.com/l/yudd'
+        ? 'https://sidheart.gumroad.com/'
+        : submittedCreatorUrl;
 
       return [{
         slug: `${slugify(title)}-${id.slice(-6).toLowerCase()}`,
