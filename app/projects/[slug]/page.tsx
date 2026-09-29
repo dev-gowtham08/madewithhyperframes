@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 import { ProjectCard } from '@/components/project-card';
+import { VideoPlayer } from '@/components/video-player';
 import { getProject, getProjects } from '@/lib/projects';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -35,10 +35,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
         <div className="detail-creator"><small>CREATED BY</small>{project.creatorUrl ? <a href={project.creatorUrl} target="_blank" rel="noopener noreferrer">{project.creator} <span aria-hidden="true">↗</span></a> : <strong>{project.creator}</strong>}</div>
       </header>
-      <a className="detail-media" href={project.videoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${project.title} on the original site (opens in a new tab)`}>
-        {project.thumbnailUrl ? <Image src={project.thumbnailUrl} alt={`Video preview for ${project.title}`} fill priority unoptimized={project.thumbnailUrl.startsWith('http')} sizes="(max-width: 1000px) 100vw, 1320px" /> : <span className="thumbnail-fallback"><span className="fallback-top">VIDEO / MADE WITH {project.tool.toUpperCase()}</span><span className="fallback-symbol">✳</span><span className="fallback-title">{project.title}</span></span>}
-        <span className="media-play" aria-hidden="true"><i /></span><span className="media-caption">WATCH ON ORIGINAL SITE <span aria-hidden="true">↗</span></span>
-      </a>
+      <VideoPlayer project={project} variant="detail" priority />
       <div className="detail-body">
         <section className="detail-about" aria-labelledby="about-video"><span className="eyebrow">About this video</span><h2 id="about-video">The work, in context.</h2><p>{project.description}</p>{project.prompt && <div className="detail-prompt"><small>PROMPT</small><p>{project.prompt}</p></div>}<a className="inline-link" href={project.videoUrl} target="_blank" rel="noopener noreferrer">Open original video <span aria-hidden="true">↗</span></a></section>
         <aside className="detail-facts" aria-label="Video details"><div><small>CREATOR</small>{project.creatorUrl ? <a href={project.creatorUrl} target="_blank" rel="noopener noreferrer">{project.creator} ↗</a> : <strong>{project.creator}</strong>}</div><div><small>MADE WITH</small><strong>{project.tool}</strong></div><div><small>CATEGORY</small><strong>{project.category}</strong></div>{project.duration && <div><small>DURATION</small><strong>{project.duration}</strong></div>}<div><small>ORIGINAL</small><a href={project.videoUrl} target="_blank" rel="noopener noreferrer">Open video ↗</a></div></aside>
