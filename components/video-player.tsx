@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import type { Project } from '@/lib/projects';
 
 type Playback = { kind: 'video' | 'embed'; src: string };
@@ -32,6 +33,13 @@ function playbackFor(value: string): Playback | null {
   return null;
 }
 
+function formatDuration(seconds: number): string {
+  const rounded = Math.max(0, Math.round(seconds));
+  const minutes = Math.floor(rounded / 60);
+  const remainder = String(rounded % 60).padStart(2, '0');
+  return `${minutes}:${remainder}`;
+}
+
 function Poster({ project, priority = false }: { project: Project; priority?: boolean }) {
   return project.thumbnailUrl
     ? <Image src={project.thumbnailUrl} alt={`Video preview for ${project.title}`} fill priority={priority} unoptimized={project.thumbnailUrl.startsWith('http')} sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw" />
@@ -40,14 +48,20 @@ function Poster({ project, priority = false }: { project: Project; priority?: bo
 
 export function VideoPlayer({ project, variant, index, priority = false }: { project: Project; variant: 'card' | 'detail'; index?: number; priority?: boolean }) {
   const playback = playbackFor(project.videoUrl);
+  const [duration, setDuration] = useState(project.duration ?? '');
   const className = `${variant === 'card' ? 'card-image' : 'detail-media'} video-surface`;
 
   if (playback) {
     return (
       <div className={`${className} is-playing`}>
         {playback.kind === 'video'
-          ? <video className="video-element" src={playback.src} controls={variant === 'detail'} autoPlay muted loop playsInline preload={variant === 'card' ? 'metadata' : 'auto'} aria-label={`Playing ${project.title}`} />
+          ? <video className="video-element" src={playback.src} controls={variant === 'detail'} autoPlay muted loop playsInline preload={variant === 'card' ? 'metadata' : 'auto'} aria-label={`Playing ${project.title}`} onLoadedMetadata={(event) => {
+            if (!project.duration && Number.isFinite(event.currentTarget.duration)) {
+              setDuration(formatDuration(event.currentTarget.duration));
+            }
+          }} />
           : <iframe className="video-frame" src={playback.src} title={`Playing ${project.title}`} loading={variant === 'card' ? 'lazy' : 'eager'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />}
+        {variant === 'card' && duration && <span className="video-duration" aria-label={`Duration ${duration}`}>{duration}</span>}
         {variant === 'card' && <><span className="card-number">{String(index ?? 1).padStart(2, '0')}</span><Link className="video-card-link" href={`/projects/${project.slug}`} aria-label={`Open ${project.title} details`} /></>}
       </div>
     );
