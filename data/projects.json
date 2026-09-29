@@ -1,1 +1,101 @@
-[]
+[
+  {
+    "slug": "motion-field-study-demo",
+    "title": "Motion Field Study",
+    "creator": "Directory demo",
+    "tool": "Hyperframes",
+    "category": "Motion",
+    "description": "A demo motion piece used to preview the Motion category in the directory.",
+    "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+    "duration": "0:52",
+    "submittedAt": "2026-09-29T12:00:00.000Z"
+  },
+  {
+    "slug": "frameflow-product-showcase-demo",
+    "title": "FrameFlow Product Showcase",
+    "creator": "Directory demo",
+    "tool": "Both",
+    "category": "Product Demo",
+    "description": "A demo product story showing how the video cards present product work.",
+    "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "duration": "0:30",
+    "submittedAt": "2026-09-29T11:50:00.000Z"
+  },
+  {
+    "slug": "layered-animation-tutorial-demo",
+    "title": "Layered Animation Tutorial",
+    "creator": "Directory demo",
+    "tool": "Opus",
+    "category": "Tutorial",
+    "description": "A demo tutorial entry for testing instructional videos and their metadata.",
+    "videoUrl": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+    "duration": "0:42",
+    "submittedAt": "2026-09-29T11:40:00.000Z"
+  },
+  {
+    "slug": "prompt-to-story-explainer-demo",
+    "title": "Prompt to Story",
+    "creator": "Directory demo",
+    "tool": "Hyperframes",
+    "category": "Explainer",
+    "description": "A demo explainer entry for previewing clear, story-led video work.",
+    "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+    "duration": "0:52",
+    "submittedAt": "2026-09-29T11:30:00.000Z"
+  },
+  {
+    "slug": "soft-shapes-creative-demo",
+    "title": "Soft Shapes Study",
+    "creator": "Directory demo",
+    "tool": "Opus",
+    "category": "Creative",
+    "description": "A demo creative experiment for the visual discovery grid.",
+    "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "duration": "0:30",
+    "submittedAt": "2026-09-29T11:20:00.000Z"
+  },
+  {
+    "slug": "launch-cut-marketing-demo",
+    "title": "Launch Cut / 01",
+    "creator": "Directory demo",
+    "tool": "Both",
+    "category": "Marketing",
+    "description": "A demo launch cut showing a compact marketing video entry.",
+    "videoUrl": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+    "duration": "0:42",
+    "submittedAt": "2026-09-29T11:10:00.000Z"
+  },
+  {
+    "slug": "orbit-objects-3d-demo",
+    "title": "Orbit Objects",
+    "creator": "Directory demo",
+    "tool": "Hyperframes",
+    "category": "3D",
+    "description": "A demo 3D study for testing visual-first project cards.",
+    "videoUrl": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+    "duration": "0:52",
+    "submittedAt": "2026-09-29T11:00:00.000Z"
+  },
+  {
+    "slug": "saas-flow-walkthrough-demo",
+    "title": "SaaS Flow Walkthrough",
+    "creator": "Directory demo",
+    "tool": "Opus",
+    "category": "SaaS",
+    "description": "A demo SaaS walkthrough for the product and interface category.",
+    "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "duration": "0:30",
+    "submittedAt": "2026-09-29T10:50:00.000Z"
+  },
+  {
+    "slug": "ai-workflow-demo",
+    "title": "AI Workflow Notes",
+    "creator": "Directory demo",
+    "tool": "Both",
+    "category": "AI",
+    "description": "A demo AI workflow entry for browsing tool-led creative work.",
+    "videoUrl": "https://media.w3.org/2010/05/bunny/trailer.mp4",
+    "duration": "0:42",
+    "submittedAt": "2026-09-29T10:40:00.000Z"
+  }
+]
