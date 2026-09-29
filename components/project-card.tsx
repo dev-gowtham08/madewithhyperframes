@@ -9,9 +9,9 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
     <article className={`project-card poster-${palette}`}>
       <VideoPlayer project={project} variant="card" index={index} />
       <div className="card-content">
-        <div className="card-kicker"><span>{project.category}</span><span aria-hidden="true">/</span><span>{project.tool}</span>{project.duration && <><span aria-hidden="true">/</span><span>{project.duration}</span></>}</div>
+        <div className="card-meta"><span>{project.category}</span><span aria-hidden="true">/</span><span>{project.tool}</span>{project.duration && <><span aria-hidden="true">/</span><span>{project.duration}</span></>}</div>
         <h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3>
-        <div className="card-bottom"><span>By <strong>{project.creator}</strong></span><Link href={`/projects/${project.slug}`} aria-label={`Open ${project.title}`}>Watch <span aria-hidden="true">↗</span></Link></div>
+        <div className="card-creator"><span>By</span><strong>{project.creator}</strong></div>
       </div>
     </article>
   );
