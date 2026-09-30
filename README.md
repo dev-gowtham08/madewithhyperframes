@@ -15,9 +15,15 @@ Open <http://localhost:3000>. The site includes light and dark modes.
 
 ## Add or edit a video
 
-Edit [`data/projects.json`](data/projects.json). Each entry needs a unique `slug`, `title`, `creator`, `tool` (`Hyperframes`, `Opus`, or `Both`), `category`, `description`, and public `videoUrl`. Optional fields include `thumbnailUrl`, `creatorUrl`, `duration`, `prompt`, `submittedAt` (ISO 8601 timestamp), and `featured`.
+Edit [`data/projects.json`](data/projects.json). Each entry needs a unique `slug`, `title`, `creator`, `tool` (`Hyperframes`, `Opus`, or `Both`), `category`, `description`, and public `videoUrl`. Optional fields include `playbackUrl`, `thumbnailUrl`, `creatorUrl`, `duration`, `prompt`, `submittedAt` (ISO 8601 timestamp), and `featured`.
+
+Publish distinct, real work with its actual creator and matching video. Keep stock-footage test entries out of this file, and avoid listing the same Hyperframes session under different project names. Categories and counts come from the entries in this file. Set `submittedAt` to the date the entry was added to the directory so Latest/Oldest sorting works; the two existing X entries use their first repository commit dates.
+
+The retired sample entries are available in Git history. Their old detail URLs redirect to the directory through `next.config.ts`.
 
 The JSON file stores video **details and URLs**, not the video files themselves. A `videoUrl` can point to a public video file or a supported Hyperframes session. A `thumbnailUrl` can point to an image in `public/` or an allowed remote source. Give each new entry a unique slug so its `/projects/[slug]` detail page works.
+
+For an X post, keep the original post in `videoUrl`. To enable muted autoplay, add a verified direct media URL in `playbackUrl` (MP4 or HLS `.m3u8`); `thumbnailUrl` must be an actual image URL. A post page is not a playable stream or an image. The player falls back to the X embed if its separate playback source fails.
 
 Local development reads the file on request. To update production, commit and push the JSON change, then deploy the new revision to Vercel. Files inside a deployed Vercel build are not writable permanent storage, so production visitors cannot add entries directly. The old `/submit` URL redirects to the directory.
 

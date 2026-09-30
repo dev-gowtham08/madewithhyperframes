@@ -83,6 +83,7 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .sort-control select { min-height: 39px; padding: 0 28px 0 12px; border: 1px solid var(--line); border-radius: 999px; appearance: none; background: var(--paper); color: var(--text); font-size: 10px; font-weight: 750; cursor: pointer; }
 .sort-control > span:last-child { position: absolute; right: 10px; color: var(--accent); pointer-events: none; }
 .project-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 30px 16px; }
+.project-grid-small { grid-template-columns: repeat(3,minmax(0,1fr)); }
 .project-card { min-width: 0; }
 .card-image { position: relative; display: block; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid rgba(17,20,17,.12); border-radius: 15px; background: #41346a; }
 .card-image:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
