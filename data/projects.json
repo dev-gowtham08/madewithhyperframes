@@ -139,5 +139,18 @@
     "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2105055656999088128/img/rVCLfrTLptN4Has5.jpg",
     "duration": "1:23",
     "creatorUrl": "https://x.com/tetumemo"
-  }
+  },
+  {
+  "slug": "neocloud-business-explainer-deedy",
+  "title": "Neocloud Business Explainer",
+  "creator": "Deedy",
+  "tool": "Opus",
+  "category": "Explainer",
+  "description": "A four-minute neocloud business explainer shared as an example of Deedy's Opus 5.5 video workflow.",
+  "videoUrl": "https://x.com/deedydas/status/2104957026199900220/video/1",
+  "playbackUrl": "https://video.twimg.com/amplify_video/2104956923028402176/pl/hLwa6WeUQjtxL9yM.m3u8?tag=16",
+  "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2104956923028402176/img/lBEfj6AOLy3EcRSu.jpg",
+  "duration": "4:00",
+  "creatorUrl": "https://x.com/deedydas"
+}
 ]
