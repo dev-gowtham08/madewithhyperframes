@@ -2,10 +2,69 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Project } from '@/lib/projects';
 
-type Playback = { kind: 'video' | 'embed'; src: string } | { kind: 'x-video'; id: string };
+type Playback = { kind: 'video' | 'embed' | 'hls'; src: string } | { kind: 'x-video'; id: string };
+
+function HlsVideo({ project, src, variant, onFailure }: { project: Project; src: string; variant: 'card' | 'detail'; onFailure: (src: string) => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let disposed = false;
+    let destroyPlayer: (() => void) | undefined;
+    const autoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    video.muted = true;
+    video.autoplay = autoplay;
+
+    void import('hls.js').then(({ default: Hls, FetchLoader }) => {
+      if (disposed) return;
+      if (Hls.isSupported()) {
+        const player = new Hls({
+          capLevelToPlayerSize: true,
+          loader: FetchLoader,
+          // X rejects playlist requests that include this site's Referer.
+          fetchSetup: (context, init) => new Request(context.url, { ...init, referrerPolicy: 'no-referrer' }),
+        });
+        destroyPlayer = () => player.destroy();
+        player.on(Hls.Events.MANIFEST_PARSED, () => {
+          if (autoplay) void video.play().catch(() => {});
+        });
+        player.on(Hls.Events.ERROR, (_, error) => {
+          if (error.fatal) onFailure(src);
+        });
+        player.loadSource(src);
+        player.attachMedia(video);
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = src;
+        if (autoplay) void video.play().catch(() => {});
+      } else {
+        onFailure(src);
+      }
+    }).catch(() => {
+      if (!disposed) onFailure(src);
+    });
+
+    return () => {
+      disposed = true;
+      destroyPlayer?.();
+    };
+  }, [src, onFailure]);
+
+  return (
+    <div className={`${variant === 'card' ? 'card-image' : 'detail-media'} video-surface is-playing`}>
+      <video ref={videoRef} className="video-element" poster={project.thumbnailUrl} controls={variant === 'detail'} muted loop={variant === 'card'} playsInline preload="metadata" aria-label={`Playing ${project.title}`} onError={() => onFailure(src)} />
+      {variant === 'card' && <>
+        {project.duration && <span className="video-duration" aria-label={`Duration ${project.duration}`}>{project.duration}</span>}
+        <span className="card-media-mark" aria-hidden="true">▶</span>
+        <Link className="video-card-link" href={`/projects/${project.slug}`} aria-label={`Open ${project.title} details`} />
+      </>}
+    </div>
+  );
+}
 
 function XVideoEmbed({ project, id, variant }: { project: Project; id: string; variant: 'card' | 'detail' }) {
   return (
@@ -20,6 +79,7 @@ function playbackFor(value: string): Playback | null {
   try {
     const url = new URL(value);
     if (/\.(mp4|webm|ogg|mov)$/i.test(url.pathname)) return { kind: 'video', src: url.toString() };
+    if (/\.m3u8$/i.test(url.pathname)) return { kind: 'hls', src: url.toString() };
 
     if (url.hostname === 'x.com' || url.hostname === 'www.x.com' || url.hostname === 'twitter.com' || url.hostname === 'www.twitter.com') {
       const match = url.pathname.match(/^\/[A-Za-z0-9_]+\/status\/(\d+)(?:\/video\/\d+)?\/?$/);
@@ -61,13 +121,16 @@ function Poster({ project, priority = false }: { project: Project; priority?: bo
 }
 
 export function VideoPlayer({ project, variant, priority = false }: { project: Project; variant: 'card' | 'detail'; priority?: boolean }) {
-  const playback = playbackFor(project.videoUrl);
+  const playback = playbackFor(project.playbackUrl ?? project.videoUrl);
   const [duration, setDuration] = useState(project.duration ?? '');
   const [failedSrc, setFailedSrc] = useState<string | null>(null);
   const [isPortrait, setIsPortrait] = useState(false);
-  const activePlayback = playback && (playback.kind === 'x-video' || playback.src !== failedSrc) ? playback : null;
+  const activePlayback = playback && playback.kind !== 'x-video' && playback.src === failedSrc
+    ? (project.playbackUrl ? playbackFor(project.videoUrl) : null)
+    : playback;
   const className = `${variant === 'card' ? 'card-image' : 'detail-media'} video-surface${variant === 'detail' && isPortrait ? ' is-portrait' : ''}`;
 
+  if (activePlayback?.kind === 'hls') return <HlsVideo project={project} src={activePlayback.src} variant={variant} onFailure={setFailedSrc} />;
   if (activePlayback?.kind === 'x-video') return <XVideoEmbed project={project} id={activePlayback.id} variant={variant} />;
 
   if (activePlayback) {

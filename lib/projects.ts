@@ -11,6 +11,7 @@ export type Project = {
   category: string;
   description: string;
   videoUrl: string;
+  playbackUrl?: string;
   thumbnailUrl?: string;
   creatorUrl?: string;
   duration?: string;

@@ -9,6 +9,7 @@
   },
   "engines": { "node": "24.x" },
   "dependencies": {
+    "hls.js": "^1.7.3",
     "next": "^16.3.6",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
