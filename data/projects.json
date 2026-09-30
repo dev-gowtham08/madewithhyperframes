@@ -47,6 +47,9 @@
     "category": "Tutorial",
     "description": "A tutorial for creating ambitious videos with Claude Code, Opus 5.5, and HyperFrames skills.",
     "videoUrl": "https://x.com/liu8in/status/2104360119849083093/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2104359784434761728/pl/HrIcwWZv0TyP1ByQ.m3u8?v=cfc",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2104359784434761728/img/RPJU9XLi8L3hrSgE.jpg",
+    "duration": "0:27",
     "submittedAt": "2026-09-30T19:00:00+05:30",
     "creatorUrl": "https://x.com/liu8in"
   },
@@ -58,6 +61,9 @@
     "category": "Creative",
     "description": "An animated story built from a Claude Code session, turning project history and messages into a HyperFrames video.",
     "videoUrl": "https://x.com/jake11moran/status/2103247490237825416/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2103246737880326145/pl/C3zGGlIPCIuSMXqa.m3u8?v=cfc",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103246737880326145/img/SO2ky3aBNX8wkaYX.jpg",
+    "duration": "0:53",
     "submittedAt": "2026-09-30T19:00:00+05:30",
     "creatorUrl": "https://x.com/jake11moran"
   }
