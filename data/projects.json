@@ -38,5 +38,27 @@
     "duration": "4:00",
     "submittedAt": "2026-09-30T18:22:40+05:30",
     "creatorUrl": "https://x.com/deedydas"
+  },
+  {
+    "slug": "opus-5-5-hyperframes-tutorial-bin-liu",
+    "title": "Opus 5.5 HyperFrames Tutorial",
+    "creator": "Bin Liu",
+    "tool": "Opus",
+    "category": "Tutorial",
+    "description": "A tutorial for creating ambitious videos with Claude Code, Opus 5.5, and HyperFrames skills.",
+    "videoUrl": "https://x.com/liu8in/status/2104360119849083093/video/1",
+    "submittedAt": "2026-09-30T19:00:00+05:30",
+    "creatorUrl": "https://x.com/liu8in"
+  },
+  {
+    "slug": "session-story-jake-moran",
+    "title": "Session Story",
+    "creator": "Jake Moran",
+    "tool": "Opus",
+    "category": "Creative",
+    "description": "An animated story built from a Claude Code session, turning project history and messages into a HyperFrames video.",
+    "videoUrl": "https://x.com/jake11moran/status/2103247490237825416/video/1",
+    "submittedAt": "2026-09-30T19:00:00+05:30",
+    "creatorUrl": "https://x.com/jake11moran"
   }
 ]
