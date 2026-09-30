@@ -126,5 +126,15 @@
     "thumbnailUrl": "https://media.w3.org/2010/05/bunny/poster.png",
     "duration": "0:33",
     "submittedAt": "2026-09-29T10:40:00.000Z"
+  },
+  {
+    "slug": "opus-5-5-motion-examples-tetumemo",
+    "title": "Exploring Opus 5.5 Motion Examples",
+    "creator": "テツメモ",
+    "tool": "Opus",
+    "category": "Tutorial",
+    "description": "A walkthrough of a gallery featuring motion graphics, explainers, and 3D examples made with Claude Opus 5.5, including original-versus-remake comparisons and prompts.",
+    "videoUrl": "https://x.com/tetumemo/status/2105055757326831668/video/1",
+    "creatorUrl": "https://x.com/tetumemo"
   }
 ]

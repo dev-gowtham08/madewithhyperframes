@@ -5,12 +5,26 @@ import Link from 'next/link';
 import { useState } from 'react';
 import type { Project } from '@/lib/projects';
 
-type Playback = { kind: 'video' | 'embed'; src: string };
+type Playback = { kind: 'video' | 'embed'; src: string } | { kind: 'x-video'; id: string };
+
+function XVideoEmbed({ project, id, variant }: { project: Project; id: string; variant: 'card' | 'detail' }) {
+  return (
+    <div className={`${variant === 'card' ? 'card-image' : 'detail-media'} x-video-surface`}>
+      <iframe className="video-frame" src={`https://twitter.com/i/videos/tweet/${id}`} title={`Play ${project.title} on X`} loading={variant === 'card' ? 'lazy' : 'eager'} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+      {variant === 'card' && <Link className="x-video-details" href={`/projects/${project.slug}`} aria-label={`Open details for ${project.title}`}>Details <span aria-hidden="true">↗</span></Link>}
+    </div>
+  );
+}
 
 function playbackFor(value: string): Playback | null {
   try {
     const url = new URL(value);
     if (/\.(mp4|webm|ogg|mov)$/i.test(url.pathname)) return { kind: 'video', src: url.toString() };
+
+    if (url.hostname === 'x.com' || url.hostname === 'www.x.com' || url.hostname === 'twitter.com' || url.hostname === 'www.twitter.com') {
+      const match = url.pathname.match(/^\/[A-Za-z0-9_]+\/status\/(\d+)(?:\/video\/\d+)?\/?$/);
+      return match ? { kind: 'x-video', id: match[1] } : null;
+    }
 
     if (url.hostname === 'youtu.be') {
       const id = url.pathname.split('/').filter(Boolean)[0];
@@ -51,8 +65,10 @@ export function VideoPlayer({ project, variant, priority = false }: { project: P
   const [duration, setDuration] = useState(project.duration ?? '');
   const [failedSrc, setFailedSrc] = useState<string | null>(null);
   const [isPortrait, setIsPortrait] = useState(false);
-  const activePlayback = playback && playback.src !== failedSrc ? playback : null;
+  const activePlayback = playback && (playback.kind === 'x-video' || playback.src !== failedSrc) ? playback : null;
   const className = `${variant === 'card' ? 'card-image' : 'detail-media'} video-surface${variant === 'detail' && isPortrait ? ' is-portrait' : ''}`;
+
+  if (activePlayback?.kind === 'x-video') return <XVideoEmbed project={project} id={activePlayback.id} variant={variant} />;
 
   if (activePlayback) {
     return (
