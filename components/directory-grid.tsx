@@ -43,7 +43,7 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
         </div>
       </div>
       {filtered.length > 0 ? (
-        <div className={`project-grid${projects.length <= 3 ? ' project-grid-small' : ''}`}>{filtered.map((project) => <ProjectCard key={project.slug} project={project} />)}</div>
+        <div className={`project-grid${filtered.length <= 6 ? ' project-grid-small' : ''}`}>{filtered.map((project) => <ProjectCard key={project.slug} project={project} />)}</div>
       ) : (
         projects.length === 0 ? <div className="empty-state"><span className="empty-icon" aria-hidden="true">▶</span><span className="eyebrow">The collection starts here</span><h3>No videos in the directory yet.</h3><p>The collection is being curated.</p></div> :
         <div className="empty-state"><span className="empty-icon" aria-hidden="true">⌕</span><h3>{hasActiveFilters ? 'No videos match these filters.' : 'No videos match your search.'}</h3><p>{hasActiveFilters ? 'Choose another filter or clear everything to see all videos.' : 'Try another search or clear it to see everything.'}</p><button type="button" onClick={() => { setQuery(''); setCategory('All'); setTool('All'); setSort('Latest'); }}>Clear filters <span aria-hidden="true">↗</span></button></div>
