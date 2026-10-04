@@ -11,8 +11,8 @@ export default async function HomePage() {
     <>
       <section className="directory-hero shell">
         <div className="hero-copy">
-          <h1>Hyperframes &amp; Opus videos</h1>
-          <p>Discover videos and creative work made by the community. Browse by tool or category, then open any entry to watch and learn more.</p>
+          <h1>Hyperframes <span className="hero-join">&amp;</span> Opus videos</h1>
+          <p>Explore videos and creative experiments from the community.</p>
         </div>
       </section>
 
