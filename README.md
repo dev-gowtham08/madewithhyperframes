@@ -13,6 +13,20 @@ npm run dev
 
 Open <http://localhost:3000>. The site includes light and dark modes.
 
+## Project structure
+
+```text
+app/                     Pages, shared layout, and styles
+  api/video-source/      Resolves Hyperframes sessions to playable videos
+  projects/[slug]/       Video detail pages
+components/              Directory, cards, player, navigation, and theme controls
+data/projects.json       Directory entries for local and production use
+lib/                     Project loading, types, and category definitions
+public/                  Site icon, theme initialization, and video posters
+```
+
+Next.js generates `.next/` when running or building the app. `node_modules/` contains installed dependencies. Both are ignored by Git. There is no separate `src/`, root `api/`, or `dist/` application; `/submit` redirects through `next.config.ts` and needs no page folder.
+
 ## Add or edit a video
 
 Edit [`data/projects.json`](data/projects.json). Each entry needs a unique `slug`, `title`, `creator`, `tool` (`Hyperframes`, `Opus`, or `Both`), `category`, `description`, and public `videoUrl`. Optional fields include `playbackUrl`, `thumbnailUrl`, `creatorUrl`, `duration`, `prompt`, `submittedAt` (ISO 8601 timestamp), and `featured`.
