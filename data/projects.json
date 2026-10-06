@@ -7,6 +7,8 @@
     "category": "Product Demo",
     "description": "A bilingual poultry farm management platform that helps farmers manage daily operations, records, and farm activity.",
     "videoUrl": "https://www.hyperframes.dev/session/ea136626-42d0-4614-836f-c65ed60f4390",
+    "playbackUrl": "/videos/poultry-path-en.mp4",
+    "duration": "2:56",
     "submittedAt": "2026-09-29T05:30:11.000Z",
     "thumbnailUrl": "/posters/poultry-path.jpg",
     "creatorUrl": "https://madewithhyperframes.vercel.app/"

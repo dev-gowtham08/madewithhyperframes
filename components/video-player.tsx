@@ -187,6 +187,7 @@ function XVideoEmbed({ project, id, variant, href }: { project: Project; id: str
 }
 
 function playbackFor(value: string): Playback | null {
+  if (/^\/videos\/[a-z0-9/_-]+\.(mp4|webm|ogg)$/i.test(value)) return { kind: 'video', src: value };
   try {
     const url = new URL(value);
     if (/\.(mp4|webm|ogg|mov)$/i.test(url.pathname)) return { kind: 'video', src: url.toString() };
