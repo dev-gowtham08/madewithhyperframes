@@ -12,25 +12,42 @@ function sessionIdFrom(value: string): string | undefined {
 }
 
 export async function GET(request: Request) {
-  const source = new URL(request.url).searchParams.get('url');
+  const params = new URL(request.url).searchParams;
+  const source = params.get('url');
+  const wantsJson = params.get('format') === 'json';
+  const headers = { 'Cache-Control': 'no-store' };
+  function unavailable(message: string, status: number) {
+    // The player asks for availability before assigning a URL to its video element.
+    return wantsJson
+      ? Response.json({ url: null, reason: message }, { status, headers })
+      : new Response(message, { status, headers });
+  }
   const sessionId = source ? sessionIdFrom(source) : undefined;
-  if (!sessionId) return new Response('Invalid video source', { status: 400 });
+  if (!sessionId) return new Response('Invalid video source', { status: 400, headers });
 
   try {
     const sessionResponse = await fetch(`https://www.hyperframes.dev/api/sessions/${sessionId}`, { cache: 'no-store' });
-    if (!sessionResponse.ok) return new Response('Session not found', { status: 404 });
+    if (!sessionResponse.ok) return unavailable('Session not found', 404);
     const session = await sessionResponse.json() as { projectId?: string };
-    if (!session.projectId) return new Response('Session has no project', { status: 404 });
+    if (!session.projectId) return unavailable('Session has no project', 404);
 
     const rendersResponse = await fetch(`https://www.hyperframes.dev/api/projects/${encodeURIComponent(session.projectId)}/renders?sessionId=${encodeURIComponent(sessionId)}`, { cache: 'no-store' });
-    if (!rendersResponse.ok) return new Response('No render available', { status: 404 });
+    if (!rendersResponse.ok) return unavailable('No render available', 404);
     const payload = await rendersResponse.json() as { renders?: Array<{ status?: string; createdAt?: number; url?: string }> };
     const render = [...(payload.renders ?? [])]
       .filter((entry) => entry.status === 'complete' && entry.url)
       .sort((a, b) => (b.createdAt ?? 0) - (a.createdAt ?? 0))[0];
-    if (!render?.url) return new Response('No playable render available', { status: 404 });
-    return Response.redirect(render.url, 307);
+    if (!render?.url) return unavailable('No playable render available', 404);
+    const mediaUrl = new URL(render.url);
+    if (mediaUrl.protocol !== 'https:') return unavailable('Invalid media URL', 502);
+    const expires = mediaUrl.searchParams.get('Expires');
+    if (expires && Number.isFinite(Number(expires)) && Number(expires) <= Date.now() / 1000 + 30) {
+      return unavailable('The original video link has expired', 410);
+    }
+    return wantsJson
+      ? Response.json({ url: mediaUrl.toString() }, { headers })
+      : new Response(null, { status: 307, headers: { ...headers, Location: mediaUrl.toString() } });
   } catch {
-    return new Response('Video source unavailable', { status: 502 });
+    return unavailable('Video source unavailable', 502);
   }
 }

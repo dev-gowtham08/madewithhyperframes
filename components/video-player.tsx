@@ -33,6 +33,7 @@ function PlayableVideo({ project, src, kind, variant, href, onFailure }: { proje
     let automaticPlay = false;
     let automaticPause = false;
     let player: Hls | undefined;
+    const sourceRequest = new AbortController();
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     video.muted = true;
 
@@ -40,7 +41,20 @@ function PlayableVideo({ project, src, kind, variant, href, onFailure }: { proje
       if (initialized || disposed) return;
       initialized = true;
       if (kind === 'video') {
-        video!.src = src;
+        if (src.startsWith('/api/video-source?')) {
+          void fetch(`${src}&format=json`, { signal: sourceRequest.signal, cache: 'no-store' })
+            .then(async (response) => {
+              if (!response.ok) throw new Error('Video source unavailable');
+              const result = await response.json() as { url?: string | null };
+              if (disposed) return;
+              if (!result.url) { onFailure(src); return; }
+              video!.src = result.url;
+              sync();
+            })
+            .catch(() => { if (!disposed) onFailure(src); });
+        } else {
+          video!.src = src;
+        }
         return;
       }
       void import('hls.js').then(({ default: Hls, FetchLoader }) => {
@@ -86,7 +100,7 @@ function PlayableVideo({ project, src, kind, variant, href, onFailure }: { proje
       const wantsPlayback = playbackIntent.current ?? !reducedMotion.matches;
       if (visible && document.visibilityState === 'visible' && wantsPlayback) {
         player?.startLoad();
-        if (video!.paused) {
+        if (video!.paused && video!.getAttribute('src')) {
           automaticPlay = true;
           void video!.play().catch(() => { automaticPlay = false; });
         }
@@ -128,6 +142,7 @@ function PlayableVideo({ project, src, kind, variant, href, onFailure }: { proje
 
     return () => {
       disposed = true;
+      sourceRequest.abort();
       observer.disconnect();
       document.removeEventListener('visibilitychange', sync);
       reducedMotion.removeEventListener('change', sync);
@@ -212,7 +227,7 @@ function formatDuration(seconds: number): string {
 
 function Poster({ project, priority = false }: { project: Project; priority?: boolean }) {
   return project.thumbnailUrl
-    ? <Image src={project.thumbnailUrl} alt={`Video preview for ${project.title}`} fill priority={priority} unoptimized={project.thumbnailUrl.startsWith('http')} sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw" />
+    ? <Image src={project.thumbnailUrl} alt={`Video preview for ${project.title}`} fill loading={priority ? 'eager' : 'lazy'} unoptimized={project.thumbnailUrl.startsWith('http')} sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw" />
     : <span className="thumbnail-fallback"><span className="fallback-top">VIDEO / MADE WITH {project.tool.toUpperCase()}</span><span className="fallback-symbol">✳</span><span className="fallback-title">{project.title}</span></span>;
 }
 
@@ -238,6 +253,6 @@ export function VideoPlayer({ project, variant, priority = false, href = `/proje
   }
 
   return variant === 'card'
-    ? <div className={className}><Poster project={project} priority={priority} /><CardOverlay title={project.title} href={href} duration={project.duration} /></div>
-    : <div className={className}><a className="video-poster" href={project.videoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} on the original site (opens in a new tab)`}><Poster project={project} priority={priority} /><span className="media-play" aria-hidden="true"><i /></span><span className="media-caption">OPEN ORIGINAL PROJECT <span aria-hidden="true">↗</span></span></a></div>;
+    ? <div className={className}><Poster project={project} priority={priority || failedSources.length > 0} />{failedSources.length > 0 && <span className="video-unavailable">Preview unavailable</span>}<CardOverlay title={project.title} href={href} duration={project.duration} /></div>
+    : <div className={className}><a className="video-poster" href={project.videoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} on the original site (opens in a new tab)`}><Poster project={project} priority={priority} />{failedSources.length > 0 ? <span className="video-unavailable detail-unavailable">Video preview unavailable. Open the original project <span aria-hidden="true">↗</span></span> : <><span className="media-play" aria-hidden="true"><i /></span><span className="media-caption">OPEN ORIGINAL PROJECT <span aria-hidden="true">↗</span></span></>}</a></div>;
 }
