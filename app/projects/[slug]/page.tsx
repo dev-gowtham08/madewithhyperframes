@@ -33,6 +33,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
     .sort((a, b) => Number(b.category === project.category) - Number(a.category === project.category) || Number(b.tool === project.tool) - Number(a.tool === project.tool) || (Date.parse(b.submittedAt ?? '') || 0) - (Date.parse(a.submittedAt ?? '') || 0))
     .slice(0, 3);
   const isXPost = /^https:\/\/(?:www\.)?(?:x|twitter)\.com\//.test(project.videoUrl);
+  const prompt = project.prompt?.trim();
 
   return (
     <div className="detail-page shell">
@@ -53,21 +54,20 @@ export default async function ProjectPage({ params, searchParams }: Props) {
         <div><dt>Category</dt><dd>{project.category}</dd></div>
         {project.duration && <div><dt>Duration</dt><dd>{project.duration}</dd></div>}
       </dl>
-      <section className="detail-about" aria-labelledby="about-video">
-        <h2 id="about-video">About this video</h2>
+      <section className="detail-about" aria-labelledby="prompt-title">
+        <h2 id="prompt-title">Prompt</h2>
         <div className="detail-about-copy">
-          {project.prompt ? <>
-            <p>{project.description}</p>
-            <div className="detail-prompt">
-              <h3>{project.prompt_partial ? 'Partial prompt' : 'Prompt'}</h3>
-              <p>{project.prompt}</p>
+          <div className="detail-prompt">
+            {prompt ? <>
+              {project.prompt_partial && <h3>Partial prompt</h3>}
+              <p>{prompt}</p>
               {project.prompt_partial && <p className="detail-prompt-note">The author shared part of the prompt.</p>}
-            </div>
-          </> : <div className="detail-prompt detail-prompt-fallback">
-            <h3>{isXPost ? 'From the creator’s post' : 'Project description'}</h3>
-            <p>{project.description}</p>
-            <p className="detail-prompt-note">{isXPost ? 'No prompt was included in the original post.' : 'No prompt was provided with this project.'}</p>
-          </div>}
+            </> : <>
+              <h3>{isXPost ? 'From the creator’s post' : 'Project description'}</h3>
+              <p>{project.description}</p>
+              <p className="detail-prompt-note">{isXPost ? 'No prompt was included in the original post.' : 'No prompt was provided with this project.'}</p>
+            </>}
+          </div>
         </div>
       </section>
       {related.length > 0 && <section className="related-section" aria-labelledby="related-title"><div className="related-heading"><div><span className="eyebrow">Keep discovering</span><h2 id="related-title">Watch next<span>.</span></h2></div><Link href="/#explore">Browse all videos <span aria-hidden="true">↗</span></Link></div><div className="project-grid related-grid">{related.map((entry) => <ProjectCard key={entry.slug} project={entry} directoryQuery={directoryQuery} />)}</div></section>}
