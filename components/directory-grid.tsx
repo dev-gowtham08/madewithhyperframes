@@ -42,7 +42,7 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
       return sort === 'Latest' ? second - first : first - second;
     });
     return ordered.filter((project) => {
-      const matchesText = !search || [project.title, project.creator, project.description, project.category, project.tool, project.prompt ?? ''].some((value) => value.toLowerCase().includes(search));
+      const matchesText = !search || [project.title, project.creator, project.prompt, project.category, project.tool].some((value) => value.toLowerCase().includes(search));
       const matchesCategory = category === 'All' || project.category === category;
       const matchesTool = tool === 'All' || project.tool === tool || project.tool === 'Both';
       return matchesText && matchesCategory && matchesTool;

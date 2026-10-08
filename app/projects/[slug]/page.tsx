@@ -12,7 +12,7 @@ type Props = { params: Promise<{ slug: string }>; searchParams: Promise<Record<s
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   await connection();
   const project = await getProject((await params).slug);
-  return project ? { title: project.title, description: project.description } : { title: 'Project not found' };
+  return project ? { title: project.title, description: project.prompt.replace(/\s+/g, ' ').slice(0, 160) } : { title: 'Project not found' };
 }
 
 export default async function ProjectPage({ params, searchParams }: Props) {
@@ -33,12 +33,10 @@ export default async function ProjectPage({ params, searchParams }: Props) {
     .filter((entry) => entry.slug !== project.slug)
     .sort((a, b) => Number(b.category === project.category) - Number(a.category === project.category) || Number(b.tool === project.tool) - Number(a.tool === project.tool) || (Date.parse(b.submittedAt ?? '') || 0) - (Date.parse(a.submittedAt ?? '') || 0))
     .slice(0, 3);
-  const isXPost = /^https:\/\/(?:www\.)?(?:x|twitter)\.com\//.test(project.videoUrl);
-  const prompt = project.prompt?.trim();
-  const promptText = prompt || project.description;
-  const promptNote = prompt
-    ? project.prompt_partial ? 'The author shared part of the prompt.' : 'Prompt shared by the creator.'
-    : isXPost ? 'No prompt was included in the original post. Showing a summary of the creator’s post.' : 'No prompt was provided with this project. Showing the project description.';
+  const promptText = project.prompt.trim();
+  const promptNote = project.prompt_partial
+    ? 'The full prompt was not shared. This is the available context for the video.'
+    : 'Prompt shared by the creator.';
 
   return (
     <div className="detail-page shell">
@@ -65,7 +63,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m4 6 6 6-6 6M12 18h8" /></svg>
             <h2 id="prompt-title">Prompt</h2>
           </div>
-          <CopyPromptButton text={promptText} label={prompt ? 'Copy prompt' : 'Copy description'} />
+          <CopyPromptButton text={promptText} label="Copy prompt" />
         </div>
         <p className="prompt-panel-note">{promptNote}</p>
         <p className="prompt-panel-text">{promptText}</p>

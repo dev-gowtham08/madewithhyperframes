@@ -9,14 +9,13 @@ export type Project = {
   creator: string;
   tool: 'Hyperframes' | 'Opus' | 'Both';
   category: string;
-  description: string;
+  prompt: string;
+  prompt_partial: boolean;
   videoUrl: string;
   playbackUrl?: string;
   thumbnailUrl?: string;
   creatorUrl?: string;
   duration?: string;
-  prompt?: string | null;
-  prompt_partial?: boolean;
   submittedAt?: string;
   featured?: boolean;
 };
