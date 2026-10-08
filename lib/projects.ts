@@ -15,7 +15,8 @@ export type Project = {
   thumbnailUrl?: string;
   creatorUrl?: string;
   duration?: string;
-  prompt?: string;
+  prompt?: string | null;
+  prompt_partial?: boolean;
   submittedAt?: string;
   featured?: boolean;
 };

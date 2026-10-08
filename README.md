@@ -29,9 +29,11 @@ Next.js generates `.next/` when running or building the app. `node_modules/` con
 
 ## Add or edit a video
 
-Edit [`data/projects.json`](data/projects.json). Each entry needs a unique `slug`, `title`, `creator`, `tool` (`Hyperframes`, `Opus`, or `Both`), `category`, `description`, and public `videoUrl`. Optional fields include `playbackUrl`, `thumbnailUrl`, `creatorUrl`, `duration`, `prompt`, `submittedAt` (ISO 8601 timestamp), and `featured`.
+Edit [`data/projects.json`](data/projects.json). Each entry needs a unique `slug`, `title`, `creator`, `tool` (`Hyperframes`, `Opus`, or `Both`), `category`, `description`, and public `videoUrl`. Optional fields include `playbackUrl`, `thumbnailUrl`, `creatorUrl`, `duration`, `submittedAt` (ISO 8601 timestamp), and `featured`.
 
-Publish distinct, real work with its actual creator and matching video. Keep stock-footage test entries out of this file, and avoid listing the same Hyperframes session under different project names. Categories and counts come from the entries in this file. Set `submittedAt` to the date the entry was added to the directory so Latest/Oldest sorting works; the two existing X entries use their first repository commit dates.
+Set `prompt` to the creator's actual prompt when available and `prompt_partial` to `false` for a complete prompt or `true` for an excerpt. If the original source contains no prompt, use `"prompt": null` and `"prompt_partial": false`; write a concise, source-based summary in `description`. The detail page shows that description and makes clear that no prompt was provided. Do not present a post summary as a verbatim prompt.
+
+Publish distinct, real work with its actual creator and matching video. Keep stock-footage test entries out of this file, and avoid listing the same Hyperframes session under different project names. Categories and counts come from the entries in this file. Set `submittedAt` to the date the entry was added to the directory so Latest/Oldest sorting works.
 
 The retired sample entries are available in Git history. Their old detail URLs redirect to the directory through `next.config.ts`.
 
