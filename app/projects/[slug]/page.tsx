@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
+import { CopyPromptButton } from '@/components/copy-prompt-button';
 import { ProjectCard } from '@/components/project-card';
 import { VideoPlayer } from '@/components/video-player';
 import { getProject, getProjects } from '@/lib/projects';
@@ -34,6 +35,10 @@ export default async function ProjectPage({ params, searchParams }: Props) {
     .slice(0, 3);
   const isXPost = /^https:\/\/(?:www\.)?(?:x|twitter)\.com\//.test(project.videoUrl);
   const prompt = project.prompt?.trim();
+  const promptText = prompt || project.description;
+  const promptNote = prompt
+    ? project.prompt_partial ? 'The author shared part of the prompt.' : 'Prompt shared by the creator.'
+    : isXPost ? 'No prompt was included in the original post. Showing a summary of the creator’s post.' : 'No prompt was provided with this project. Showing the project description.';
 
   return (
     <div className="detail-page shell">
@@ -54,21 +59,16 @@ export default async function ProjectPage({ params, searchParams }: Props) {
         <div><dt>Category</dt><dd>{project.category}</dd></div>
         {project.duration && <div><dt>Duration</dt><dd>{project.duration}</dd></div>}
       </dl>
-      <section className="detail-about" aria-labelledby="prompt-title">
-        <h2 id="prompt-title">Prompt</h2>
-        <div className="detail-about-copy">
-          <div className="detail-prompt">
-            {prompt ? <>
-              {project.prompt_partial && <h3>Partial prompt</h3>}
-              <p>{prompt}</p>
-              {project.prompt_partial && <p className="detail-prompt-note">The author shared part of the prompt.</p>}
-            </> : <>
-              <h3>{isXPost ? 'From the creator’s post' : 'Project description'}</h3>
-              <p>{project.description}</p>
-              <p className="detail-prompt-note">{isXPost ? 'No prompt was included in the original post.' : 'No prompt was provided with this project.'}</p>
-            </>}
+      <section className="detail-prompt-panel" aria-labelledby="prompt-title">
+        <div className="prompt-panel-heading">
+          <div className="prompt-panel-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m4 6 6 6-6 6M12 18h8" /></svg>
+            <h2 id="prompt-title">Prompt</h2>
           </div>
+          <CopyPromptButton text={promptText} label={prompt ? 'Copy prompt' : 'Copy description'} />
         </div>
+        <p className="prompt-panel-note">{promptNote}</p>
+        <p className="prompt-panel-text">{promptText}</p>
       </section>
       {related.length > 0 && <section className="related-section" aria-labelledby="related-title"><div className="related-heading"><div><span className="eyebrow">Keep discovering</span><h2 id="related-title">Watch next<span>.</span></h2></div><Link href="/#explore">Browse all videos <span aria-hidden="true">↗</span></Link></div><div className="project-grid related-grid">{related.map((entry) => <ProjectCard key={entry.slug} project={entry} directoryQuery={directoryQuery} />)}</div></section>}
       <div className="detail-end"><Link href={directoryHref}>← Back to directory</Link></div>
