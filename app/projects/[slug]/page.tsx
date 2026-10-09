@@ -5,7 +5,7 @@ import { connection } from 'next/server';
 import { CopyPromptButton } from '@/components/copy-prompt-button';
 import { ProjectCard } from '@/components/project-card';
 import { VideoPlayer } from '@/components/video-player';
-import { getProject, getProjects } from '@/lib/projects';
+import { getProject, getProjects, type Project } from '@/lib/projects';
 
 type Props = { params: Promise<{ slug: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> };
 
@@ -23,15 +23,16 @@ export default async function ProjectPage({ params, searchParams }: Props) {
   if (!project) notFound();
   const incoming = await searchParams;
   const directoryParams = new URLSearchParams();
-  for (const key of ['q', 'tool', 'category', 'sort']) {
+  for (const key of ['q', 'tool', 'category', 'prompt', 'sort']) {
     const value = incoming[key];
     if (typeof value === 'string' && value) directoryParams.set(key, value);
   }
   const directoryQuery = directoryParams.toString();
   const directoryHref = `/${directoryQuery ? `?${directoryQuery}` : ''}#explore`;
+  const sharedTools = (entry: Project) => entry.stack.filter((tool) => project.stack.includes(tool)).length;
   const related = projects
     .filter((entry) => entry.slug !== project.slug)
-    .sort((a, b) => Number(b.category === project.category) - Number(a.category === project.category) || Number(b.tool === project.tool) - Number(a.tool === project.tool) || (Date.parse(b.submittedAt ?? '') || 0) - (Date.parse(a.submittedAt ?? '') || 0))
+    .sort((a, b) => Number(b.category === project.category) - Number(a.category === project.category) || sharedTools(b) - sharedTools(a) || (Date.parse(b.submittedAt ?? '') || 0) - (Date.parse(a.submittedAt ?? '') || 0))
     .slice(0, 3);
   const promptText = project.prompt.trim();
   const promptNote = project.prompt_partial
@@ -53,7 +54,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
         <a className="button button-dark detail-original" href={project.videoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open the original video for ${project.title} in a new tab`}>Open original <span aria-hidden="true">↗</span></a>
       </header>
       <dl className="detail-facts" aria-label="Video information">
-        <div><dt>Made with</dt><dd>{project.tool}</dd></div>
+        <div><dt>Made with</dt><dd>{project.stack.join(' + ')}</dd></div>
         <div><dt>Category</dt><dd>{project.category}</dd></div>
         {project.duration && <div><dt>Duration</dt><dd>{project.duration}</dd></div>}
       </dl>

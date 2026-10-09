@@ -29,9 +29,9 @@ Next.js generates `.next/` when running or building the app. `node_modules/` con
 
 ## Add or edit a video
 
-Edit [`data/projects.json`](data/projects.json). Each entry needs a unique `slug`, `title`, `creator`, `tool` (`Hyperframes`, `Opus`, or `Both`), `category`, `prompt`, `prompt_partial`, and public `videoUrl`. Optional fields include `playbackUrl`, `thumbnailUrl`, `creatorUrl`, `duration`, `submittedAt` (ISO 8601 timestamp), and `featured`.
+Edit [`data/projects.json`](data/projects.json). Each entry needs a unique `slug`, `title`, `creator`, `stack`, `category`, `prompt`, `prompt_partial`, and public `videoUrl`. `stack` lists every tool the video was made with, from `Hyperframes`, `Opus`, and `Remotion`, for example `["Hyperframes", "Opus"]`. Only list a tool that the creator's post or prompt names. The Hyperframes and Opus tabs filter on this list. Optional fields include `playbackUrl`, `thumbnailUrl`, `creatorUrl`, `duration`, `submittedAt` (ISO 8601 timestamp), and `featured`.
 
-Set `prompt` to the creator's actual prompt and `prompt_partial` to `false` when a complete prompt is available. If the full prompt is unavailable, put a concise, source-based video summary or prompt excerpt in `prompt` and set `prompt_partial` to `true`. The detail page labels this as incomplete context. Do not present a post summary as a verbatim prompt. Project entries no longer use a separate `description` field.
+Set `prompt` to the creator's actual prompt and `prompt_partial` to `false` when a complete prompt is available. If the full prompt is unavailable, put a concise, source-based video summary or prompt excerpt in `prompt` and set `prompt_partial` to `true`. The detail page labels this as incomplete context. Do not present a post summary as a verbatim prompt. Entries with `prompt_partial: false` get a Full prompt badge and appear under the directory's Full prompt filter. Project entries no longer use a separate `description` field.
 
 Publish distinct, real work with its actual creator and matching video. Keep stock-footage test entries out of this file, and avoid listing the same Hyperframes session under different project names. Categories and counts come from the entries in this file. Set `submittedAt` to the date the entry was added to the directory so Latest/Oldest sorting works.
 
@@ -39,7 +39,9 @@ The retired sample entries are available in Git history. Their old detail URLs r
 
 The JSON file stores video **details and URLs**, not the video files themselves. A `videoUrl` can point to a public video file or a supported Hyperframes session. A `thumbnailUrl` can point to an image in `public/` or an allowed remote source. Give each new entry a unique slug so its `/projects/[slug]` detail page works.
 
-For an X post, keep the original post in `videoUrl`. To enable muted autoplay, add a verified direct media URL in `playbackUrl` (MP4 or HLS `.m3u8`); `thumbnailUrl` must be an actual image URL. A post page is not a playable stream or an image. The player falls back to the X embed if its separate playback source fails.
+Directory cards show `thumbnailUrl` and play one muted preview at a time: the hovered card with a mouse, or the card nearest the middle of the screen on touch screens. A card that is not previewing downloads no video.
+
+For an X post, keep the original post in `videoUrl`. To enable muted previews, add a verified direct media URL in `playbackUrl` (MP4 or HLS `.m3u8`); `thumbnailUrl` must be an actual image URL. A post page is not a playable stream or an image. The player falls back to the X embed if its separate playback source fails.
 
 Local development reads the file on request. To update production, commit and push the JSON change, then deploy the new revision to Vercel. Files inside a deployed Vercel build are not writable permanent storage, so production visitors cannot add entries directly. The old `/submit` URL redirects to the directory.
 

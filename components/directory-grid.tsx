@@ -2,23 +2,28 @@
 
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
-import type { Project } from '@/lib/projects';
+import type { Project, Tool } from '@/lib/projects';
 import { ProjectCard } from './project-card';
+
+const TOOL_FILTERS: Tool[] = ['Hyperframes', 'Opus'];
 
 export function DirectoryGrid({ projects, categories }: { projects: Project[]; categories: string[] }) {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') ?? '';
   const category = categories.includes(searchParams.get('category') ?? '') ? searchParams.get('category')! : 'All';
-  const tool = ['Hyperframes', 'Opus'].includes(searchParams.get('tool') ?? '') ? searchParams.get('tool')! : 'All';
+  const tool = TOOL_FILTERS.find((value) => value === searchParams.get('tool')) ?? 'All';
+  const fullPromptOnly = searchParams.get('prompt') === 'full';
+  const fullPromptCount = projects.filter((project) => !project.prompt_partial).length;
   const categoryOptions = ['All', ...categories];
   const categoryCounts = useMemo(() => new Map(categories.map((value) => [value, projects.filter((project) => project.category === value).length])), [categories, projects]);
   const hasFeatured = projects.some((project) => project.featured);
   const sort = searchParams.get('sort') === 'Oldest' ? 'Oldest' : searchParams.get('sort') === 'Featured' && hasFeatured ? 'Featured' : 'Latest';
-  const hasActiveFilters = category !== 'All' || tool !== 'All' || query.length > 0;
+  const hasActiveFilters = category !== 'All' || tool !== 'All' || fullPromptOnly || query.length > 0;
   const directoryParams = new URLSearchParams();
   if (query) directoryParams.set('q', query);
   if (category !== 'All') directoryParams.set('category', category);
   if (tool !== 'All') directoryParams.set('tool', tool);
+  if (fullPromptOnly) directoryParams.set('prompt', 'full');
   if (sort !== 'Latest') directoryParams.set('sort', sort);
   const directoryQuery = directoryParams.toString();
 
@@ -42,19 +47,21 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
       return sort === 'Latest' ? second - first : first - second;
     });
     return ordered.filter((project) => {
-      const matchesText = !search || [project.title, project.creator, project.prompt, project.category, project.tool].some((value) => value.toLowerCase().includes(search));
+      const matchesText = !search || [project.title, project.creator, project.prompt, project.category, project.stack.join(' ')].some((value) => value.toLowerCase().includes(search));
       const matchesCategory = category === 'All' || project.category === category;
-      const matchesTool = tool === 'All' || project.tool === tool || project.tool === 'Both';
-      return matchesText && matchesCategory && matchesTool;
+      const matchesTool = tool === 'All' || project.stack.includes(tool);
+      const matchesPrompt = !fullPromptOnly || !project.prompt_partial;
+      return matchesText && matchesCategory && matchesTool && matchesPrompt;
     });
-  }, [projects, query, category, tool, sort]);
+  }, [projects, query, category, tool, fullPromptOnly, sort]);
 
   return (
     <section id="explore" className="explore-section shell" aria-labelledby="explore-title">
       <h2 className="sr-only" id="explore-title">Video directory</h2>
       <div className="toolbar">
         <label className="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></svg><span className="sr-only">Search videos, creators, prompts, and categories</span><input type="search" value={query} onChange={(event) => updateFilter('q', event.target.value)} placeholder="Search videos, creators, prompts..." /></label>
-        <div className="tool-tabs" role="group" aria-label="Filter videos by tool">{['All', 'Hyperframes', 'Opus'].map((value) => <button key={value} type="button" className={tool === value ? 'active' : ''} onClick={() => updateFilter('tool', value)} aria-pressed={tool === value}>{value === 'All' ? 'All tools' : value}</button>)}</div>
+        <div className="tool-tabs" role="group" aria-label="Filter videos by tool">{['All', ...TOOL_FILTERS].map((value) => <button key={value} type="button" className={tool === value ? 'active' : ''} onClick={() => updateFilter('tool', value)} aria-pressed={tool === value}>{value === 'All' ? 'All tools' : value}</button>)}</div>
+        <button type="button" className={`prompt-filter${fullPromptOnly ? ' active' : ''}`} onClick={() => updateFilter('prompt', fullPromptOnly ? '' : 'full')} aria-pressed={fullPromptOnly} title="Show only videos whose creator shared the full prompt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 6 6 6-6 6M12 18h8" /></svg><span>Full prompt</span><small>{fullPromptCount}</small></button>
         <label className="sort-control"><span>Sort</span><select value={sort} onChange={(event) => updateFilter('sort', event.target.value)} aria-label="Sort videos"><option>Latest</option><option>Oldest</option>{hasFeatured && <option>Featured</option>}</select><span aria-hidden="true">⌄</span></label>
       </div>
       <div className="filter-bottom">

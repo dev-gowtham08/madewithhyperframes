@@ -3,11 +3,13 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { VIDEO_CATEGORIES } from '@/lib/video-categories';
 
+export type Tool = 'Hyperframes' | 'Opus' | 'Remotion';
+
 export type Project = {
   slug: string;
   title: string;
   creator: string;
-  tool: 'Hyperframes' | 'Opus' | 'Both';
+  stack: Tool[];
   category: string;
   prompt: string;
   prompt_partial: boolean;
@@ -26,6 +28,8 @@ export async function getProjects(): Promise<Project[]> {
   const contents = await readFile(projectsFile, 'utf8');
   const projects: unknown = JSON.parse(contents);
   if (!Array.isArray(projects)) throw new Error('data/projects.json must contain a project array.');
+  const missingStack = projects.find((project) => !Array.isArray(project?.stack) || project.stack.length === 0);
+  if (missingStack) throw new Error(`data/projects.json: "${missingStack.slug}" needs a stack list, such as ["Opus"].`);
   return projects as Project[];
 }
 

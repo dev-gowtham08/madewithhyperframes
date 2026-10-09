@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type Hls from 'hls.js';
+import { registerCardPreview, toggleCardPreview } from '@/lib/card-previews';
 import type { Project } from '@/lib/projects';
 
 type Playback = { kind: 'video' | 'embed' | 'hls'; src: string } | { kind: 'x-video'; id: string };
@@ -15,12 +16,10 @@ function CardOverlay({ title, href, duration }: { title: string; href: string; d
   </>;
 }
 
-function PlayableVideo({ project, src, kind, variant, href, onFailure }: { project: Project; src: string; kind: 'video' | 'hls'; variant: 'card' | 'detail'; href: string; onFailure: (src: string) => void }) {
+function PlayableVideo({ project, src, kind, variant, onFailure, onDuration }: { project: Project; src: string; kind: 'video' | 'hls'; variant: 'card' | 'detail'; onFailure: (src: string) => void; onDuration?: (duration: string) => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const playbackIntent = useRef<boolean | null>(null);
-  const syncPlayback = useRef<(() => void) | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [duration, setDuration] = useState(project.duration ?? '');
+  const [isReady, setIsReady] = useState(false);
   const [isPortrait, setIsPortrait] = useState(false);
 
   useEffect(() => {
@@ -97,7 +96,9 @@ function PlayableVideo({ project, src, kind, variant, href, onFailure }: { proje
     function sync() {
       if (disposed) return;
       if (visible && document.visibilityState === 'visible') initialize();
-      const wantsPlayback = playbackIntent.current ?? !reducedMotion.matches;
+      // A card mounts its video only while it previews. On the detail page, a viewer's pause
+      // remains in effect when the video comes back into view.
+      const wantsPlayback = variant === 'card' || (playbackIntent.current ?? !reducedMotion.matches);
       if (visible && document.visibilityState === 'visible' && wantsPlayback) {
         player?.startLoad();
         if (video!.paused && video!.getAttribute('src')) {
@@ -113,8 +114,6 @@ function PlayableVideo({ project, src, kind, variant, href, onFailure }: { proje
       }
     }
 
-    // A user's pause remains in effect when the card comes back into view.
-    syncPlayback.current = sync;
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting && entry.intersectionRatio >= 0.1;
       sync();
@@ -148,7 +147,6 @@ function PlayableVideo({ project, src, kind, variant, href, onFailure }: { proje
       reducedMotion.removeEventListener('change', sync);
       video.removeEventListener('play', onNativePlay);
       video.removeEventListener('pause', onNativePause);
-      syncPlayback.current = null;
       video.pause();
       player?.destroy();
       video.removeAttribute('src');
@@ -156,23 +154,32 @@ function PlayableVideo({ project, src, kind, variant, href, onFailure }: { proje
     };
   }, [src, kind, variant, onFailure]);
 
-  function togglePreview() {
-    playbackIntent.current = videoRef.current?.paused ?? true;
-    syncPlayback.current?.();
-  }
+  const video = <video ref={videoRef} className={`video-element${isReady ? ' is-ready' : ''}`} poster={variant === 'detail' ? project.thumbnailUrl : undefined} controls={variant === 'detail'} muted loop={variant === 'card'} playsInline preload="metadata" aria-label={project.title} onPlaying={() => setIsReady(true)} onLoadedMetadata={(event) => {
+    setIsPortrait(event.currentTarget.videoHeight > event.currentTarget.videoWidth);
+    if (!project.duration && Number.isFinite(event.currentTarget.duration)) onDuration?.(formatDuration(event.currentTarget.duration));
+  }} onError={() => onFailure(src)} />;
+
+  // A card supplies its own surface, poster, and controls around the video.
+  return variant === 'card' ? video : <div className={`detail-media video-surface is-playing${isPortrait ? ' is-portrait' : ''}`}>{video}</div>;
+}
+
+// Cards show their thumbnail and create a video only while previewing, so a card that is not
+// previewing downloads nothing. lib/card-previews decides which single card previews.
+function CardPreview({ project, src, kind, href, onFailure }: { project: Project; src: string; kind: 'video' | 'hls'; href: string; onFailure: (src: string) => void }) {
+  const surfaceRef = useRef<HTMLDivElement>(null);
+  const [isPreviewing, setIsPreviewing] = useState(false);
+  const [duration, setDuration] = useState(project.duration ?? '');
+
+  useEffect(() => registerCardPreview(surfaceRef.current!, setIsPreviewing), []);
 
   return (
-    <div className={`${variant === 'card' ? 'card-image' : 'detail-media'} video-surface is-playing${variant === 'detail' && isPortrait ? ' is-portrait' : ''}`}>
-      <video ref={videoRef} className="video-element" poster={project.thumbnailUrl} controls={variant === 'detail'} muted loop={variant === 'card'} playsInline preload="metadata" aria-label={project.title} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} onLoadedMetadata={(event) => {
-        setIsPortrait(event.currentTarget.videoHeight > event.currentTarget.videoWidth);
-        if (!project.duration && Number.isFinite(event.currentTarget.duration)) setDuration(formatDuration(event.currentTarget.duration));
-      }} onError={() => onFailure(src)} />
-      {variant === 'card' && <>
-        <CardOverlay title={project.title} href={href} duration={duration} />
-        <button type="button" className="preview-toggle" onClick={togglePreview} aria-label={`${isPlaying ? 'Pause' : 'Play'} preview of ${project.title}`} title={isPlaying ? 'Pause preview' : 'Play preview'}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">{isPlaying ? <><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></> : <path d="M8 5v14l11-7z" />}</svg>
-        </button>
-      </>}
+    <div ref={surfaceRef} className="card-image video-surface is-playing">
+      <Poster project={project} />
+      {isPreviewing && <PlayableVideo project={project} src={src} kind={kind} variant="card" onFailure={onFailure} onDuration={setDuration} />}
+      <CardOverlay title={project.title} href={href} duration={duration} />
+      <button type="button" className="preview-toggle" onClick={() => toggleCardPreview(surfaceRef.current!)} aria-label={`${isPreviewing ? 'Pause' : 'Play'} preview of ${project.title}`} title={isPreviewing ? 'Pause preview' : 'Play preview'}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">{isPreviewing ? <><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></> : <path d="M8 5v14l11-7z" />}</svg>
+      </button>
     </div>
   );
 }
@@ -229,7 +236,7 @@ function formatDuration(seconds: number): string {
 function Poster({ project, priority = false }: { project: Project; priority?: boolean }) {
   return project.thumbnailUrl
     ? <Image src={project.thumbnailUrl} alt={`Video preview for ${project.title}`} fill loading={priority ? 'eager' : 'lazy'} unoptimized={project.thumbnailUrl.startsWith('http')} sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw" />
-    : <span className="thumbnail-fallback"><span className="fallback-top">VIDEO / MADE WITH {project.tool.toUpperCase()}</span><span className="fallback-symbol">✳</span><span className="fallback-title">{project.title}</span></span>;
+    : <span className="thumbnail-fallback"><span className="fallback-top">VIDEO / MADE WITH {project.stack.join(' + ').toUpperCase()}</span><span className="fallback-symbol">✳</span><span className="fallback-title">{project.title}</span></span>;
 }
 
 export function VideoPlayer({ project, variant, priority = false, href = `/projects/${project.slug}` }: { project: Project; variant: 'card' | 'detail'; priority?: boolean; href?: string }) {
@@ -241,7 +248,9 @@ export function VideoPlayer({ project, variant, priority = false, href = `/proje
   const activePlayback = [playback, playbackFor(project.videoUrl)].find((source) => source && (source.kind === 'x-video' || !failedSources.includes(source.src)));
   const className = `${variant === 'card' ? 'card-image' : 'detail-media'} video-surface`;
 
-  if (activePlayback?.kind === 'hls' || activePlayback?.kind === 'video') return <PlayableVideo key={activePlayback.src} project={project} src={activePlayback.src} kind={activePlayback.kind} variant={variant} href={href} onFailure={onFailure} />;
+  if (activePlayback?.kind === 'hls' || activePlayback?.kind === 'video') return variant === 'card'
+    ? <CardPreview key={activePlayback.src} project={project} src={activePlayback.src} kind={activePlayback.kind} href={href} onFailure={onFailure} />
+    : <PlayableVideo key={activePlayback.src} project={project} src={activePlayback.src} kind={activePlayback.kind} variant="detail" onFailure={onFailure} />;
   if (activePlayback?.kind === 'x-video') return <XVideoEmbed project={project} id={activePlayback.id} variant={variant} href={href} />;
 
   if (activePlayback) {

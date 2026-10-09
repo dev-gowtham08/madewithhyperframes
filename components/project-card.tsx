@@ -10,7 +10,7 @@ export function ProjectCard({ project, directoryQuery = '' }: { project: Project
     <article className={`project-card poster-${palette}`}>
       <VideoPlayer project={project} variant="card" href={href} />
       <div className="card-content">
-        <div className="card-meta"><span>{project.category}</span><span aria-hidden="true">/</span><span>{project.tool}</span></div>
+        <div className="card-meta"><span>{project.category}</span><span aria-hidden="true">/</span><span>{project.stack.join(' + ')}</span>{!project.prompt_partial && <span className="card-prompt-badge">Full prompt</span>}</div>
         <h3><Link href={href}>{project.title}</Link></h3>
         <div className="card-creator"><span>By</span><strong>{project.creator}</strong></div>
       </div>
