@@ -16,13 +16,14 @@ Open <http://localhost:3000>. The site includes light and dark modes.
 ## Project structure
 
 ```text
-app/                     Pages, shared layout, and styles
+app/                     Pages, shared layout, styles, share image, robots.txt, and sitemap
   api/video-source/      Resolves Hyperframes sessions to playable videos
-  projects/[slug]/       Video detail pages
+  projects/[slug]/       Video detail pages and their share images
+assets/fonts/            Geist fonts for the share images (SIL Open Font License, see OFL.txt)
 components/              Directory, cards, player, navigation, and theme controls
 data/projects.json       Directory entries for local and production use
-lib/                     Project loading, types, and category definitions
-public/                  Site icon, theme initialization, and video posters
+lib/                     Project loading, types, categories, site address, and share-image helpers
+public/                  Site icon, video posters, and local videos
 ```
 
 Next.js generates `.next/` when running or building the app. `node_modules/` contains installed dependencies. Both are ignored by Git. There is no separate `src/`, root `api/`, or `dist/` application; `/submit` redirects through `next.config.ts` and needs no page folder.
@@ -44,6 +45,15 @@ Directory cards show `thumbnailUrl` and play one muted preview at a time: the ho
 For an X post, keep the original post in `videoUrl`. To enable muted previews, add a verified direct media URL in `playbackUrl` (MP4 or HLS `.m3u8`); `thumbnailUrl` must be an actual image URL. A post page is not a playable stream or an image. The player falls back to the X embed if its separate playback source fails.
 
 Local development reads the file on request. To update production, commit and push the JSON change, then deploy the new revision to Vercel. Files inside a deployed Vercel build are not writable permanent storage, so production visitors cannot add entries directly. The old `/submit` URL redirects to the directory.
+
+## Sharing and search
+
+These are built from `data/projects.json`, so a new entry gets them automatically on the next deploy:
+
+- **Share images.** Each video page has a 1200×630 card with its title, creator, tools, length, and thumbnail, drawn at build time. X shows only this image for a shared link. The directory's card shows live counts and six thumbnails: entries with `featured: true` first, then the newest.
+- **Search basics.** `/robots.txt`, `/sitemap.xml` (listing each page's video), a canonical URL on every page that ignores directory filters, and schema.org `VideoObject` data on each video page.
+
+They all use the production address in `lib/site.ts`. Change it there if the site moves to its own domain.
 
 ## Verify
 

@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import { connection } from 'next/server';
 import { DirectoryGrid } from '@/components/directory-grid';
 import { getCategories, getProjects } from '@/lib/projects';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '@/lib/site';
+
+// Filtered views (?category=, ?q=) all point search engines at the one directory page.
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+  openGraph: { type: 'website', siteName: SITE_NAME, title: SITE_TITLE, description: SITE_DESCRIPTION, url: '/' }
+};
 
 export default async function HomePage() {
   await connection();

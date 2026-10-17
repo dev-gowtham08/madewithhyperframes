@@ -37,6 +37,20 @@ export async function getProject(slug: string): Promise<Project | undefined> {
   return (await getProjects()).find((project) => project.slug === slug);
 }
 
+export function durationInSeconds(project: Project): number | undefined {
+  const match = project.duration?.match(/^(\d+):(\d{2})$/);
+  return match ? Number(match[1]) * 60 + Number(match[2]) : undefined;
+}
+
+// One sentence for search results, share previews, and structured data, built from the entry's
+// fields so every video page gets an accurate description.
+export function describeProject(project: Project): string {
+  const article = /^[aeiou]/i.test(project.category) ? 'an' : 'a';
+  const length = project.duration ? ` (${project.duration})` : '';
+  const prompt = project.prompt_partial ? '' : ' Includes the full prompt.';
+  return `${project.title} by ${project.creator}: ${article} ${project.category} video made with ${project.stack.join(' and ')}${length}.${prompt}`;
+}
+
 export function getCategories(projectList: Project[]): string[] {
   return [...new Set(projectList.map((project) => project.category))].sort((a, b) => {
     const first = VIDEO_CATEGORIES.findIndex((category) => category === a);

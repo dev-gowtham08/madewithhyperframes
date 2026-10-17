@@ -5,14 +5,36 @@ import { connection } from 'next/server';
 import { CopyPromptButton } from '@/components/copy-prompt-button';
 import { ProjectCard } from '@/components/project-card';
 import { VideoPlayer } from '@/components/video-player';
-import { getProject, getProjects, type Project } from '@/lib/projects';
+import { describeProject, durationInSeconds, getProject, getProjects, type Project } from '@/lib/projects';
+import { absoluteUrl, SITE_NAME } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   await connection();
   const project = await getProject((await params).slug);
-  return project ? { title: project.title, description: project.prompt.replace(/\s+/g, ' ').slice(0, 160) } : { title: 'Project not found' };
+  if (!project) return { title: 'Project not found' };
+  const description = describeProject(project);
+  const url = `/projects/${project.slug}`;
+  // The share image comes from ./opengraph-image.tsx. The canonical URL drops directory filters.
+  return { title: project.title, description, alternates: { canonical: url }, openGraph: { type: 'video.other', siteName: SITE_NAME, title: project.title, description, url } };
+}
+
+// schema.org VideoObject data, which lets search engines show the page as a video result.
+function videoStructuredData(project: Project) {
+  const seconds = durationInSeconds(project);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: project.title,
+    description: describeProject(project),
+    thumbnailUrl: project.thumbnailUrl && absoluteUrl(project.thumbnailUrl),
+    uploadDate: project.submittedAt,
+    duration: seconds === undefined ? undefined : `PT${Math.floor(seconds / 60)}M${seconds % 60}S`,
+    contentUrl: project.playbackUrl && absoluteUrl(project.playbackUrl),
+    url: absoluteUrl(`/projects/${project.slug}`),
+    creator: { '@type': 'Person', name: project.creator, url: project.creatorUrl },
+  };
 }
 
 export default async function ProjectPage({ params, searchParams }: Props) {
@@ -41,6 +63,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
 
   return (
     <div className="detail-page shell">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoStructuredData(project)).replace(/</g, '\\u003c') }} />
       <div className="detail-topline">
         <Link className="back-link" href={directoryHref}><span aria-hidden="true">←</span> Back to directory</Link>
         <span>MADE WITH HYPERFRAMES / VIDEO DIRECTORY</span>

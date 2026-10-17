@@ -1,20 +1,30 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
+
+function applyTheme(theme: Theme) {
+  document.documentElement.dataset.theme = theme;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#111312' : '#f7f7f4');
+}
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>('light');
 
-  useEffect(() => {
-    setTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+  useLayoutEffect(() => {
+    // The inline script in app/layout.tsx applies the theme before the first paint. In development,
+    // React's Strict Mode remount clears that attribute, so the same choice is applied again here.
+    let saved: string | null = null;
+    try { saved = localStorage.getItem('showcase-theme'); } catch { /* Use system preference. */ }
+    const current: Theme = saved === 'dark' || saved === 'light' ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    applyTheme(current);
+    setTheme(current);
   }, []);
 
   function toggleTheme() {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#111312' : '#f7f7f4');
+    applyTheme(next);
     try { localStorage.setItem('showcase-theme', next); } catch { /* Theme still changes for this visit. */ }
     setTheme(next);
   }
