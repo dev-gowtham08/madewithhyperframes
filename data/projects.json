@@ -17,23 +17,6 @@
     "creatorUrl": "https://madewithhyperframes.vercel.app/"
   },
   {
-    "slug": "opus-5-5-motion-examples-tetumemo",
-    "title": "Exploring Opus 5.5 Motion Examples",
-    "creator": "テツメモ",
-    "stack": [
-      "Opus"
-    ],
-    "category": "Tutorial",
-    "prompt": "A recommendation of a site featuring Opus 5.5 motion graphics, explainers, 3D, and games, with original-versus-remake comparisons and shared prompts.",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/tetumemo/status/2105055757326831668/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2105055656999088128/pl/_igookoXNDPwGrEN.m3u8?v=cfc",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2105055656999088128/img/rVCLfrTLptN4Has5.jpg",
-    "duration": "1:23",
-    "submittedAt": "2026-09-30T16:00:00+05:30",
-    "creatorUrl": "https://x.com/tetumemo"
-  },
-  {
     "slug": "neocloud-business-explainer-deedy",
     "title": "Neocloud Business Explainer",
     "creator": "Deedy",
@@ -391,7 +374,8 @@
     "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2104206698781282304/img/UYhGlOD2LP5N33Bg.jpg",
     "duration": "0:32",
     "submittedAt": "2026-09-27T13:49:19.673Z",
-    "creatorUrl": "https://x.com/mappletour"
+    "creatorUrl": "https://x.com/mappletour",
+    "featured": true
   },
   {
     "slug": "jetbrains-754812",
@@ -607,7 +591,8 @@
     "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2104336458018328577/img/uDPMVSvSqCnN2Fod.jpg",
     "duration": "1:00",
     "submittedAt": "2026-09-27T22:25:25.781Z",
-    "creatorUrl": "https://x.com/jesscaroline7"
+    "creatorUrl": "https://x.com/jesscaroline7",
+    "featured": true
   },
   {
     "slug": "stokebuilder-356793",
@@ -718,40 +703,6 @@
     "creatorUrl": "https://x.com/chapi13"
   },
   {
-    "slug": "voxyz-ai-345550",
-    "title": "Gravitational Lensing",
-    "creator": "Voxyz_ai",
-    "stack": [
-      "Opus"
-    ],
-    "category": "Education",
-    "prompt": "I asked Opus 5.5 to explain gravitational lensing by building an interactive black hole lab\n\nOne prompt for the first version, then a dynamic workflow to polish it for three rounds while I slept. This is what I woke up to: 5h 28m end to end, $90 at API prices\n\nhttps://blackhole.voxyz.ai\n\nDrag the black hole and the sky behind it bends into arcs, closing into a full ring when everything lines up\n\nEach round ran 3 agents. Two reviewers each picked 9 to 10 issues and ranked them P0, P1, P2. The third one fixed them.\nRound 1: 3D materials and lighting + UI and type\nRound 2: camera motion and interaction + science-communication design\nRound 3: a design director deciding whether it ships + visual QA and performance\n\nEvery P0 got fixed, the rest only if worth it. When the two reviewers disagreed, it picked one and wrote down why. It backed up before each round, checked screenshots after, and rolled back anything it couldn't fix.",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/Voxyz_ai/status/2103117246860345550/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2103089211733680129/pl/UVVA9-NfPfqUKr59.m3u8?v=cfc",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103089211733680129/img/WGRwfXeWRCXEFHYi.jpg",
-    "duration": "0:22",
-    "submittedAt": "2026-09-24T13:40:00.337Z",
-    "creatorUrl": "https://x.com/Voxyz_ai"
-  },
-  {
-    "slug": "explorations-iq-921682",
-    "title": "Molecular Orbitals",
-    "creator": "explorations_iq",
-    "stack": [
-      "Opus"
-    ],
-    "category": "Education",
-    "prompt": "Opus 5.5 generated this simulation of molecular orbitals in about ~20 minutes. I had to prompt for some structures and resonance but I can see the promise of instant educational simulations for any advanced topic",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/explorations_iq/status/2103317768669921682/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2103317686675505152/pl/MjPXKwxsCat7BOb6.m3u8",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103317686675505152/img/vcbYtxRBQm0BQ_2y.jpg",
-    "duration": "0:36",
-    "submittedAt": "2026-09-25T02:56:48.462Z",
-    "creatorUrl": "https://x.com/explorations_iq"
-  },
-  {
     "slug": "garmdotcom-987439",
     "title": "Opus Explainer Experiment",
     "creator": "garmdotcom",
@@ -821,23 +772,6 @@
     "creatorUrl": "https://x.com/iniyanai"
   },
   {
-    "slug": "konstantinsaifo-501736",
-    "title": "How a Rocket Engine Works",
-    "creator": "konstantinsaifo",
-    "stack": [
-      "Opus"
-    ],
-    "category": "Education",
-    "prompt": "I asked Claude Opus 5.5 to explain how a rocket engine works by building an interactive Raptor 3 you can take apart in your browser.\n\nCut it open, follow the oxygen and the methane through both turbopumps, then throttle it and watch the shock diamonds move.\n\nhttp://airsup.ai/rocket-engine",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/konstantinsaifo/status/2104094723887501736/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2104094523999563776/pl/7anGva9OhKpwLLXm.m3u8",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2104094523999563776/img/8GpsNkqJCzLpDPuq.jpg",
-    "duration": "0:35",
-    "submittedAt": "2026-09-27T06:24:09.021Z",
-    "creatorUrl": "https://x.com/konstantinsaifo"
-  },
-  {
     "slug": "arthurkatcher-604161",
     "title": "How a Coding Agent Works",
     "creator": "arthurkatcher",
@@ -872,23 +806,6 @@
     "creatorUrl": "https://x.com/irinatoxi"
   },
   {
-    "slug": "konstantinsaifo-587629",
-    "title": "How a Fusion Reactor Works",
-    "creator": "konstantinsaifo",
-    "stack": [
-      "Opus"
-    ],
-    "category": "Education",
-    "prompt": "I asked Claude Opus 5.5 to explain how a fusion reactor works by building one you can take apart in your browser.\n\nDrag the plasma from 15 million °C, the heat of the Sun's core, to 150 million and watch a city light up.\n\nhttps://airsup.ai/lab",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/konstantinsaifo/status/2104216976801587629/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2104216509564211201/pl/GiklFebBt351ov19.m3u8",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2104216509564211201/img/15fqgGujKE7a5KLW.jpg",
-    "duration": "0:43",
-    "submittedAt": "2026-09-27T14:29:56.387Z",
-    "creatorUrl": "https://x.com/konstantinsaifo"
-  },
-  {
     "slug": "gmgmgm1545-245507",
     "title": "Mechanical Hermit Crab",
     "creator": "liefmusk",
@@ -904,91 +821,6 @@
     "duration": "0:50",
     "submittedAt": "2026-09-26T10:28:28.138Z",
     "creatorUrl": "https://x.com/liefmusk"
-  },
-  {
-    "slug": "0xsolty-735200",
-    "title": "A Whole Planet",
-    "creator": "0xSolty",
-    "stack": [
-      "Opus"
-    ],
-    "category": "3D",
-    "prompt": "i asked opus 5.5 to build me a planet.\n\nnot a picture of a planet. a whole planet.\n\nit wrote a single html file. no libraries, no images, no 3d models. every ocean, every mountain and every city light is math, generated live in your browser.\n\nthen i started playing with it.\n\ndrag it and it spins. raise the sea level and watch continents drown. move the sun and watch the cities switch on at night.\n\nhit \"new planet\" and it invents a new world. it even names it.\n\na year ago this was a semester project for a graphics student.\n\nnow it's a prompt.",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/0xSolty/status/2102888414219735200/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2102888182379433984/pl/rYT3itJ8iBc7SxoN.m3u8",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2102888182379433984/img/g66fMcoI_C_c-OV3.jpg",
-    "duration": "0:18",
-    "submittedAt": "2026-09-23T22:30:42.384Z",
-    "creatorUrl": "https://x.com/0xSolty"
-  },
-  {
-    "slug": "curieuxexplorer-272483",
-    "title": "Taj Mahal in 3D",
-    "creator": "CurieuxExplorer",
-    "stack": [
-      "Opus"
-    ],
-    "category": "3D",
-    "prompt": "I asked Opus 5.5 to generate a realistic 3D model of the Taj Mahal\n\nDome, minarets, marble inlay, even the foundations.\n\nOne prompt ⤵️ One HTML file.",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/CurieuxExplorer/status/2103038625483272483/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2103037615859716096/pl/tcoCCrcAtdHd9psh.m3u8",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103037615859716096/img/YWndxPW-BWqZ2Ze6.jpg",
-    "duration": "0:51",
-    "submittedAt": "2026-09-24T08:27:35.540Z",
-    "creatorUrl": "https://x.com/CurieuxExplorer"
-  },
-  {
-    "slug": "nicolamanzini-156628",
-    "title": "GLSL Fishbowl",
-    "creator": "NicolaManzini",
-    "stack": [
-      "Opus"
-    ],
-    "category": "3D",
-    "prompt": "Opus 5.5 does a great job in eval of GLSL (OpenGL Shading Language) in threejs.\nThe prompt here is roughly. A fishbowl with reflection, refraction and water caustics.\n\nCheck it out yourself! And compare it to other models\nhttps://threejseval.com/gallery?eval=fishtank",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/NicolaManzini/status/2103499771206156628/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2103496188695625728/pl/vwpiGqiIPdVrOlci.m3u8?v=cfc",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103496188695625728/img/BFYB0S0WDtBuaX_y.jpg",
-    "duration": "0:35",
-    "submittedAt": "2026-09-25T15:00:01.248Z",
-    "creatorUrl": "https://x.com/NicolaManzini"
-  },
-  {
-    "slug": "eigeorguy-813651",
-    "title": "London Snow Globe",
-    "creator": "eigeorguy",
-    "stack": [
-      "Opus"
-    ],
-    "category": "3D",
-    "prompt": "Opus 5.5 put London in a snow globe\n\n🕰 Elizabeth Tower with lit clock faces\n🚌 Red double-decker\n🚕 Black cab at a zebra crossing\n☎️ Phone box\n🍂 Leaves that swirl when you shake the phone\n\n~700 lines of Swift. No 3D files.",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/eigeorguy/status/2103992442072813651/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2103992306265370624/pl/efh71KqOOdiFH_Uo.m3u8",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103992306265370624/img/mU3eCxEzr6eKcoYX.jpg",
-    "duration": "0:06",
-    "submittedAt": "2026-09-26T23:37:43.136Z",
-    "creatorUrl": "https://x.com/eigeorguy"
-  },
-  {
-    "slug": "acoramaa-248467",
-    "title": "Music Reactive Magic Eye",
-    "creator": "Acoramaa",
-    "stack": [
-      "Opus"
-    ],
-    "category": "3D",
-    "prompt": "CLAUDE OPUS 5.5 MADE ME A MAGIC EYE.\n\nIt doesn't just look around. It listens.\n\n72 plates wrapped around a mechanical eyeball, a 9-blade iris, a lens that slides out when the bass hits, two rings orbiting it like it's its own little planet.\n\nPlay a track and it comes alive. Every kick flips the plates open. The bass pushes the lens forward. The highs light up the glowing core inside.\n\nWhen the song drops into the breakdown, the eye closes and goes quiet, like it's thinking. Then the drop hits and it blows wide open.\n\nOpus 5.5 listened to the track first, found the tempo, the breakdown and the drop, and built the whole thing around it. Even the panel on the right is live: every slider moves with the music.\n\nAll 3D, all code, rendered right in a browser.\n\nTurn the sound on.",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/Acoramaa/status/2104145227573248467/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2104135054549041152/pl/eGRSLox55FYH0AtX.m3u8",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2104135054549041152/img/Bku2r_wgDZ71F3pq.jpg",
-    "duration": "0:28",
-    "submittedAt": "2026-09-27T09:44:50.038Z",
-    "creatorUrl": "https://x.com/Acoramaa"
   },
   {
     "slug": "kgonia7-746268",
@@ -1090,7 +922,8 @@
     "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103687838420131840/img/HC_R1rLMlIn0SvvN.jpg",
     "duration": "1:15",
     "submittedAt": "2026-09-26T03:29:25.026Z",
-    "creatorUrl": "https://x.com/emollick"
+    "creatorUrl": "https://x.com/emollick",
+    "featured": true
   },
   {
     "slug": "astrothewizard-618782",
@@ -1226,7 +1059,8 @@
     "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103123980039458816/img/DDPjksrlzGkxSB1K.jpg",
     "duration": "0:30",
     "submittedAt": "2026-09-24T14:06:58.366Z",
-    "creatorUrl": "https://x.com/itsolelehmann"
+    "creatorUrl": "https://x.com/itsolelehmann",
+    "featured": true
   },
   {
     "slug": "ajith-io-208546",
@@ -1822,7 +1656,8 @@
     "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103829915430789120/img/hxztZ5JO0pIIDQOq.jpg",
     "duration": "0:31",
     "submittedAt": "2026-09-26T12:52:33.823Z",
-    "creatorUrl": "https://x.com/boona11"
+    "creatorUrl": "https://x.com/boona11",
+    "featured": true
   },
   {
     "slug": "hyperframes-studio-launch",
@@ -1981,23 +1816,6 @@
     "creatorUrl": "https://x.com/RishuaVR"
   },
   {
-    "slug": "web-design-showcase-himanshubuildss",
-    "title": "Opus 5.5 Web Design Showcase",
-    "creator": "Himanshu Hingorani",
-    "stack": [
-      "Opus"
-    ],
-    "category": "Motion",
-    "prompt": "A showcase of what Claude Opus 5.5 can make for web designers.",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/himanshubuildss/status/2108264976146395337/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2108264851974078464/pl/gkxK0E30aytRHvfu.m3u8",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2108264851974078464/img/3YqG9CWNXJfJ590p.jpg",
-    "duration": "0:13",
-    "submittedAt": "2026-10-08T18:35:14.000Z",
-    "creatorUrl": "https://x.com/himanshubuildss"
-  },
-  {
     "slug": "one-shot-studio-build-code-kartik",
     "title": "One-Shot HyperFrames Studio Build",
     "creator": "code_kartik",
@@ -2065,7 +1883,8 @@
     "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2107353808947077120/img/5ocuqMWe-ejedUAB.jpg",
     "duration": "0:41",
     "submittedAt": "2026-10-06T06:15:10.000Z",
-    "creatorUrl": "https://x.com/RishuaVR"
+    "creatorUrl": "https://x.com/RishuaVR",
+    "featured": true
   },
   {
     "slug": "studio-launch-film-hanifproduktif",
@@ -2135,22 +1954,5 @@
     "duration": "5:06",
     "submittedAt": "2026-09-25T17:17:57.000Z",
     "creatorUrl": "https://x.com/anabology"
-  },
-  {
-    "slug": "browser-game-scene-xikhar",
-    "title": "Browser Game Scene",
-    "creator": "Shikhar",
-    "stack": [
-      "Opus"
-    ],
-    "category": "3D",
-    "prompt": "A browser-based 3D scene from a third iteration with Opus 5.5, built from Blender, image generation and three.js.",
-    "prompt_partial": true,
-    "videoUrl": "https://x.com/xikhar/status/2104001664793600012/video/1",
-    "playbackUrl": "https://video.twimg.com/amplify_video/2103995292983193600/pl/IWrSZJCngkmklUDy.m3u8?v=cfc",
-    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2103995292983193600/img/eI4itdxauhMqdVZU.jpg",
-    "duration": "2:21",
-    "submittedAt": "2026-09-27T00:14:22.000Z",
-    "creatorUrl": "https://x.com/xikhar"
   }
 ]
