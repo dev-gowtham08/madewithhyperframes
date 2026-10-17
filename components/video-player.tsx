@@ -62,6 +62,9 @@ function PlayableVideo({ project, src, kind, variant, onFailure, onDuration }: {
           player = new Hls({
             autoStartLoad: false,
             capLevelToPlayerSize: true,
+            // Card previews are small and muted, so they stream the smallest quality that fits the
+            // card instead of scaling up for high-density screens.
+            ignoreDevicePixelRatio: variant === 'card',
             maxBufferLength: variant === 'card' ? 10 : 30,
             maxMaxBufferLength: variant === 'card' ? 20 : 600,
             backBufferLength: variant === 'card' ? 10 : 30,
@@ -72,7 +75,7 @@ function PlayableVideo({ project, src, kind, variant, onFailure, onDuration }: {
           player.on(Hls.Events.MANIFEST_PARSED, () => {
             if (!player || disposed) return;
             // Start near the displayed resolution, then let bandwidth adaptation take over.
-            const width = Math.min(variant === 'card' ? 1280 : 1920, video!.clientWidth * window.devicePixelRatio);
+            const width = Math.min(variant === 'card' ? 1280 : 1920, video!.clientWidth * (variant === 'card' ? 1 : window.devicePixelRatio));
             const level = player.levels.findIndex((candidate) => candidate.width >= width);
             player.startLevel = level < 0 ? player.levels.length - 1 : level;
             sync();
