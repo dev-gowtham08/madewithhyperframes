@@ -36,9 +36,7 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .site-header { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--line); background: var(--header); backdrop-filter: blur(20px); }
 .header-inner { display: flex; align-items: center; min-height: 72px; gap: 40px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; min-width: max-content; }
-.brand-mark { display: grid; grid-template-columns: repeat(2,6px); place-content: center; gap: 3px; width: 35px; height: 35px; border-radius: 50%; background: var(--lime); transform: rotate(-8deg); }
-.brand-mark i { display: block; width: 6px; height: 6px; border-radius: 50%; background: #181a17; }
-.brand-mark i:nth-child(2), .brand-mark i:nth-child(3) { background: #6950de; }
+.brand-mark { display: block; width: 35px; height: 35px; flex: none; }
 .brand-words { display: grid; gap: 1px; line-height: 1; }
 .brand-words strong { font-size: 10px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
 .brand-words span { font-size: 15px; font-weight: 750; letter-spacing: -.04em; }

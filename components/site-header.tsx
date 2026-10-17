@@ -6,7 +6,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label="Made With Hyperframes home">
-          <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
+          <img className="brand-mark" src="/icon.svg" alt="" width={35} height={35} />
           <span className="brand-words"><strong>Made With</strong><span>Hyperframes</span></span>
         </Link>
         <nav className="top-nav" aria-label="Main navigation">

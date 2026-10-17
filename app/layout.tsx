@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_TITLE, template: `%s | ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
-  icons: { icon: '/icon.svg' },
+  // The SVG for current browsers, favicon.ico for everything that requests it directly, and a PNG
+  // for iPhone home screens. All three show the logo in public/icon.svg.
+  icons: { icon: [{ url: '/favicon.ico', sizes: '32x32' }, { url: '/icon.svg', type: 'image/svg+xml' }], apple: '/apple-touch-icon.png' },
   // Each page sets its own Open Graph title, description, and image, which X falls back to.
   twitter: { card: 'summary_large_image' }
 };

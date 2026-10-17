@@ -16,10 +16,13 @@ export const shareColors = {
 };
 
 const fontDirectory = join(process.cwd(), 'assets', 'fonts');
-const [regularFont, boldFont] = await Promise.all([
+const [regularFont, boldFont, siteIcon] = await Promise.all([
   readFile(join(fontDirectory, 'Geist-Regular.ttf')),
   readFile(join(fontDirectory, 'Geist-Bold.ttf')),
+  readFile(join(process.cwd(), 'public', 'icon.svg')),
 ]);
+// The site logo, the same file the header and browser tab use.
+const brandIcon = `data:image/svg+xml;base64,${siteIcon.toString('base64')}`;
 
 export const shareImageFonts = [
   { name: 'Geist', data: regularFont, weight: 400 as const, style: 'normal' as const },
@@ -47,15 +50,11 @@ export async function loadShareImage(path: string | undefined): Promise<string |
   }
 }
 
-// The header's lime brand mark and wordmark.
+// The header's logo and wordmark.
 export function shareBrand() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 46, height: 46, borderRadius: 23, background: shareColors.lime, transform: 'rotate(-8deg)' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', width: 20, gap: 4 }}>
-          {['#181a17', '#6950de', '#6950de', '#181a17'].map((color, index) => <div key={index} style={{ width: 8, height: 8, borderRadius: 4, background: color }} />)}
-        </div>
-      </div>
+      <img src={brandIcon} alt="" width={46} height={46} />
       <div style={{ display: 'flex', flexDirection: 'column', color: shareColors.text }}>
         <div style={{ fontSize: 14, fontWeight: 700, letterSpacing: 1.6 }}>MADE WITH</div>
         <div style={{ fontSize: 26, fontWeight: 700, letterSpacing: -0.8, lineHeight: 1.1 }}>Hyperframes</div>
