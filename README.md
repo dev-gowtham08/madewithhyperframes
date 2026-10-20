@@ -54,7 +54,6 @@ These are built from `data/projects.json`, so a new entry gets them automaticall
 
 - **Share images.** Each video page has a 1200×630 card with its title, creator, tools, length, and thumbnail, drawn at build time. X shows only this image for a shared link. The directory's card shows live counts and six thumbnails: entries with `featured: true` first, then the newest.
 - **Search basics.** `/robots.txt`, `/sitemap.xml` (listing each page's video), a canonical URL on every page that ignores directory filters, and schema.org `VideoObject` data on each video page.
-- **Hyperframes collections.** `/hyperframes` groups only entries with `Hyperframes` in their tool list by category. `/hyperframes/prompts` pairs their full prompts with videos and copy buttons. Both pages have their own titles, descriptions, canonical URLs, and sitemap entries. Their contents and counts follow `projects.json` on each deployment.
 
 They all use the production address in `lib/site.ts`. Change it there if the site moves to its own domain.
 

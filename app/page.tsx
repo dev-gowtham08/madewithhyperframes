@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { connection } from 'next/server';
 import { DirectoryGrid } from '@/components/directory-grid';
 import { getCategories, getProjects } from '@/lib/projects';
@@ -23,10 +22,6 @@ export default async function HomePage() {
         <div className="hero-copy">
           <h1>Hyperframes video examples <span className="hero-join">&amp;</span> prompts</h1>
           <p>Explore {projects.length} community videos made with Hyperframes or Opus, including {fullPromptCount} full prompts shared by their creators.</p>
-          <nav className="collection-links" aria-label="Explore Hyperframes">
-            <Link href="/hyperframes">Hyperframes examples</Link>
-            <Link href="/hyperframes/prompts">Hyperframes prompts</Link>
-          </nav>
         </div>
       </section>
 
