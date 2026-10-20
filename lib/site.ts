@@ -2,8 +2,8 @@
 // previews. Change it here if the site moves to its own domain.
 export const SITE_URL = 'https://www.madewithhyperframes.com';
 export const SITE_NAME = 'Made With Hyperframes';
-export const SITE_TITLE = 'Made With Hyperframes — Video directory';
-export const SITE_DESCRIPTION = 'Discover videos and creative work made with Hyperframes and Opus.';
+export const SITE_TITLE = 'Hyperframes Video Examples & Prompts | Made With Hyperframes';
+export const SITE_DESCRIPTION = 'Explore a community directory of videos made with Hyperframes and Opus. Discover creators, watch video examples, and find full prompts when shared.';
 
 export function absoluteUrl(path: string): string {
   return new URL(path, SITE_URL).toString();

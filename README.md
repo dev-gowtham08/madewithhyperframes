@@ -1,5 +1,7 @@
 # Made With Hyperframes
 
+[Explore the community video directory](https://www.madewithhyperframes.com/) for Hyperframes and Opus examples, creator credits, and prompts when shared.
+
 A video directory for work made with Hyperframes and Opus. Built with Next.js App Router and TypeScript. The directory reads `data/projects.json` in both local development and production. There is no public upload form, database, account system, or submission API.
 
 ## Run locally
