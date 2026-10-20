@@ -1,10 +1,19 @@
 import { ImageResponse } from 'next/og';
+import { createHash } from 'node:crypto';
 import { getProjects } from '@/lib/projects';
 import { loadShareImage, shareBrand, shareColors as c, shareImageFonts, shareImageSize } from '@/lib/share-image';
 
 export const alt = 'Made With Hyperframes, a directory of videos made with Hyperframes and Opus';
 export const size = shareImageSize;
 export const contentType = 'image/png';
+
+// Give the card a new URL whenever its source data changes, so social platforms
+// do not keep showing an older image from their link-preview cache.
+export async function generateImageMetadata() {
+  const projects = await getProjects();
+  const id = createHash('sha256').update(JSON.stringify(projects)).digest('hex').slice(0, 12);
+  return [{ id, alt, size, contentType }];
+}
 
 // The directory's share card: the headline, live counts, and six thumbnails. Featured videos
 // come first, then the newest, so marking entries `featured` chooses what the card shows.
