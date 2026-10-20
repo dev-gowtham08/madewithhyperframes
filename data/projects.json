@@ -1,5 +1,22 @@
 [
   {
+    "slug": "cinematic-ai-future-gowtham",
+    "title": "Cinematic AI Future",
+    "creator": "Gowtham",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "AI",
+    "prompt": "Create a cinematic AI future video with neon cities, a glowing holographic brain, and connected Earth. Add smooth transitions, purple-blue lighting, animated visuals, and futuristic background music.",
+    "prompt_partial": false,
+    "videoUrl": "https://x.com/gowthamtj0808/status/2112189988578500654/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2112189658788728832/pl/8A6pJviRPKNsUel6.m3u8?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2112189658788728832/img/lHX6hjJdT0CtwATy.jpg",
+    "duration": "0:10",
+    "submittedAt": "2026-10-19T14:31:50.000Z",
+    "creatorUrl": "https://x.com/gowthamtj0808"
+  },
+  {
     "slug": "poultry-path-demo-video-d1gv55",
     "title": "Poultry path demo video",
     "creator": "Gowtham",
