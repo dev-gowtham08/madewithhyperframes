@@ -1,5 +1,22 @@
 [
   {
+    "slug": "opus-motion-demo-nexo",
+    "title": "Opus Motion Demo",
+    "creator": "Nexo",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "A short video shared by Nexo, who reports that Opus 5.5 created it in 15 minutes.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Nexoxh/status/2112113207632699658/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2112113141395894272/pl/tJ5oG3mWrCxaPLXj.m3u8?tag=29&v=cfc",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2112113141395894272/img/J7-OOh-xS63Ej2VW.jpg",
+    "duration": "0:15",
+    "submittedAt": "2026-10-19T09:26:44.000Z",
+    "creatorUrl": "https://x.com/Nexoxh"
+  },
+  {
     "slug": "vitals-mac-demo-atta",
     "title": "Vitals for Mac Demo",
     "creator": "Atta 🐬",
