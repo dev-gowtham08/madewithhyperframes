@@ -1,5 +1,58 @@
 [
   {
+    "slug": "vitals-mac-demo-atta",
+    "title": "Vitals for Mac Demo",
+    "creator": "Atta 🐬",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Product Demo",
+    "prompt": "A one-minute demo for Vitals, an activity monitor for Mac, made by Claude Opus 5.5 with HyperFrames from one prompt using plain HTML.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/attacomsian/status/2110720587026846101/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2110718656459988992/pl/9rwaWfI8uWzjjj9n.m3u8?tag=29&v=cfc",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2110718656459988992/img/ONEYI3jbFxeleXzv.jpg",
+    "duration": "1:00",
+    "submittedAt": "2026-10-15T13:12:57.000Z",
+    "creatorUrl": "https://x.com/attacomsian"
+  },
+  {
+    "slug": "one-shot-studio-motion-miao-yang",
+    "title": "One-Shot Motion in HyperFrames Studio",
+    "creator": "Miao Yang",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "A stylized video shared by Miao Yang as a one-shot creation, pointing to HyperFrames Studio as the tool used.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/WaterrrMiao/status/2110289423325901176/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2110289091371896832/pl/GLoKpDx_30OpGQoW.m3u8?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2110289091371896832/img/C62AiUiKoY34yOiI.jpg",
+    "duration": "1:00",
+    "submittedAt": "2026-10-14T08:39:40.000Z",
+    "creatorUrl": "https://x.com/WaterrrMiao"
+  },
+  {
+    "slug": "meet-alto-launch-khoa-bui",
+    "title": "Meet Alto Launch Video",
+    "creator": "Khoa Bui",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Marketing",
+    "prompt": "A launch video for Meet Alto, a platform for converting social engagement, comments, and direct messages into customers and revenue. Khoa Bui reports creating the video in one day with Opus 5.5 and HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/kbdocs/status/2109939280231666106/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2109935627336896513/pl/UHQIJPl_jG5JoqoR.m3u8?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2109935627336896513/img/UzFD0-N9n3shI5eN.jpg",
+    "duration": "3:03",
+    "submittedAt": "2026-10-13T09:28:19.000Z",
+    "creatorUrl": "https://x.com/kbdocs"
+  },
+  {
     "slug": "blender-hyperframes-party-bin-liu",
     "title": "Blender and HyperFrames Party",
     "creator": "Bin Liu",
