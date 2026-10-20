@@ -1,5 +1,94 @@
 [
   {
+    "slug": "blender-hyperframes-party-bin-liu",
+    "title": "Blender and HyperFrames Party",
+    "creator": "Bin Liu",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "3D",
+    "prompt": "An animated party video made with Blender, HyperFrames Studio, and Opus 5.5, prompted by Wenbo Zhu (@wenbozhu0328) and shared by Bin Liu.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/liu8in/status/2111937134676549679/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2111936340954918912/pl/Tn-JTL6nLt8rWUdd.m3u8?tag=29&v=c77",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2111936340954918912/img/Mv61jKGdofTaIJUM.jpg",
+    "duration": "0:39",
+    "submittedAt": "2026-10-18T21:47:05.000Z",
+    "creatorUrl": "https://x.com/liu8in"
+  },
+  {
+    "slug": "travel-essentials-john-wayne",
+    "title": "Travel Essentials Motion Graphics",
+    "creator": "John Wayne",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "A travel-themed motion graphics video made with Opus 5.5 and HyperFrames, shared by John Wayne as an alternative to editing in CapCut.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/DevJohnWayne/status/2111734873010647501/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2111727189960056833/pl/tcyu2c9n7ZbJWX3o.m3u8?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2111727189960056833/img/mOB5xrcEeCzi1h8e.jpg",
+    "duration": "0:19",
+    "submittedAt": "2026-10-18T08:23:22.000Z",
+    "creatorUrl": "https://x.com/DevJohnWayne"
+  },
+  {
+    "slug": "five-minute-render-denis",
+    "title": "Five-Minute HyperFrames Render",
+    "creator": "denis",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "A video made entirely with Opus 5.5 and HyperFrames. The creator reports that rendering took five minutes.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/denis253989352/status/2111481112950128863/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2111481077688676352/pl/NHC0cs20qlynOoin.m3u8?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2111481077688676352/img/0PWzoHwnOq4VNHFP.jpg",
+    "duration": "0:21",
+    "submittedAt": "2026-10-17T15:35:01.000Z",
+    "creatorUrl": "https://x.com/denis253989352"
+  },
+  {
+    "slug": "generative-media-studio-james-russo",
+    "title": "Generative Media in HyperFrames Studio",
+    "creator": "James Russo",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Creative",
+    "prompt": "A showcase of video, image, and music generation in HyperFrames Studio, including HeyGen Video 1, shared by James Russo.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Rames_Jusso/status/2111199232837484628/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2111199092294684672/pl/nxKqmzJwwRaeqp1x.m3u8?tag=29&v=cfc",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2111199092294684672/img/kHGlUTKtFWl_l1NO.jpg",
+    "duration": "0:45",
+    "submittedAt": "2026-10-16T20:54:55.000Z",
+    "creatorUrl": "https://x.com/Rames_Jusso"
+  },
+  {
+    "slug": "hyperframes-after-effects-clipwing",
+    "title": "HyperFrames to After Effects",
+    "creator": "Lera 🦋 Clipwing",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Product Demo",
+    "prompt": "A demonstration of the HyperFrames-to-After-Effects skill built by the Clipwing team, allowing graphics created with Opus 5.5 and HyperFrames to be refined in After Effects.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/thiswillblossom/status/2110053714299912521/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2110051070701457408/pl/upDoOpQTPB-RZWJ1.m3u8?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2110051070701457408/img/fq5tAl5R21iLsPKA.jpg",
+    "duration": "0:30",
+    "submittedAt": "2026-10-13T17:03:03.000Z",
+    "creatorUrl": "https://x.com/thiswillblossom"
+  },
+  {
     "slug": "cinematic-ai-future-gowtham",
     "title": "Cinematic AI Future",
     "creator": "Gowtham",
