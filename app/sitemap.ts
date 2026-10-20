@@ -11,6 +11,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projects = await getProjects();
   return [
     { url: xml(SITE_URL) },
+    { url: xml(absoluteUrl('/hyperframes')) },
+    { url: xml(absoluteUrl('/hyperframes/prompts')) },
     ...projects.map((project) => ({
       url: xml(absoluteUrl(`/projects/${project.slug}`)),
       videos: project.thumbnailUrl && project.playbackUrl ? [{
