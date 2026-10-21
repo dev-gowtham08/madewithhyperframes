@@ -1,14 +1,17 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { Project, Tool } from '@/lib/projects';
 import { ProjectCard } from './project-card';
 
 const TOOL_FILTERS: Tool[] = ['Hyperframes', 'Opus'];
+const PAGE_SIZE = 24;
 
 export function DirectoryGrid({ projects, categories }: { projects: Project[]; categories: string[] }) {
   const searchParams = useSearchParams();
+  const gridRef = useRef<HTMLDivElement>(null);
+  const nextCardToFocus = useRef<number | null>(null);
   const query = searchParams.get('q') ?? '';
   const category = categories.includes(searchParams.get('category') ?? '') ? searchParams.get('category')! : 'All';
   const tool = TOOL_FILTERS.find((value) => value === searchParams.get('tool')) ?? 'All';
@@ -19,16 +22,11 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
   const hasFeatured = projects.some((project) => project.featured);
   const sort = searchParams.get('sort') === 'Oldest' ? 'Oldest' : searchParams.get('sort') === 'Featured' && hasFeatured ? 'Featured' : 'Latest';
   const hasActiveFilters = category !== 'All' || tool !== 'All' || fullPromptOnly || query.length > 0;
-  const directoryParams = new URLSearchParams();
-  if (query) directoryParams.set('q', query);
-  if (category !== 'All') directoryParams.set('category', category);
-  if (tool !== 'All') directoryParams.set('tool', tool);
-  if (fullPromptOnly) directoryParams.set('prompt', 'full');
-  if (sort !== 'Latest') directoryParams.set('sort', sort);
-  const directoryQuery = directoryParams.toString();
 
   function updateFilter(key: string, value: string) {
     const params = new URLSearchParams(window.location.search);
+    params.delete('page');
+    nextCardToFocus.current = null;
     if (!value || value === 'All' || (key === 'sort' && value === 'Latest')) params.delete(key);
     else params.set(key, value);
     const next = params.toString();
@@ -36,6 +34,7 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
   }
 
   function clearFilters() {
+    nextCardToFocus.current = null;
     window.history.replaceState(null, '', `/${window.location.hash}`);
   }
   const filtered = useMemo(() => {
@@ -55,6 +54,33 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
     });
   }, [projects, query, category, tool, fullPromptOnly, sort]);
 
+  const requestedPage = Number(searchParams.get('page') ?? 1);
+  const page = Math.min(Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1, Math.max(1, Math.ceil(filtered.length / PAGE_SIZE)));
+  const visibleProjects = filtered.slice(0, page * PAGE_SIZE);
+  const hasMore = visibleProjects.length < filtered.length;
+  const directoryParams = new URLSearchParams();
+  if (query) directoryParams.set('q', query);
+  if (category !== 'All') directoryParams.set('category', category);
+  if (tool !== 'All') directoryParams.set('tool', tool);
+  if (fullPromptOnly) directoryParams.set('prompt', 'full');
+  if (sort !== 'Latest') directoryParams.set('sort', sort);
+  if (page > 1) directoryParams.set('page', String(page));
+  const directoryQuery = directoryParams.toString();
+
+  function loadMore() {
+    nextCardToFocus.current = visibleProjects.length;
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', String(page + 1));
+    window.history.replaceState(null, '', `${window.location.pathname}?${params}${window.location.hash}`);
+  }
+
+  useEffect(() => {
+    if (nextCardToFocus.current === null) return;
+    const firstNewLink = gridRef.current?.querySelectorAll<HTMLAnchorElement>('.card-content h3 a')[nextCardToFocus.current];
+    firstNewLink?.focus({ preventScroll: true });
+    nextCardToFocus.current = null;
+  }, [page]);
+
   return (
     <section id="explore" className="explore-section shell" aria-labelledby="explore-title">
       <h2 className="sr-only" id="explore-title">Video directory</h2>
@@ -72,7 +98,13 @@ export function DirectoryGrid({ projects, categories }: { projects: Project[]; c
         <div className="directory-results"><p role="status">{filtered.length} {filtered.length === 1 ? 'video' : 'videos'}{hasActiveFilters ? ` of ${projects.length}` : ''}</p>{hasActiveFilters && <button type="button" onClick={clearFilters}>Clear filters <span aria-hidden="true">×</span></button>}</div>
       </div>
       {filtered.length > 0 ? (
-        <div className={`project-grid${filtered.length <= 6 ? ' project-grid-small' : ''}`}>{filtered.map((project) => <ProjectCard key={project.slug} project={project} directoryQuery={directoryQuery} />)}</div>
+        <>
+          <div ref={gridRef} id="directory-projects" className={`project-grid${filtered.length <= 6 ? ' project-grid-small' : ''}`}>{visibleProjects.map((project) => <ProjectCard key={project.slug} project={project} directoryQuery={directoryQuery} />)}</div>
+          <div className="directory-pagination">
+            <p role="status">Showing <strong>{visibleProjects.length}</strong> of {filtered.length} {filtered.length === 1 ? 'video' : 'videos'}</p>
+            {hasMore && <button className="load-more-button" type="button" onClick={loadMore} aria-controls="directory-projects">Load more videos <svg viewBox="0 0 24 24" width={16} height={16} aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg></button>}
+          </div>
+        </>
       ) : (
         projects.length === 0 ? <div className="empty-state"><span className="empty-icon" aria-hidden="true">▶</span><span className="eyebrow">The collection starts here</span><h3>No videos in the directory yet.</h3><p>The collection is being curated.</p></div> :
         <div className="empty-state"><span className="empty-icon" aria-hidden="true">⌕</span><h3>No videos match your selection.</h3><p>Try another search or clear the filters to see all videos.</p><button type="button" onClick={clearFilters}>Clear filters <span aria-hidden="true">↗</span></button></div>

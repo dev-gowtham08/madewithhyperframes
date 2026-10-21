@@ -45,7 +45,7 @@ export default async function ProjectPage({ params, searchParams }: Props) {
   if (!project) notFound();
   const incoming = await searchParams;
   const directoryParams = new URLSearchParams();
-  for (const key of ['q', 'tool', 'category', 'prompt', 'sort']) {
+  for (const key of ['q', 'tool', 'category', 'prompt', 'sort', 'page']) {
     const value = incoming[key];
     if (typeof value === 'string' && value) directoryParams.set(key, value);
   }

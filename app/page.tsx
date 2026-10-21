@@ -23,6 +23,16 @@ export default async function HomePage() {
           <h1>Hyperframes <span className="hero-join">&amp;</span> Opus videos</h1>
           <p>Explore {projects.length} community videos made with Hyperframes or Opus, including {fullPromptCount} full prompts shared by their creators.</p>
         </div>
+        <a
+          className="submit-video-link directory-submit"
+          href="https://github.com/dev-gowtham08/awesome-hyperframes/blob/main/CONTRIBUTING.md#video-submissions"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Submit your video — contribution instructions on GitHub (opens in a new tab)"
+        >
+          <svg viewBox="0 0 24 24" width={16} height={16} aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14" /></svg>
+          Submit your video
+        </a>
       </section>
 
       <DirectoryGrid projects={projects} categories={categories} />
