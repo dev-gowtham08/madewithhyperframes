@@ -46,6 +46,12 @@ Directory cards show `thumbnailUrl` and play one muted preview at a time: the ho
 
 For an X post, keep the original post in `videoUrl`. To enable muted previews, add a verified direct media URL in `playbackUrl` (MP4 or HLS `.m3u8`); `thumbnailUrl` must be an actual image URL. A post page is not a playable stream or an image. The player falls back to the X embed if its separate playback source fails.
 
+For a Reddit video, keep the original post permalink in `videoUrl` (or Reddit's `/video/<media-id>` link when the permalink is unavailable). Use a verified `https://v.redd.it/<media-id>/HLSPlaylist.m3u8` in `playbackUrl`; this playlist includes the audio track, while separate video-only MP4 files may not. Use the original Reddit thumbnail URL when it loads in the browser and clearly represents the video. If it is unavailable, blank, or too dark to identify the video, save a clear real frame in `public/posters/` instead. Do not store expiring signed `packaged-media.redd.it` download links. If the media is blocked or unavailable, verify a working source before adding the entry. Only include `submittedAt` when the original publication date is known.
+
+[vxReddit](https://github.com/dylanpdx/vxReddit) can help retrieve thumbnail and stream metadata from an original Reddit post permalink when Reddit's JSON response is unavailable. Its embed metadata requires a social-preview crawler user agent, such as `Discordbot/2.0`; media-only `/video/<id>` links are unsupported. Verify every returned image and stream in the browser, and store the direct Reddit CDN URLs so visitors do not depend on the helper service. Read the video ID from the actual stream URL; an ID encoded in a thumbnail URL may identify a different asset.
+
+Before adding an entry or creating its poster, compare the original post ID and media ID against existing entries, including alternate URL forms and reposted media. Running an import again must not create duplicate entries or assets.
+
 Local development reads the file on request. To update production, commit and push the JSON change, then deploy the new revision to Vercel. Files inside a deployed Vercel build are not writable permanent storage, so production visitors cannot add entries directly. The old `/submit` URL redirects to the directory.
 
 ## Sharing and search
