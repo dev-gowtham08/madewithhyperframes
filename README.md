@@ -52,6 +52,8 @@ For a Reddit video, keep the original post permalink in `videoUrl` (or Reddit's 
 
 Before adding an entry or creating its poster, compare the original post ID and media ID against existing entries, including alternate URL forms and reposted media. Running an import again must not create duplicate entries or assets.
 
+Run `npm run check:projects` after editing the directory. The check compares slugs, original posts, media IDs, HyperFrames sessions, and normalized URLs, and runs automatically before `npm run build`. Manually review reposted or re-encoded videos with different IDs, since source metadata alone cannot identify those.
+
 Local development reads the file on request. To update production, commit and push the JSON change, then deploy the new revision to Vercel. Files inside a deployed Vercel build are not writable permanent storage, so production visitors cannot add entries directly. The old `/submit` URL redirects to the directory.
 
 ## Sharing and search
