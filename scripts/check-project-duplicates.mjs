@@ -43,11 +43,11 @@ function sourceKeys(value, field) {
 
   if (host === "youtube.com" || host === "www.youtube.com" || host === "m.youtube.com") {
     const video = url.searchParams.get("v") || path.match(/^\/shorts\/([^/]+)/)?.[1];
-    if (video) keys.push(`youtube-video:${video}`);
+    if (video) return [`youtube-video:${video}`];
   }
   if (host === "youtu.be") {
     const video = path.slice(1).split("/")[0];
-    if (video) keys.push(`youtube-video:${video}`);
+    if (video) return [`youtube-video:${video}`];
   }
 
   // Direct files and ordinary source pages: query strings often contain tracking or expiring tokens.
