@@ -237,8 +237,12 @@ function formatDuration(seconds: number): string {
 }
 
 function Poster({ project, priority = false }: { project: Project; priority?: boolean }) {
-  return project.thumbnailUrl
-    ? <Image src={project.thumbnailUrl} alt={`Video preview for ${project.title}`} fill loading={priority ? 'eager' : 'lazy'} unoptimized={project.thumbnailUrl.startsWith('http')} sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw" />
+  const [failedSource, setFailedSource] = useState<string>();
+
+  // X's image CDN rejects requests carrying this site's Referer with an HTML response.
+  // Keep the policy explicit here as well as on the page, including client-side navigation.
+  return project.thumbnailUrl && project.thumbnailUrl !== failedSource
+    ? <Image src={project.thumbnailUrl} alt={`Video preview for ${project.title}`} fill loading={priority ? 'eager' : 'lazy'} unoptimized={project.thumbnailUrl.startsWith('http')} referrerPolicy="no-referrer" onError={() => setFailedSource(project.thumbnailUrl)} sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw" />
     : <span className="thumbnail-fallback"><span className="fallback-top">VIDEO / MADE WITH {project.stack.join(' + ').toUpperCase()}</span><span className="fallback-symbol">✳</span><span className="fallback-title">{project.title}</span></span>;
 }
 

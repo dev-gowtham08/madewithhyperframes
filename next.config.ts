@@ -45,7 +45,9 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: '/(.*)', headers: [
       { key: 'X-Content-Type-Options', value: 'nosniff' },
-      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' }
+      // Remote thumbnail CDNs reject our Referer. This also covers native video posters,
+      // which do not expose a per-element referrerPolicy attribute.
+      { key: 'Referrer-Policy', value: 'no-referrer' }
     ] }];
   }
 };
