@@ -40,7 +40,7 @@ export default async function Image() {
               <div style={{ display: 'flex', gap: 12 }}><span>Hyperframes</span><span style={{ color: c.accent }}>&amp;</span></div>
               <div style={{ display: 'flex' }}>Opus videos</div>
             </div>
-            <div style={{ marginTop: 22, fontSize: 25, lineHeight: 1.35, color: c.muted }}>Videos made with Hyperframes and Opus, with the prompts behind them.</div>
+            <div style={{ marginTop: 22, fontSize: 25, lineHeight: 1.35, color: c.muted }}>Community creations, tutorials, and product demos, with prompts when shared.</div>
           </div>
           <div style={{ display: 'flex', gap: 40 }}>
             {stats.map(([value, label]) => (

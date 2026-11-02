@@ -10,10 +10,16 @@ export type Project = {
   title: string;
   creator: string;
   stack: Tool[];
+  relation?: 'about';
   category: string;
   prompt: string;
   prompt_partial: boolean;
+  promptKind?: 'starting' | 'reproduction';
+  promptSourceUrl?: string;
+  promptNotes?: string;
   videoUrl: string;
+  originalPostUrl?: string;
+  sourceLabel?: string;
   playbackUrl?: string;
   thumbnailUrl?: string;
   creatorUrl?: string;
@@ -48,6 +54,7 @@ export function describeProject(project: Project): string {
   const article = /^[aeiou]/i.test(project.category) ? 'an' : 'a';
   const length = project.duration ? ` (${project.duration})` : '';
   const prompt = project.prompt_partial ? '' : ' Includes the full prompt.';
+  if (project.relation === 'about') return `${project.title} by ${project.creator}: ${article} ${project.category} video about ${project.stack.join(' and ')}${length}.${prompt}`;
   return `${project.title} by ${project.creator}: ${article} ${project.category} video made with ${project.stack.join(' and ')}${length}.${prompt}`;
 }
 

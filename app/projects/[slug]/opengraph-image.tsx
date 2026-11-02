@@ -37,7 +37,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         <div style={{ position: 'absolute', left: 64, top: 56, width: 520, height: 518, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           {shareBrand()}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: 1.6, color: c.accent }}>{`${project.category} / ${project.stack.join(' + ')}`.toUpperCase()}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: 1.6, color: c.accent }}>{`${project.category} / ${project.relation === 'about' ? 'About ' : ''}${project.stack.join(' + ')}`.toUpperCase()}</div>
             <div style={{ marginTop: 18, fontSize: titleSize, fontWeight: 700, lineHeight: 1.04, letterSpacing: -2.5 }}>{project.title}</div>
             <div style={{ display: 'flex', gap: 10, marginTop: 24, fontSize: 28, color: c.muted }}><span>By</span><span style={{ color: c.text, fontWeight: 700 }}>{byline}</span></div>
           </div>

@@ -58,8 +58,12 @@ export default async function ProjectPage({ params, searchParams }: Props) {
     .slice(0, 3);
   const promptText = project.prompt.trim();
   const promptNote = project.prompt_partial
-    ? 'The full prompt was not shared. This is the available context for the video.'
-    : 'Prompt shared by the creator.';
+    ? 'A complete prompt has not been verified. This is the available context for the video.'
+    : project.promptKind === 'reproduction'
+      ? 'Complete reproduction prompt shared by the creator.'
+      : project.promptKind === 'starting'
+        ? 'Complete starting prompt shared by the creator.'
+        : 'Prompt shared by the creator.';
 
   return (
     <div className="detail-page shell">
@@ -74,10 +78,10 @@ export default async function ProjectPage({ params, searchParams }: Props) {
           <h1>{project.title}</h1>
           <p className="detail-byline">By {project.creatorUrl ? <a href={project.creatorUrl} target="_blank" rel="noopener noreferrer">{project.creator} <span aria-hidden="true">↗</span></a> : <strong>{project.creator}</strong>}</p>
         </div>
-        <a className="button button-dark detail-original" href={project.videoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open the original video for ${project.title} in a new tab`}>Open original <span aria-hidden="true">↗</span></a>
+        <a className="button button-dark detail-original" href={project.videoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${project.sourceLabel ?? 'Open original'} for ${project.title} in a new tab`}>{project.sourceLabel ?? 'Open original'} <span aria-hidden="true">↗</span></a>
       </header>
       <dl className="detail-facts" aria-label="Video information">
-        <div><dt>Made with</dt><dd>{project.stack.join(' + ')}</dd></div>
+        <div><dt>{project.relation === 'about' ? 'Covers' : 'Made with'}</dt><dd>{project.stack.join(' + ')}</dd></div>
         <div><dt>Category</dt><dd>{project.category}</dd></div>
         {project.duration && <div><dt>Duration</dt><dd>{project.duration}</dd></div>}
       </dl>
@@ -85,11 +89,12 @@ export default async function ProjectPage({ params, searchParams }: Props) {
         <div className="prompt-panel-heading">
           <div className="prompt-panel-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m4 6 6 6-6 6M12 18h8" /></svg>
-            <h2 id="prompt-title">Prompt</h2>
+            <h2 id="prompt-title">{project.relation === 'about' ? 'Video context' : 'Prompt'}</h2>
           </div>
-          <CopyPromptButton text={promptText} label="Copy prompt" />
+          {project.relation !== 'about' && <CopyPromptButton text={promptText} label="Copy prompt" />}
         </div>
-        <p className="prompt-panel-note">{promptNote}</p>
+        <p className="prompt-panel-note">{project.relation === 'about' ? 'Summary from the creator’s post; no production prompt was shared.' : promptNote}{project.promptSourceUrl && <> <a href={project.promptSourceUrl} target="_blank" rel="noopener noreferrer">{project.prompt_partial ? 'View creator resource' : 'View prompt source'} <span aria-hidden="true">↗</span></a></>}</p>
+        {project.promptNotes && <p className="prompt-panel-note"><strong>Before you use it:</strong> {project.promptNotes}</p>}
         <p className="prompt-panel-text">{promptText}</p>
       </section>
       {related.length > 0 && <section className="related-section" aria-labelledby="related-title"><div className="related-heading"><div><span className="eyebrow">Keep discovering</span><h2 id="related-title">Watch next<span>.</span></h2></div><Link href="/#explore">Browse all videos <span aria-hidden="true">↗</span></Link></div><div className="project-grid related-grid">{related.map((entry) => <ProjectCard key={entry.slug} project={entry} directoryQuery={directoryQuery} />)}</div></section>}

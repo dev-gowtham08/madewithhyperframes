@@ -227,6 +227,7 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .prompt-copy:hover { background: #e8ff9b; }
 .prompt-copy svg { width: 16px; height: 16px; }
 .prompt-panel-note { margin: 9px 0 19px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.prompt-panel-note a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 .prompt-panel-text { margin: 0; padding: 22px 24px; border-radius: 12px; background: var(--soft); color: var(--text); font-family: ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; white-space: pre-wrap; }
 .related-section { width: min(100%,1200px); margin: 70px auto 0; padding-top: 35px; border-top: 1px solid var(--line); }
 .related-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }

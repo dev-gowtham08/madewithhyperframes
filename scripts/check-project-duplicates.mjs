@@ -63,6 +63,7 @@ for (const [index, project] of projects.entries()) {
   const keys = new Set([
     `slug:${slug}`,
     ...sourceKeys(project.videoUrl, "videoUrl"),
+    ...sourceKeys(project.originalPostUrl, "originalPostUrl"),
     ...sourceKeys(project.playbackUrl, "playbackUrl"),
     // X's thumbnail path carries the same video media ID as its stream.
     ...sourceKeys(project.thumbnailUrl, "thumbnailUrl").filter((key) => key.startsWith("x-media:")),

@@ -21,7 +21,7 @@ export default async function HomePage() {
       <section className="directory-hero shell">
         <div className="hero-copy">
           <h1>Hyperframes <span className="hero-join">&amp;</span> Opus videos</h1>
-          <p>Explore {projects.length} community videos made with Hyperframes or Opus, including {fullPromptCount} full prompts shared by their creators.</p>
+          <p>Explore {projects.length} community videos made with or about Hyperframes and Opus, including {fullPromptCount} full prompts shared by their creators.</p>
         </div>
         <a
           className="submit-video-link directory-submit"

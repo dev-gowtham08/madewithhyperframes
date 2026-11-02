@@ -3,7 +3,7 @@
 export const SITE_URL = 'https://www.madewithhyperframes.com';
 export const SITE_NAME = 'Made With Hyperframes';
 export const SITE_TITLE = 'Hyperframes & Opus Videos | Made With Hyperframes';
-export const SITE_DESCRIPTION = 'Explore a community directory of videos made with Hyperframes and Opus. Discover creators, watch video examples, and find full prompts when shared.';
+export const SITE_DESCRIPTION = 'Explore community videos made with or about Hyperframes and Opus. Discover creators, watch examples and tutorials, and find full prompts when shared.';
 
 export function absoluteUrl(path: string): string {
   return new URL(path, SITE_URL).toString();
