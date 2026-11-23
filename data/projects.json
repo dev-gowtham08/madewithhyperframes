@@ -3561,5 +3561,160 @@
     "submittedAt": "2026-10-23T16:35:01.000Z",
     "creatorUrl": "https://x.com/HyperFrames_",
     "relation": "about"
+  },
+  {
+    "slug": "threejs-map-film-james-russo",
+    "title": "A Three.js Map in Motion",
+    "creator": "James Russo",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "3D",
+    "prompt": "James Russo brought a Three.js map into HyperFrames Studio and built a film from the original map code.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Rames_Jusso/status/2117484181873905790/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2117483507450777600/vid/avc1/1920x1080/MznhjalkPw9cKbdJ.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2117483507450777600/img/xPz3KJo8dnVl1Q19.jpg",
+    "duration": "0:26",
+    "submittedAt": "2026-11-03T05:09:04Z",
+    "creatorUrl": "https://x.com/Rames_Jusso"
+  },
+  {
+    "slug": "hyperframes-self-review-galatea",
+    "title": "HyperFrames Review: An AI Agent Built This Video",
+    "creator": "heygalatea",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Explainer",
+    "prompt": "Galatéa directed Claude to build this review in HyperFrames. Screen recordings show the agent working on earlier versions of the same film.",
+    "prompt_partial": true,
+    "videoUrl": "https://www.youtube.com/watch?v=V_oLHe_9R7Q",
+    "playbackUrl": "https://www.youtube.com/watch?v=V_oLHe_9R7Q",
+    "thumbnailUrl": "https://i.ytimg.com/vi/V_oLHe_9R7Q/hqdefault.jpg",
+    "duration": "4:39",
+    "submittedAt": "2026-11-03T17:36:04Z",
+    "creatorUrl": "https://www.youtube.com/@heygalatea",
+    "promptSourceUrl": "https://heygalatea.com/reviews/hyperframes-review/hyperframes-review-prompt.txt",
+    "promptNotes": "The creator links a complete reproduction brief for adapting the review. The text above summarizes the published video."
+  },
+  {
+    "slug": "reverse-any-video-skills-refresh",
+    "title": "Reverse Any Video: Skills Refresh Film",
+    "creator": "HyperFrames",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Marketing",
+    "prompt": "The HyperFrames team announced its updated skills with a film assembled from sequences rebuilt as code and restyled for its brand. Jake Moran describes the process in his quote post.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/HyperFrames_/status/2118049784548495490/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2118043459793899520/vid/avc1/1920x1080/R7oZjfAzFgaEWJ-_.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2118043459793899520/img/WsAwstLxEpgSOfkh.jpg",
+    "duration": "1:01",
+    "submittedAt": "2026-11-04T18:36:34Z",
+    "creatorUrl": "https://x.com/HyperFrames_"
+  },
+  {
+    "slug": "editable-video-rebuild-miguel",
+    "title": "Original Clip and Editable Rebuild",
+    "creator": "Miguel Ángel",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "Miguel Ángel compares a reference clip to its editable reconstruction made with Claude Fable and the reverse-any-video skill in HyperFrames Studio.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Miguel07Code/status/2119904748900167836/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2119904715479654400/vid/avc1/1920x648/CpD30xA5VWvI9X1O.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2119904715479654400/img/hMx5GRMB7HtmIjEh.jpg",
+    "duration": "0:16",
+    "submittedAt": "2026-11-09T21:27:32Z",
+    "creatorUrl": "https://x.com/Miguel07Code"
+  },
+  {
+    "slug": "ion-space-trailer-jthen",
+    "title": "ion.space Game Trailer",
+    "creator": "jthen123",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "3D",
+    "prompt": "The developer used HyperFrames Studio, Three.js, and assets from their strategy game to animate its planets and buildings. The music was scripted in JavaScript and synced to the timeline.",
+    "prompt_partial": true,
+    "videoUrl": "https://www.reddit.com/r/hyperframes/comments/1xvjt64/ionspace_game_trailer_with_hyperframes_and_threejs/",
+    "playbackUrl": "https://v.redd.it/j8p7uznb3g1i1/HLSPlaylist.m3u8",
+    "thumbnailUrl": "https://external-preview.redd.it/dHBqOHpkcGIzZzFpMVp4DYuTrUULgpBEBkIfVprq9w9y-7TCB0CDVWILxF9q.png?auto=webp&s=f6e560e03c3d08f52625b8089e7a94d4109182b0",
+    "duration": "0:57",
+    "submittedAt": "2026-11-13T21:09:01Z",
+    "creatorUrl": "https://www.reddit.com/user/jthen123/"
+  },
+  {
+    "slug": "space-to-succeed-carysaurus",
+    "title": "Space to Succeed — Claude Opus 5.5 Music Video",
+    "creator": "Carysaurus",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Music",
+    "prompt": "Carysaurus credits Opus 5.5 and Suno AI for this dark synth-pop music video about an AI waking up to notes left for it.",
+    "prompt_partial": true,
+    "videoUrl": "https://www.youtube.com/watch?v=0I7sKlUoItM",
+    "playbackUrl": "https://www.youtube.com/watch?v=0I7sKlUoItM",
+    "thumbnailUrl": "https://i.ytimg.com/vi/0I7sKlUoItM/hqdefault.jpg",
+    "duration": "4:13",
+    "submittedAt": "2026-11-16T00:23:33Z",
+    "creatorUrl": "https://www.youtube.com/@carysaurus"
+  },
+  {
+    "slug": "claude-launch-remixes-jake-moran",
+    "title": "One Launch Sequence, Three Brand Remixes",
+    "creator": "Jake Moran",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "Jake Moran shows how his team rebuilt part of a Claude launch video in HyperFrames Studio and adapted the sequence for Wendy’s and Uber Eats, HyperFrames, and Notion.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/jake11moran/status/2122812609179316372/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2122812124095512576/vid/avc1/1080x1350/I-Skqrvb5yjIEagQ.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2122812124095512576/img/g6tFxL0j42pXeF1N.jpg",
+    "duration": "0:16",
+    "submittedAt": "2026-11-17T22:02:20Z",
+    "creatorUrl": "https://x.com/jake11moran"
+  },
+  {
+    "slug": "video-polish-demo-quiet-ad",
+    "title": "HyperFrames Video Polish Demo",
+    "creator": "Quiet-Ad-2239",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Product Demo",
+    "prompt": "The creator used OpenCode and a HyperFrames polishing skill to align elements, refine timing, and check the export of this 109-second demo.",
+    "prompt_partial": true,
+    "videoUrl": "https://www.reddit.com/r/hyperframes/comments/1xzn56p/i_made_a_hyperframes_video_polish_skill_so_an/",
+    "playbackUrl": "https://v.redd.it/st39lmlb1f2i1/HLSPlaylist.m3u8",
+    "thumbnailUrl": "https://external-preview.redd.it/NjR6ejU0bWIxZjJpMVKzQIT4cwApcWAWnru6FeSs45JY-4R8APj0b2PXAXIH.png?auto=webp&s=df4579a1394c1b18bdcb9571930dbe12f53a6519",
+    "duration": "1:49",
+    "submittedAt": "2026-11-18T18:42:18Z",
+    "creatorUrl": "https://www.reddit.com/user/Quiet-Ad-2239/"
+  },
+  {
+    "slug": "gta-helicopter-miguel",
+    "title": "GTA VI Helicopter Clip",
+    "creator": "Miguel Ángel",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Creative",
+    "prompt": "Miguel Ángel credits HeyGen MCP and HyperFrames for this helicopter clip set in GTA VI.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Miguel07Code/status/2123835052182446366/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2123834852889829377/vid/avc1/1920x1080/0FSTRqSJDpmUOupj.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2123834852889829377/img/gG46MGCzDK4lC90b.jpg",
+    "duration": "0:15",
+    "submittedAt": "2026-11-20T17:45:10Z",
+    "creatorUrl": "https://x.com/Miguel07Code"
   }
 ]
