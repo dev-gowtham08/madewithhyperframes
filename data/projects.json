@@ -3716,5 +3716,845 @@
     "duration": "0:15",
     "submittedAt": "2026-11-20T17:45:10Z",
     "creatorUrl": "https://x.com/Miguel07Code"
+  },
+  {
+    "slug": "yoink-screenshot-studio-promo-accuratetlm13",
+    "title": "Yoink Screenshot Studio Promo",
+    "creator": "TLM13",
+    "creatorUrl": "https://x.com/accuratetlm13",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Product Demo",
+    "prompt": "A product video for the Yoink browser extension made using HeyGen HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/accuratetlm13/status/2113688873117290567/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2113687052600348672/vid/avc1/720x1280/vxazauR0jnsE5E7k.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2113687052600348672/img/IDCc4WNjuFS8jBcw.jpg",
+    "duration": "0:29",
+    "submittedAt": "2026-10-23T17:47:52Z"
+  },
+  {
+    "slug": "eight-seconds-of-order-data-coshinebyte",
+    "title": "Eight Seconds of Order Data",
+    "creator": "Coshine",
+    "creatorUrl": "https://x.com/CoshineByte",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Explainer",
+    "prompt": "The author animated simulated order data in HTML and rendered an eight-second explainer locally with HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/CoshineByte/status/2113717342140293396/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2113717116616790016/vid/avc1/1280x720/JKnOtSPMmD9J5nSB.mp4?tag=29",
+    "thumbnailUrl": "/posters/eight-seconds-of-order-data.jpg",
+    "duration": "0:08",
+    "submittedAt": "2026-10-23T19:40:59Z"
+  },
+  {
+    "slug": "mountain-color-grade-miguel07code",
+    "title": "Mountain Color Grade",
+    "creator": "Miguel Ángel",
+    "creatorUrl": "https://x.com/Miguel07Code",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Creative",
+    "prompt": "The creator demonstrates color grading in a mountain sequence made with one HyperFrames Studio instruction.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Miguel07Code/status/2113729395424911386/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2113728824923815936/vid/avc1/720x1280/svsobjndAUxNpB4Z.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2113728824923815936/img/ye9whcR0aN7TqLwD.jpg",
+    "duration": "0:10",
+    "submittedAt": "2026-10-23T20:28:53Z"
+  },
+  {
+    "slug": "beyond-the-sky-kayleia",
+    "title": "Beyond the Sky",
+    "creator": "Kayleia",
+    "creatorUrl": "https://x.com/kayleia_",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Creative",
+    "prompt": "The creator animated Krea space imagery in HyperFrames and paired it with an original music track.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/kayleia_/status/2113876079442022534/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2113876019534766080/vid/avc1/720x900/vv3usE2nihx7YTMJ.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2113876019534766080/img/TpJAFdE4eKFhVscr.jpg",
+    "duration": "0:15",
+    "submittedAt": "2026-10-24T06:11:45Z"
+  },
+  {
+    "slug": "one-prompt-motion-edit-karam_agi",
+    "title": "One Prompt Motion Edit",
+    "creator": "Karam Hawash | AI Automation",
+    "creatorUrl": "https://x.com/karam_agi",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "A motion graphics sequence written by Opus in Claude Code and rendered in HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/karam_agi/status/2113922261816086689/video/1",
+    "playbackUrl": "https://video.twimg.com/ext_tw_video/2113922207592198144/pu/vid/avc1/720x1280/GweoCEreNHxMZuue.mp4?tag=12",
+    "thumbnailUrl": "https://pbs.twimg.com/ext_tw_video_thumb/2113922207592198144/pu/img/5p6DsCqqxKIyFIRE.jpg",
+    "duration": "0:24",
+    "submittedAt": "2026-10-24T09:15:16Z"
+  },
+  {
+    "slug": "one-pearl-necklace-fpikumi2kids",
+    "title": "One Pearl Necklace",
+    "creator": "いくみ＠AI従業員を作るママ社長",
+    "creatorUrl": "https://x.com/fpikumi2kids",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Marketing",
+    "prompt": "One still image becomes four product shots through crops, camera movement and a band of light animated in HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/fpikumi2kids/status/2113948680436998549/video/1",
+    "playbackUrl": "https://video.twimg.com/ext_tw_video/2113948654797213697/pu/vid/avc1/720x1280/U7BaeggjNx0nSrSG.mp4?tag=12",
+    "thumbnailUrl": "https://pbs.twimg.com/ext_tw_video_thumb/2113948654797213697/pu/img/nybBwHcM2xlBs-By.jpg",
+    "duration": "0:15",
+    "submittedAt": "2026-10-24T11:00:15Z"
+  },
+  {
+    "slug": "bangkok-vs-pattaya-opening-phoophiang",
+    "title": "Bangkok vs. Pattaya Opening",
+    "creator": "たーちゃん@動画編集&ライターフリーランス",
+    "creatorUrl": "https://x.com/phoophiang",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "The creator paired Codex with HyperFrames to produce an opening sequence for YouTube.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/phoophiang/status/2114104971956506932/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2114104943133212672/vid/avc1/1280x720/aB_8fPBLNKwLwngf.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2114104943133212672/img/d8UwfRTns5FLcIKa.jpg",
+    "duration": "0:20",
+    "submittedAt": "2026-10-24T21:21:18Z"
+  },
+  {
+    "slug": "kawai-app-toolbox-kawai_design",
+    "title": "Kawai App Toolbox",
+    "creator": "KAWAI",
+    "creatorUrl": "https://x.com/kawai_design",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Product Demo",
+    "prompt": "A showcase of the creator’s apps composed in HTML with Claude Code and exported with HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/kawai_design/status/2114280822559928643/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2114199510658551808/vid/avc1/1280x720/UYhoMXnhesgtezfo.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2114199510658551808/img/258Fyd5iCFtC779o.jpg",
+    "duration": "0:30",
+    "submittedAt": "2026-10-25T09:00:04Z"
+  },
+  {
+    "slug": "write-html-render-video-frontend_asen",
+    "title": "Write HTML, Render Video",
+    "creator": "前端达人",
+    "creatorUrl": "https://x.com/frontend_asen",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Marketing",
+    "prompt": "A 20-second promo rendered from HTML through HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/frontend_asen/status/2114351851307163699/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2114351717559218176/vid/avc1/1280x720/GDdKZ1Ozge3YX-I8.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2114351717559218176/img/ukttEkRaIJRDR7Ju.jpg",
+    "duration": "0:20",
+    "submittedAt": "2026-10-25T13:42:18Z"
+  },
+  {
+    "slug": "kinetic-caption-study-duttasomrattwt",
+    "title": "Kinetic Caption Study",
+    "creator": "Somrat Dutta",
+    "creatorUrl": "https://x.com/duttasomrattwt",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "The creator used HyperFrames to build the animated caption style shown in the clip.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/duttasomrattwt/status/2114445154727956711/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2114445085391925248/vid/avc1/1510x720/SP7LqFSNgfPasYqw.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2114445085391925248/img/A9c5C-sLnYbxYcmj.jpg",
+    "duration": "0:07",
+    "submittedAt": "2026-10-25T19:53:04Z"
+  },
+  {
+    "slug": "the-letter-c-imheyhomees",
+    "title": "The Letter C",
+    "creator": "Iqbal.dev",
+    "creatorUrl": "https://x.com/Imheyhomees",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Education",
+    "prompt": "The creator built each frame with Three.js and HyperFrames for a musical alphabet lesson for their son.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Imheyhomees/status/2114758939833458734/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2114758811533656064/vid/avc1/720x1280/nO78Eb9x9GVMD5qp.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2114758811533656064/img/usZqcSyq5lAbRj2u.jpg",
+    "duration": "0:25",
+    "submittedAt": "2026-10-26T16:39:56Z"
+  },
+  {
+    "slug": "interactive-curves-in-excel-aero_iki",
+    "title": "Interactive Curves in Excel",
+    "creator": "いき（Excel VBA超効率化テクニック@技術評論社）",
+    "creatorUrl": "https://x.com/aero_iki",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Education",
+    "prompt": "The creator used HyperFrames to edit a recording of an Excel tool for learning B-splines and NURBS curves.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/aero_iki/status/2114966673581379587/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2114965544927723520/vid/avc1/1280x720/DFGIFAJnnI8b097F.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2114965544927723520/img/2O-v-Sa6F4nONk4K.jpg",
+    "duration": "0:30",
+    "submittedAt": "2026-10-27T06:25:23Z"
+  },
+  {
+    "slug": "not-a-medal-valorix8",
+    "title": "Not a Medal",
+    "creator": "Valorix",
+    "creatorUrl": "https://x.com/Valorix8",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Music",
+    "prompt": "A music video teaser combining Suno music and Wan footage with typography and motion graphics edited in HyperFrames. The creator credits Opus for workflow and code.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Valorix8/status/2114990697996550588/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2114990245988962305/vid/avc1/1280x720/XaL9nvOuz9Ath_PI.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2114990245988962305/img/fQn6u6EKmGM2dnJs.jpg",
+    "duration": "0:15",
+    "submittedAt": "2026-10-27T08:00:51Z"
+  },
+  {
+    "slug": "procedural-pavilion-growth-steve_steve25",
+    "title": "Procedural Pavilion Growth",
+    "creator": "Stepan Kukharskiy",
+    "creatorUrl": "https://x.com/steve_steve25",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "3D",
+    "prompt": "Local rules shape an evolving pavilion in an animation built with Python, Three.js, GSAP and HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/steve_steve25/status/2115042626244091966/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2115041450173902848/vid/avc1/720x1280/r-bWYvvx_rtL5rNF.mp4?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2115041450173902848/img/W9qjam3N07zYJ3iy.jpg",
+    "duration": "0:15",
+    "submittedAt": "2026-10-27T11:27:12Z"
+  },
+  {
+    "slug": "four-tigers-in-motion-sebmoska",
+    "title": "Four Tigers in Motion",
+    "creator": "Seb Moska",
+    "creatorUrl": "https://x.com/sebmoska",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "Four models animate the same five-second tiger run. The split-screen comparison includes Opus 5.5, and each version draws the savanna in code.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/sebmoska/status/2115043920350794102/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2115043886070390784/vid/avc1/1280x720/NiNL51PI0Eg037Pt.mp4?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2115043886070390784/img/v4ld6hg-wwPjaYAK.jpg",
+    "duration": "0:07",
+    "submittedAt": "2026-10-27T11:32:20Z"
+  },
+  {
+    "slug": "careful-what-you-prompt-for-aniketdotexe",
+    "title": "Careful What You Prompt For",
+    "creator": "Andy",
+    "creatorUrl": "https://x.com/aniketdotexe",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Creative",
+    "prompt": "A playful 2.5D animation built with Claude Opus and HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/aniketdotexe/status/2115400730723107231/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2115400627782348800/vid/avc1/1280x720/7YnkciqC1QwKTihN.mp4?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2115400627782348800/img/key7St7DfpYOiP6l.jpg",
+    "duration": "0:30",
+    "submittedAt": "2026-10-28T11:10:11Z"
+  },
+  {
+    "slug": "pelican-on-a-bicycle-ll685998568638",
+    "title": "Pelican on a Bicycle",
+    "creator": "蛙地魔法师",
+    "creatorUrl": "https://x.com/ll685998568638",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Creative",
+    "prompt": "给我做一个鹈鹕骑自行车",
+    "prompt_partial": false,
+    "videoUrl": "https://x.com/ll685998568638/status/2115465246685253921/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2115463859234373632/vid/avc1/1280x720/jFJJPtZabdBwrU8A.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2115463859234373632/img/FT904x1PWDYLaFSb.jpg",
+    "duration": "0:16",
+    "submittedAt": "2026-10-28T15:26:32Z",
+    "promptKind": "starting",
+    "promptSourceUrl": "https://x.com/ll685998568638/status/2115465246685253921"
+  },
+  {
+    "slug": "six-african-nations-techzilla_inc",
+    "title": "Six African Nations",
+    "creator": "Techzilla Inc",
+    "creatorUrl": "https://x.com/Techzilla_inc",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Creative",
+    "prompt": "A travel montage made with HyperFrames featuring Morocco, Egypt, Nigeria, Kenya, South Africa and Madagascar.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Techzilla_inc/status/2115759696883913037/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2115759535948181504/vid/avc1/1280x720/_kEgL0YeWh0H9F8k.mp4?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2115759535948181504/img/765WlvnsVlFzGPZU.jpg",
+    "duration": "0:25",
+    "submittedAt": "2026-10-29T10:56:35Z"
+  },
+  {
+    "slug": "stickman-story-in-code-finnardley",
+    "title": "Stickman Story in Code",
+    "creator": "Finn",
+    "creatorUrl": "https://x.com/finnardley",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Creative",
+    "prompt": "Finn Ardley used Opus to write a stick-figure animation entirely in code.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/finnardley/status/2115786060231770351/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2115784242701500416/vid/avc1/720x1280/yPMX34ABAcld_GHW.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2115784242701500416/img/a_e-E2kTPxvwNIU5.jpg",
+    "duration": "1:23",
+    "submittedAt": "2026-10-29T12:41:20Z",
+    "promptSourceUrl": "https://x.com/finnardley/status/2115786060231770351",
+    "promptNotes": "The creator includes a longer prompt in the linked post."
+  },
+  {
+    "slug": "rebuilding-the-studio-storyboard-rames_jusso",
+    "title": "Rebuilding the Studio Storyboard",
+    "creator": "James Russo",
+    "creatorUrl": "https://x.com/Rames_Jusso",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Product Demo",
+    "prompt": "HyperFrames Studio inspected its own interface through computer use and rebuilt it for this product video.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Rames_Jusso/status/2115877832325038473/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2115877546684301312/vid/avc1/1280x720/Z0Oql-rUuYKKPjgs.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2115877546684301312/img/doM-ok5otzppwozQ.jpg",
+    "duration": "0:21",
+    "submittedAt": "2026-10-29T18:46:00Z"
+  },
+  {
+    "slug": "morning-coffee-black-hole-sahilpanhotra",
+    "title": "Morning Coffee Black Hole",
+    "creator": "Sahil Panhotra | Indie Builder",
+    "creatorUrl": "https://x.com/SahilPanhotra",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Explainer",
+    "prompt": "A Kurzgesagt-inspired animation built with Gemini and HyperFrames, with narration generated locally using Kokoro.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/SahilPanhotra/status/2116119627344511371/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2116117934515146752/vid/avc1/1280x720/1ZaRqdJyuhyojBXR.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2116117934515146752/img/dcg2kLG2RB6xyGzR.jpg",
+    "duration": "0:14",
+    "submittedAt": "2026-10-30T10:46:49Z"
+  },
+  {
+    "slug": "barqr-generator-promo-tuningzhou",
+    "title": "BarQR Generator Promo",
+    "creator": "Tuning Zhou",
+    "creatorUrl": "https://x.com/TuningZhou",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Product Demo",
+    "prompt": "A product promo created with HyperFrames and the Antigravity agent.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/TuningZhou/status/2116130987893837903/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2116130512721051648/vid/avc1/1280x720/-zO4HDna5RtipUbY.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2116130512721051648/img/K14AfId75ClYFE8V.jpg",
+    "duration": "0:29",
+    "submittedAt": "2026-10-30T11:31:57Z"
+  },
+  {
+    "slug": "haunted-potion-progress-bar-waterrrmiao",
+    "title": "Haunted Potion Progress Bar",
+    "creator": "Miao Yang",
+    "creatorUrl": "https://x.com/WaterrrMiao",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "A Halloween tribute to Damir’s progress bar, rebuilt in HyperFrames Studio with Framey in costume.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/WaterrrMiao/status/2116131343033897147/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2116131264063516672/vid/avc1/1280x720/bTUek8og6mwv4oEk.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2116131264063516672/img/ccNz4TPFUYS5mFpn.jpg",
+    "duration": "0:17",
+    "submittedAt": "2026-10-30T11:33:22Z"
+  },
+  {
+    "slug": "behind-the-product-show-intro-enritarta",
+    "title": "Behind the Product Show Intro",
+    "creator": "Enrico Tartarotti",
+    "creatorUrl": "https://x.com/EnriTarta",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "Enrico Tartarotti built the intro for his YouTube show with Claude Opus, HyperFrames and Flask.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/EnriTarta/status/2116251755851989096/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2116251400615137281/vid/avc1/1440x720/IFRIk_f6bwvwtoMw.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2116251400615137281/img/BePLbrLKcGCjyy-F.jpg",
+    "duration": "0:19",
+    "submittedAt": "2026-10-30T19:31:51Z"
+  },
+  {
+    "slug": "corvic-ai-on-mac-moshtaghm",
+    "title": "Corvic AI on Mac",
+    "creator": "Moshtagh",
+    "creatorUrl": "https://x.com/MoshtaghM",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "A HyperFrames motion study responding to Enrico Tartarotti’s reference video.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/MoshtaghM/status/2116319487985168384/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2116319358519513088/vid/avc1/1280x720/1U1UYYxg69XpZSxl.mp4?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2116319358519513088/img/PagM-WdmrOgagtkp.jpg",
+    "duration": "0:11",
+    "submittedAt": "2026-10-31T00:00:59Z"
+  },
+  {
+    "slug": "hexa-trading-launch-film-hexaplatform",
+    "title": "Hexa Trading Launch Film",
+    "creator": "Hexa",
+    "creatorUrl": "https://x.com/hexaplatform",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Marketing",
+    "prompt": "The Hexa team credits Opus for the video introducing its trading product.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/hexaplatform/status/2116352718809727295/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2116352296737026048/vid/avc1/1280x720/zkK-ALX6Yn66VRyH.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2116352296737026048/img/GHBY_ZedDOJpubvV.jpg",
+    "duration": "0:17",
+    "submittedAt": "2026-10-31T02:13:02Z"
+  },
+  {
+    "slug": "what-our-hands-have-done-quietworkbench",
+    "title": "What Our Hands Have Done",
+    "creator": "Ryan",
+    "creatorUrl": "https://x.com/quietworkbench",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Music",
+    "prompt": "A music video drawn in code with HyperFrames, with lights timed to individual guitar strums.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/quietworkbench/status/2116682075289932239/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2116681807701721088/vid/avc1/1280x720/moD-aF5pQPltjApl.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2116681807701721088/img/H_Ta0deg8Qt2suwK.jpg",
+    "duration": "0:40",
+    "submittedAt": "2026-11-01T00:01:47Z"
+  },
+  {
+    "slug": "electric-car-sales-in-2025-one_z91",
+    "title": "Electric Car Sales in 2025",
+    "creator": "Yvonne_Zhan",
+    "creatorUrl": "https://x.com/One_z91",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Explainer",
+    "prompt": "An animated overview of annual new-car sales made with Opus in Claude Code and rendered with HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/One_z91/status/2117260263007408633/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2117260108082393088/vid/avc1/1280x720/3z4fsKKSiReQn67N.mp4?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2117260108082393088/img/Xu84AcSFDlbgGwts.jpg",
+    "duration": "0:30",
+    "submittedAt": "2026-11-02T14:19:18Z"
+  },
+  {
+    "slug": "motion-crackers-launch-film-adamhincu",
+    "title": "Motion Crackers Launch Film",
+    "creator": "Adam Hincu",
+    "creatorUrl": "https://x.com/AdamHincu",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Marketing",
+    "prompt": "Adam Hincu used Opus and HyperFrames to generate a launch sequence with subtle motion blur.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/AdamHincu/status/2117481158602866843/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2117481065501675520/vid/avc1/1280x720/kN0iIeAGIcfKI09b.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2117481065501675520/img/8K_Bx77CSIoiGJDW.jpg",
+    "duration": "0:20",
+    "submittedAt": "2026-11-03T04:57:03Z",
+    "promptSourceUrl": "https://x.com/AdamHincu/status/2117482876090347885"
+  },
+  {
+    "slug": "make-room-for-change-one_z91",
+    "title": "Make Room for Change",
+    "creator": "Yvonne_Zhan",
+    "creatorUrl": "https://x.com/One_z91",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "An unofficial USM Haller study in which balls, tubes and cells assemble and rearrange in motion.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/One_z91/status/2118782429800620487/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2118782311835783168/vid/avc1/1280x720/Axmpm7CTpdZhTShv.mp4?tag=14",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2118782311835783168/img/AKOfQjae6MM2-D-3.jpg",
+    "duration": "0:16",
+    "submittedAt": "2026-11-06T19:07:50Z"
+  },
+  {
+    "slug": "jazzy-s-burger-motion-ad-aygramm",
+    "title": "Jazzy’s Burger Motion Ad",
+    "creator": "Ayomide Adeji",
+    "creatorUrl": "https://x.com/Aygramm_",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Marketing",
+    "prompt": "A motion graphic for Jazzy’s Burger that the creator made with Claude Opus.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Aygramm_/status/2119080450287423996/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2119080389918576641/vid/avc1/720x720/DqhgKmGKA0g44FDw.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/media/HWh8YyGXQAAk1Xc.jpg",
+    "duration": "0:20",
+    "submittedAt": "2026-11-07T14:52:04Z"
+  },
+  {
+    "slug": "jelly-whale-vib3coded",
+    "title": "Jelly Whale",
+    "creator": "Vib3Coded",
+    "creatorUrl": "https://x.com/vib3coded",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Creative",
+    "prompt": "An Opus animation study of a translucent whale stretching and rolling.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/vib3coded/status/2119231952045625719/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2119231781085810688/vid/avc1/1152x720/9I64MbL1fHNMANJi.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2119231781085810688/img/q-4muXl_DXkOyGN6.jpg",
+    "duration": "0:18",
+    "submittedAt": "2026-11-08T00:54:05Z"
+  },
+  {
+    "slug": "one-orange-square-three-video-engines-zayn0x28",
+    "title": "One Orange Square, Three Video Engines",
+    "creator": "Zayn",
+    "creatorUrl": "https://x.com/zayn0x28",
+    "stack": [
+      "Hyperframes",
+      "Opus",
+      "Remotion"
+    ],
+    "category": "Motion",
+    "prompt": "an orange square drops in, splits into a 3 bar chart, the title types in, slow push in. 6 seconds, 1080p",
+    "prompt_partial": false,
+    "videoUrl": "https://x.com/zayn0x28/status/2119419745950679291/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2119410018369847296/vid/avc1/1280x720/0kfH1ai-vIupMhGS.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2119410018369847296/img/DWg9zzxIV2R9PjfK.jpg",
+    "duration": "0:17",
+    "submittedAt": "2026-11-08T13:20:19Z",
+    "promptSourceUrl": "https://x.com/zayn0x28/status/2119419745950679291",
+    "promptKind": "starting"
+  },
+  {
+    "slug": "living-pok-mon-woodblock-print-chetaslua",
+    "title": "Living Pokémon Woodblock Print",
+    "creator": "Chetaslua",
+    "creatorUrl": "https://x.com/chetaslua",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Creative",
+    "prompt": "Opus drew an animated woodblock-style Pokémon scene in JavaScript, including synthesized sound.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/chetaslua/status/2119478883091431843/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2119478797951258624/vid/avc1/720x720/8YHz7Q-26mj9KkK8.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2119478797951258624/img/qrRqPX0i-7YQLCSk.jpg",
+    "duration": "0:16",
+    "submittedAt": "2026-11-08T17:15:18Z"
+  },
+  {
+    "slug": "minecraft-story-short-finnardley",
+    "title": "Minecraft Story Short",
+    "creator": "Finn",
+    "creatorUrl": "https://x.com/finnardley",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Short Film",
+    "prompt": "Finn Ardley made a Minecraft-inspired story short using Claude Opus and Blender.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/finnardley/status/2119608784993522058/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2119606131324542977/vid/avc1/720x1280/J9qt5rdnejfc2qAb.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2119606131324542977/img/tLJZKz_8Jrbu0rzc.jpg",
+    "duration": "0:24",
+    "submittedAt": "2026-11-09T01:51:29Z",
+    "promptSourceUrl": "https://x.com/finnardley/status/2119608784993522058",
+    "promptNotes": "The creator includes a longer prompt in the linked post."
+  },
+  {
+    "slug": "glyph-tunnel-glitch-cut-so9az10906",
+    "title": "Glyph Tunnel Glitch Cut",
+    "creator": "Karmamamama",
+    "creatorUrl": "https://x.com/So9aZ10906",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "Scrolling text and a code panel give way to a rotating cylinder of glyphs, a tunnel and a hard cut to a single square.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/So9aZ10906/status/2119618836349739383/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2119618740379852800/vid/avc1/1280x720/OC-4okP9Hzhx_erf.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2119618740379852800/img/LzrR9e4EedXBMlpv.jpg",
+    "duration": "0:08",
+    "submittedAt": "2026-11-09T02:31:25Z"
+  },
+  {
+    "slug": "use-it-like-a-shop-danielishakutv",
+    "title": "Use It Like a Shop",
+    "creator": "Daniel Ishaku",
+    "creatorUrl": "https://x.com/danielishakutv",
+    "stack": [
+      "Hyperframes",
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "The creator shows the motion sequence made by pairing Opus with HyperFrames after first trying the instruction in Claude alone.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/danielishakutv/status/2120072750454747210/video/1",
+    "playbackUrl": "https://video.twimg.com/ext_tw_video/2120072728371748864/pu/vid/avc1/720x1280/6sNiwgvxrdRUsufS.mp4?tag=12",
+    "thumbnailUrl": "https://pbs.twimg.com/ext_tw_video_thumb/2120072728371748864/pu/img/6_FFX6WKqyTjN081.jpg",
+    "duration": "0:18",
+    "submittedAt": "2026-11-10T08:35:07Z"
+  },
+  {
+    "slug": "render-the-launch-hassanhorbane",
+    "title": "Render the Launch",
+    "creator": "Hassan Horbane",
+    "creatorUrl": "https://x.com/hassanhorbane",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "The creator paired a local Qwen model with HyperFrames for animation and Stable Audio for music.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/hassanhorbane/status/2120215348373012682/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2120210234580811776/vid/avc1/720x720/w4OfAFznbLwECCsz.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2120210234580811776/img/KZdVqlzycU_m9cNN.jpg",
+    "duration": "0:12",
+    "submittedAt": "2026-11-10T18:01:45Z"
+  },
+  {
+    "slug": "no-designer-needed-bullishben2",
+    "title": "No Designer Needed",
+    "creator": "Būllish Bēn ꘜ🌊",
+    "creatorUrl": "https://x.com/BullishBen2",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "A short motion graphics experiment from a Blender and HyperFrames rendering workflow.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/BullishBen2/status/2120408349443244514/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2120408257630019584/vid/avc1/720x1280/-IQDOoD2M59htP0K.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2120408257630019584/img/gInDA-QQ8IEw0Urh.jpg",
+    "duration": "0:09",
+    "submittedAt": "2026-11-11T06:48:40Z"
+  },
+  {
+    "slug": "monster-energy-motion-study-bullishben2",
+    "title": "Monster Energy Motion Study",
+    "creator": "Būllish Bēn ꘜ🌊",
+    "creatorUrl": "https://x.com/BullishBen2",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Marketing",
+    "prompt": "The creator used Blender and HyperFrames to render a short Monster Energy concept video.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/BullishBen2/status/2120567675063587307/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2120567639051321344/vid/avc1/1280x720/33THw1X66-KRsk45.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2120567639051321344/img/lL_Oj63kYr_GRe3r.jpg",
+    "duration": "0:21",
+    "submittedAt": "2026-11-11T17:21:46Z"
+  },
+  {
+    "slug": "escape-from-feedback-andrewmok8",
+    "title": "Escape From Feedback",
+    "creator": "Andrew Mok",
+    "creatorUrl": "https://x.com/andrewmok8",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Creative",
+    "prompt": "A marketing-team comedy sketch made with HeyGen Video 1 and HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/andrewmok8/status/2120687449936650699/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2120687212828532736/vid/avc1/1280x720/0JN61yDKut4DGqbm.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2120687212828532736/img/oray8OQH0el-fu97.jpg",
+    "duration": "0:15",
+    "submittedAt": "2026-11-12T01:17:43Z"
+  },
+  {
+    "slug": "html-to-portrait-video-yjsoyong",
+    "title": "HTML to Portrait Video",
+    "creator": "yjsoly.eth🦉",
+    "creatorUrl": "https://x.com/yjsoyong",
+    "stack": [
+      "Hyperframes"
+    ],
+    "category": "Motion",
+    "prompt": "An eight-second vertical animation that the creator rendered locally from HTML using HyperFrames.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/yjsoyong/status/2122186277202137367/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2122185463267991553/vid/avc1/720x1280/N01wsg8SygLig3OX.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2122185463267991553/img/5LPg8n9dyY_oV6z5.jpg",
+    "duration": "0:08",
+    "submittedAt": "2026-11-16T04:33:31Z"
+  },
+  {
+    "slug": "one-percent-viva_artificial",
+    "title": "One Percent",
+    "creator": "viva",
+    "creatorUrl": "https://x.com/viva_artificial",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Music",
+    "prompt": "A music video combining Suno music, NijiJourney characters and Seedance footage. The creator used Claude Opus for the lyric motion and editing.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/viva_artificial/status/2122279569789169712/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2122278248495435776/vid/avc1/478x854/M2cfW-G-weteuJjH.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2122278248495435776/img/uJ7vsDqY11kZqs_H.jpg",
+    "duration": "2:29",
+    "submittedAt": "2026-11-16T10:44:14Z"
+  },
+  {
+    "slug": "trimz-motion-edit-zruft14",
+    "title": "Trimz Motion Edit",
+    "creator": "Zruft",
+    "creatorUrl": "https://x.com/Zruft14",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Marketing",
+    "prompt": "A motion graphics edit for Trimz made with Claude Opus.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/Zruft14/status/2122308863554940939/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2122308799885455361/vid/avc1/720x720/0kCtQ-bjjA1mOyN7.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2122308799885455361/img/UfbgT-SiaCFOo8aL.jpg",
+    "duration": "0:22",
+    "submittedAt": "2026-11-16T12:40:38Z"
+  },
+  {
+    "slug": "winter-lakeside-flyover-mraznaan",
+    "title": "Winter Lakeside Flyover",
+    "creator": "@aznan",
+    "creatorUrl": "https://x.com/mraznaan",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "The creator gave Opus and Fable the same brief for a fighter jet crossing a snowy lakeside, then compared their animated results.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/mraznaan/status/2122431195611025493/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2122431152648523776/vid/avc1/720x720/LuH8G6L0hFUYsDDu.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2122431152648523776/img/E3CKuN8lhOaAcTtT.jpg",
+    "duration": "0:07",
+    "submittedAt": "2026-11-16T20:46:44Z"
+  },
+  {
+    "slug": "29-years-of-rockstar-games-sai0xgen",
+    "title": "29 Years of Rockstar Games",
+    "creator": "Sai",
+    "creatorUrl": "https://x.com/sai0xgen",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "An animated history of Rockstar Games from GTA I to GTA VI, drawn in code with Claude Opus.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/sai0xgen/status/2124365871321878561/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2124365107530706944/vid/avc1/1280x720/EWBMrxIfD5qxrvlG.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2124365107530706944/img/a-tvkEKoXT6FzAE8.jpg",
+    "duration": "1:46",
+    "submittedAt": "2026-11-22T04:54:27Z"
+  },
+  {
+    "slug": "one-shape-seven-ui-states-rossa404",
+    "title": "One Shape, Seven UI States",
+    "creator": "rossa",
+    "creatorUrl": "https://x.com/rossa404",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Motion",
+    "prompt": "An Opus motion study in one HTML file takes a single shape through an upload, progress indicator, counter and other interface states.",
+    "prompt_partial": true,
+    "videoUrl": "https://x.com/rossa404/status/2124517880523801004/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2124483507825070080/vid/avc1/720x720/Ifl2y4BslS1oZ1WW.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2124483507825070080/img/drzYXnAOF5gCU26L.jpg",
+    "duration": "0:10",
+    "submittedAt": "2026-11-22T14:58:29Z",
+    "promptSourceUrl": "https://x.com/rossa404/status/2124517880523801004",
+    "promptNotes": "The creator includes a longer prompt in the linked post."
+  },
+  {
+    "slug": "cycling-pelican-model-comparison-rezait00",
+    "title": "Cycling Pelican Model Comparison",
+    "creator": "Rez",
+    "creatorUrl": "https://x.com/RezAIT00",
+    "stack": [
+      "Opus"
+    ],
+    "category": "Creative",
+    "prompt": "an animated SVG of a pelican riding a bicycle, as detailed as possible.",
+    "prompt_partial": false,
+    "videoUrl": "https://x.com/RezAIT00/status/2124580303050088483/video/1",
+    "playbackUrl": "https://video.twimg.com/amplify_video/2124580162930933760/vid/avc1/720x794/9CTY7Ms0KLlxxzUB.mp4?tag=29",
+    "thumbnailUrl": "https://pbs.twimg.com/amplify_video_thumb/2124580162930933760/img/HGeXwNlGxXrD7Jq6.jpg",
+    "duration": "0:18",
+    "submittedAt": "2026-11-22T19:06:31Z",
+    "promptSourceUrl": "https://x.com/RezAIT00/status/2124580303050088483",
+    "promptKind": "starting"
   }
 ]
